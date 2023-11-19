@@ -1,6 +1,7 @@
 package com.example.fluffy_aos.ui.home
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,8 +25,7 @@ import com.example.fluffy_aos.ui.common.CardView
 import com.example.fluffy_aos.ui.common.RoundedButton
 import com.example.fluffy_aos.ui.home.component.BcsDiagnosisCardView
 import com.example.fluffy_aos.ui.home.component.EyeDiagnosisCardView
-import com.example.fluffy_aos.ui.home.component.Header
-import com.example.fluffy_aos.ui.home.reusable.DiagnosisCardView
+import com.example.fluffy_aos.ui.home.component.HomeHeader
 import com.example.fluffy_aos.ui.theme.FluffyAOSTheme
 
 @Composable
@@ -35,15 +35,14 @@ fun HomeView() {
         modifier = Modifier
             .padding(20.dp)
             .verticalScroll(rememberScrollState())
-            .fillMaxSize()
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        Header()
-
-        Spacer(modifier = Modifier.padding(10.dp))
+        HomeHeader()
 
         BcsDiagnosisCardView()
 
-        Spacer(modifier = Modifier.padding(10.dp))
+        Spacer(modifier = Modifier.padding(5.dp))
         EyeDiagnosisCardView()
 
         Button(onClick = { navController.navigate("post") }) {
