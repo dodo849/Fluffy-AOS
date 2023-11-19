@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.example.fluffy_aos.global.gray_background
+import com.example.fluffy_aos.ui.theme.gray_background
 
 @Composable
 fun DiagnosisCardView(content: @Composable () -> Unit) {

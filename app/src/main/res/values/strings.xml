@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Fluffy-AOS</string>
-    <string name="home">Home</string>
-    <string name="record">Record</string>
-    <string name="post">Post</string>
-    <string name="setting">Setting</string>
+<!--    <string name="home">Home</string>-->
+<!--    <string name="record">Record</string>-->
+<!--    <string name="post">Post</string>-->
+<!--    <string name="setting">Setting</string>-->
 </resources>
