@@ -23,7 +23,9 @@ fun BottomNavigationBar() {
     val navController = LocalNavController.current
     val items = listOf(
         BottomNavigationItem.Home,
-        BottomNavigationItem.Post
+        BottomNavigationItem.Record,
+        BottomNavigationItem.Post,
+        BottomNavigationItem.Setting
     )
     var navigationSelectedItem by remember {
         mutableStateOf(0)

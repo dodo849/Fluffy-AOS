@@ -21,6 +21,8 @@ import com.example.fluffy_aos.global.LocalNavController
 import com.example.fluffy_aos.ui.bottom_navigation.BottomNavigationBar
 import com.example.fluffy_aos.ui.home.HomeView
 import com.example.fluffy_aos.ui.post.PostView
+import com.example.fluffy_aos.ui.record.RecordView
+import com.example.fluffy_aos.ui.setting.SettingView
 import com.example.fluffy_aos.ui.theme.FluffyAOSTheme
 
 
@@ -50,7 +52,9 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.padding(paddingValues = paddingValues)
             ) {
                 composable("home") { HomeView() }
+                composable("record") { RecordView() }
                 composable("post") { PostView() }
+                composable("setting") { SettingView() }
             }
     }
 }
