@@ -15,7 +15,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.fluffy_aos.ui.base.gray_background
+import com.example.fluffy_aos.global.gray_background
+import com.example.fluffy_aos.ui.common.CardView
 
 
 @Composable
@@ -23,11 +24,7 @@ fun Header() {
     Row(modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Box(modifier = Modifier
-            .clip(RoundedCornerShape(10.dp))
-            .background(gray_background)
-            .padding(vertical = 8.dp, horizontal = 16.dp)
-        ) {
+        CardView {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text("초코",
                     fontSize = 24.sp,

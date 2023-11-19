@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.base
+package com.example.fluffy_aos.global
 
 import androidx.compose.ui.graphics.Color
 
