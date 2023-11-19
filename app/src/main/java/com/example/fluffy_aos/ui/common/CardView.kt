@@ -13,9 +13,9 @@ import com.example.fluffy_aos.ui.theme.gray_background
 @Composable
 fun CardView(content: @Composable () -> Unit) {
     Box(modifier = Modifier
-        .clip(RoundedCornerShape(10.dp))
+        .clip(RoundedCornerShape(20.dp))
         .background(gray_background)
-        .padding(vertical = 10.dp, horizontal = 20.dp)
+        .padding(vertical = 30.dp, horizontal = 25.dp)
     ) {
         content()
     }

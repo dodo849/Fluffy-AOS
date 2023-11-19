@@ -1,5 +1,6 @@
 package com.example.fluffy_aos.ui.home.reusable
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -19,16 +20,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.fluffy_aos.R
+import com.example.fluffy_aos.ui.common.CardView
 import com.example.fluffy_aos.ui.common.RoundedButton
 import com.example.fluffy_aos.ui.theme.gray_background
 
 @Composable
-fun DiagnosisCardView(title: String, detail: String, imageRes: Int, onClick: () -> Unit) {
-    Box(modifier = Modifier
-        .clip(RoundedCornerShape(20.dp))
-        .background(gray_background)
-        .padding(vertical = 30.dp, horizontal = 25.dp)
-    ) {
+fun DiagnosisCardView(title: String, detail: String, @DrawableRes imageRes: Int, onClick: () -> Unit) {
+    CardView {
         Column (verticalArrangement = Arrangement.spacedBy(7.dp)) {
             Text(title,
                 fontSize = 22.sp,
