@@ -49,7 +49,6 @@ class MainActivity : ComponentActivity() {
             NavHost(
                 navController = navController,
                 startDestination = "home",
-                modifier = Modifier.padding(paddingValues = paddingValues)
             ) {
                 composable("home") { HomeView() }
                 composable("record") { RecordView() }
