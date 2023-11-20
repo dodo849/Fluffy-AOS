@@ -25,16 +25,25 @@ import com.example.fluffy_aos.ui.common.RoundedButton
 import com.example.fluffy_aos.ui.theme.gray_background
 
 @Composable
-fun DiagnosisCardView(title: String, detail: String, @DrawableRes imageRes: Int, onClick: () -> Unit) {
+fun DiagnosisCardView(
+    title: String,
+    detail: String,
+    @DrawableRes imageRes: Int,
+    onClick: () -> Unit
+) {
     CardView {
-        Column (verticalArrangement = Arrangement.spacedBy(7.dp)) {
-            Text(title,
+        Column(verticalArrangement = Arrangement.spacedBy(7.dp)) {
+            Text(
+                title,
                 fontSize = 22.sp,
-                fontWeight = FontWeight.Bold)
+                fontWeight = FontWeight.Bold
+            )
 
-            Text(detail,
+            Text(
+                detail,
                 fontSize = 16.sp,
-                fontWeight = FontWeight.Normal)
+                fontWeight = FontWeight.Normal
+            )
 
             Spacer(modifier = Modifier.padding(5.dp))
             Image(
