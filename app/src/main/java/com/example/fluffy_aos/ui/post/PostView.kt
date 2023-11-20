@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -34,6 +35,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.fluffy_aos.global.LocalNavController
 import com.example.fluffy_aos.global.LocalNavControllerProvider
+import com.example.fluffy_aos.ui.post.component.PostCards
 import com.example.fluffy_aos.ui.record.RecordView
 import com.example.fluffy_aos.ui.theme.FluffyAOSTheme
 import com.example.fluffy_aos.ui.theme.gray_background
@@ -49,16 +51,26 @@ fun PostView() {
         verticalArrangement = Arrangement.spacedBy(15.dp),
         modifier = Modifier
             .background(Color.White)
-            .padding(20.dp)
             .verticalScroll(rememberScrollState())
             .fillMaxSize()
     ) {
-        Text(
-            "포스팅", fontWeight = FontWeight.Bold, fontSize = 24.sp
-        )
-        PostCategories()
+        Column(
+            verticalArrangement = Arrangement.spacedBy(15.dp),
+            modifier = Modifier.padding(20.dp)
+        ) {
+            Text(
+                "포스팅", fontWeight = FontWeight.Bold, fontSize = 24.sp
+            )
+            PostCategories()
+        }
+
+        PostCards()
+
+        Spacer(modifier = Modifier.height(50.dp))
+
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
