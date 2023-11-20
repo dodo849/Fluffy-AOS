@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.example.fluffy_aos.ui.theme.gray_background
 
 @Composable
-fun CardView(
+fun Card(
     backgroundColor: Color = gray_background,
     content: @Composable () -> Unit
 ) {

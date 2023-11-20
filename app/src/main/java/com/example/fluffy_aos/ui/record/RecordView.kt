@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 import com.example.fluffy_aos.R
 import com.example.fluffy_aos.global.LocalNavController
-import com.example.fluffy_aos.ui.common.CardView
+import com.example.fluffy_aos.ui.common.Card
 import com.example.fluffy_aos.ui.record.component.RecordHeader
 import com.example.fluffy_aos.ui.theme.FluffyAOSTheme
 import com.example.fluffy_aos.ui.theme.gray_background
@@ -46,7 +46,7 @@ fun RecordView() {
 
 @Composable
 fun WeightCard() {
-    CardView(backgroundColor = Color.White) {
+    Card(backgroundColor = Color.White) {
         Column(verticalArrangement = Arrangement.spacedBy(7.dp)) {
             Text("체중", fontWeight = FontWeight.Bold, fontSize = 20.sp)
             Image(
