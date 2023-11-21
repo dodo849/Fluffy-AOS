@@ -28,8 +28,8 @@ import com.example.fluffy_aos.ui.post.view_model.PostViewModel
 import com.example.fluffy_aos.ui.theme.FluffyAOSTheme
 
 @Composable
-fun PostView(viewModel: PostViewModel = PostViewModel()) {
-    val navController = LocalNavController.current
+fun PostView(viewModel: PostViewModel) {
+//    val navController = LocalNavController.current
     val state by viewModel.state.collectAsState()
 
     Column(
@@ -44,7 +44,7 @@ fun PostView(viewModel: PostViewModel = PostViewModel()) {
             modifier = Modifier.padding(20.dp)
         ) {
             Text(
-                "포스팅", fontWeight = FontWeight.Bold, fontSize = 24.sp
+                "포스팅", fontWeight = FontWeight.ExtraBold, fontSize = 24.sp
             )
             PostCategories(
                 state.selectedCategory
@@ -52,10 +52,6 @@ fun PostView(viewModel: PostViewModel = PostViewModel()) {
                 viewModel.selectCategory(it)
             }
         }
-
-        Text(
-            state.posts.toString()
-        )
 
         PostCards(state.posts)
 
@@ -70,7 +66,7 @@ fun PostView(viewModel: PostViewModel = PostViewModel()) {
 fun PostViewPreview() {
     LocalNavControllerProvider {
         FluffyAOSTheme {
-            PostView()
+            PostView(PostViewModel())
         }
     }
 }

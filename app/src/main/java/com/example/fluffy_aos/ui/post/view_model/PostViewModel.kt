@@ -25,7 +25,6 @@ class PostViewModel : ViewModel() {
             } else {
                 postDummy.filter { it.category == category }
             }
-            println(filteredPosts)
             currentState.copy(selectedCategory = category, posts = filteredPosts)
         }
     }
