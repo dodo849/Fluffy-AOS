@@ -26,15 +26,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
+import com.example.fluffy_aos.model.Post
 import com.example.fluffy_aos.ui.common.Card
 import com.example.fluffy_aos.ui.theme.gray_outline
 import com.example.fluffy_aos.ui.theme.gray_text_light
 
 @Composable
-fun PostCard(title: String, detail: String, imageUrl: String = "") {
-    val url =
-        "https://www.shutterstock.com/image-photo/woman-running-dog-workout-during-600nw-2225043417.jpg"
-    val painter = rememberAsyncImagePainter(url)
+fun PostCard(post: Post) {
+    val painter = rememberAsyncImagePainter(post.imageUrl)
 
     Column(
     ) {
@@ -54,14 +53,14 @@ fun PostCard(title: String, detail: String, imageUrl: String = "") {
         ) {
             Spacer(modifier = Modifier.height(10.dp))
             Text(
-                title,
+                post.title,
                 fontSize = 16.sp,
                 fontWeight = FontWeight(600),
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
             )
             Text(
-                detail,
+                post.content,
                 fontSize = 14.sp,
                 color = gray_text_light,
                 maxLines = 1,

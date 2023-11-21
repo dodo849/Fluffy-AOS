@@ -35,6 +35,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.fluffy_aos.global.LocalNavController
 import com.example.fluffy_aos.global.LocalNavControllerProvider
+import com.example.fluffy_aos.model.dogPostDummy
 import com.example.fluffy_aos.ui.post.component.PostCards
 import com.example.fluffy_aos.ui.record.RecordView
 import com.example.fluffy_aos.ui.theme.FluffyAOSTheme
@@ -47,6 +48,9 @@ import com.example.fluffy_aos.ui.theme.main_orange_light
 @Composable
 fun PostView() {
     val navController = LocalNavController.current
+    var selectedCategory by remember { mutableStateOf("전체") }
+
+
     Column(
         verticalArrangement = Arrangement.spacedBy(15.dp),
         modifier = Modifier
@@ -64,7 +68,7 @@ fun PostView() {
             PostCategories()
         }
 
-        PostCards()
+        PostCards(dogPostDummy)
 
         Spacer(modifier = Modifier.height(50.dp))
 

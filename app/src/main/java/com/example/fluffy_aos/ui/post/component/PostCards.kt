@@ -8,29 +8,29 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.fluffy_aos.model.PostsByCategory
 import com.example.fluffy_aos.ui.post.reusable.PostCard
 
 @Composable
-fun PostCards() {
-    PostCardsRow("다이어트 정보")
-    PostCardsRow("운동 정보")
-    PostCardsRow("영양 정보")
+fun PostCards(postsByCategories: List<PostsByCategory>) {
+    postsByCategories.forEach {
+        PostCardsRow(it)
+    }
 }
 
 @Composable 
-internal fun PostCardsRow(title: String) {
+internal fun PostCardsRow(postsByCategory: PostsByCategory) {
     Column {
         Row {
             Spacer(modifier = Modifier.padding(horizontal = 10.dp))
             Text(
-                "다이어트 정보",
+                postsByCategory.title,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -43,9 +43,9 @@ internal fun PostCardsRow(title: String) {
                 .horizontalScroll(rememberScrollState())
                 .fillMaxSize(),
         ) {
-            PostCard("강아지 다이어트 어떻게 해야할까요?", "건강하게 오래오래 함께하는 법")
-            PostCard("강아지 다이어트 어떻게 해야할까요?", "건강하게 오래오래 함께하는 법")
-            PostCard("강아지 다이어트 어떻게 해야할까요?", "건강하게 오래오래 함께하는 법")
+            postsByCategory.posts.forEach {
+                PostCard(it)
+            }
         }
     }
 }

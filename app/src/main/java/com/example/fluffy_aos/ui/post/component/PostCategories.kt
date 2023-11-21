@@ -13,7 +13,7 @@ import com.example.fluffy_aos.ui.common.RoundedOutlineSmallButton
 
 @Composable
 fun PostCategories() {
-    var selectedButton by remember { mutableStateOf("반려견") }
+    var selectedButton by remember { mutableStateOf("전체") }
 
     val categories = listOf("전체", "반려견", "반려묘", "소형동물", "파충류", "기타")
 
