@@ -10,7 +10,7 @@ fun EyeDiagnosisCard() {
     DiagnosisCardView(
         title = "AI 안구 진단",
         detail = "준비중 입니다. 조금만 기다려 주세요 ☺️",
-        imageRes = R.drawable.dog_and_cat,
+        imageRes = R.drawable.dog_face,
         onClick = { /*TODO*/ }
     )
 }
