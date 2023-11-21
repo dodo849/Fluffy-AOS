@@ -12,8 +12,11 @@ import androidx.compose.ui.unit.dp
 import com.example.fluffy_aos.ui.common.RoundedOutlineSmallButton
 
 @Composable
-fun PostCategories() {
-    var selectedButton by remember { mutableStateOf("전체") }
+fun PostCategories(
+    initialSelectedCategory: String,
+    selectedButtonClick: (String) -> Unit
+) {
+    var selectedCategory by remember { mutableStateOf(initialSelectedCategory) }
 
     val categories = listOf("전체", "반려견", "반려묘", "소형동물", "파충류", "기타")
 
@@ -24,8 +27,11 @@ fun PostCategories() {
         for (category in categories) {
             RoundedOutlineSmallButton(
                 text = category,
-                isSelected = selectedButton == category,
-                onClick = { selectedButton = category }
+                isSelected = selectedCategory == category,
+                onClick = {
+                    selectedCategory = category
+                    selectedButtonClick(category)
+                }
             )
         }
     }

@@ -26,6 +26,7 @@ import com.example.fluffy_aos.ui.setting.SettingView
 import com.example.fluffy_aos.ui.theme.FluffyAOSTheme
 
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

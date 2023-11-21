@@ -10,27 +10,31 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.fluffy_aos.model.PostsByCategory
+import com.example.fluffy_aos.model.PostsSection
 import com.example.fluffy_aos.ui.post.reusable.PostCard
 
 @Composable
-fun PostCards(postsByCategories: List<PostsByCategory>) {
-    postsByCategories.forEach {
+fun PostCards(postsSections: List<PostsSection>) {
+    postsSections.forEach {
         PostCardsRow(it)
     }
 }
 
 @Composable 
-internal fun PostCardsRow(postsByCategory: PostsByCategory) {
+internal fun PostCardsRow(postsSection: PostsSection) {
     Column {
         Row {
             Spacer(modifier = Modifier.padding(horizontal = 10.dp))
             Text(
-                postsByCategory.title,
+                postsSection.title,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -43,7 +47,7 @@ internal fun PostCardsRow(postsByCategory: PostsByCategory) {
                 .horizontalScroll(rememberScrollState())
                 .fillMaxSize(),
         ) {
-            postsByCategory.posts.forEach {
+            postsSection.posts.forEach {
                 PostCard(it)
             }
         }

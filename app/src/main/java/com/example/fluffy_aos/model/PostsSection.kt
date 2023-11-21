@@ -1,15 +1,17 @@
 package com.example.fluffy_aos.model
 
-data class PostsByCategory(
+data class PostsSection(
+    val category: String,
     val title: String,
     val posts: List<Post>,
 )
 
 
 // 더미
-val dogPostDummy = listOf(
-    PostsByCategory(
-        "다이어트 정보",
+val postDummy = listOf(
+    PostsSection(
+        "반려견",
+        "다이어트 시작하기",
         listOf(
             Post(
                 "강아지 다이어트 어떻게 해야할까?",
@@ -28,8 +30,9 @@ val dogPostDummy = listOf(
             )
         )
     ),
-    PostsByCategory(
-        "운동 정보",
+    PostsSection(
+        "반려견",
+        "운동 가이드",
         listOf(
             Post(
                 "강아지와 함께하는 즐거운 운동",
@@ -47,22 +50,23 @@ val dogPostDummy = listOf(
                 "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_640.jpg"
             )
         )
-    ), PostsByCategory(
-        "영양 정보",
+    ), PostsSection(
+        "반려묘",
+        "영양 가이드",
         listOf(
             Post(
-                "강아지 영양 꿀팁",
-                "강아지에게 필요한 영양소 및 영양 공급 방법을 알려드려요.",
+                "고양이 영양 꿀팁",
+                "고양이에게 필요한 영양소 및 영양 공급 방법을 알려드려요.",
                 "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_640.jpg"
             ),
             Post(
-                "강아지 다이어트 어떻게 해야할까?",
+                "고양이 다이어트 어떻게 해야할까?",
                 "건강하게 오래오래 함께 하는 법",
                 "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_640.jpg",
             ),
             Post(
                 "영양소 선별 가이드",
-                "건강한 강아지를 위한 필수 영양소를 선별하는 방법에 대해 알려드립니다.",
+                "건강한 고양이를 위한 필수 영양소를 선별하는 방법에 대해 알려드립니다.",
                 "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_640.jpg"
             )
         )
