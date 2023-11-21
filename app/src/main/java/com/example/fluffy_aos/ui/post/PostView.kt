@@ -44,7 +44,7 @@ fun PostView(viewModel: PostViewModel) {
             modifier = Modifier.padding(20.dp)
         ) {
             Text(
-                "포스팅", fontWeight = FontWeight.ExtraBold, fontSize = 24.sp
+                "포스팅", fontWeight = FontWeight.Bold, fontSize = 24.sp
             )
             PostCategories(
                 state.selectedCategory

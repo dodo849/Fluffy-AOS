@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,6 +19,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.fluffy_aos.global.LocalNavController
+import com.example.fluffy_aos.ui.bcs_diagnosis.BcsDiagnosisView
 import com.example.fluffy_aos.ui.bottom_navigation.BottomNavigationBar
 import com.example.fluffy_aos.ui.home.HomeView
 import com.example.fluffy_aos.ui.post.PostView
@@ -35,12 +37,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController()
             CompositionLocalProvider(LocalNavController provides navController) {
-                Scaffold(
-                    bottomBar = {
-                        BottomNavigationBar()
+                MaterialTheme {
+                    Scaffold(
+                        bottomBar = {
+                            BottomNavigationBar()
+                        }
+                    ) { paddingValues ->
+                        AppNavigation(navController, paddingValues)
                     }
-                ) { paddingValues ->
-                    AppNavigation(navController, paddingValues)
                 }
             }
         }
@@ -56,6 +60,8 @@ class MainActivity : ComponentActivity() {
                 composable("record") { RecordView() }
                 composable("post") { PostView(PostViewModel()) }
                 composable("setting") { SettingView() }
+
+                composable("bcs_diagnosis") { BcsDiagnosisView() }
             }
     }
 }

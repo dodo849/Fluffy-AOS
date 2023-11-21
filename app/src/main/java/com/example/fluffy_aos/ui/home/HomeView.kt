@@ -27,13 +27,12 @@ fun HomeView() {
             .padding(20.dp)
             .verticalScroll(rememberScrollState())
             .fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(10.dp)
+        verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
         HomeHeader()
 
         BcsDiagnosisCard()
 
-        Spacer(modifier = Modifier.padding(5.dp))
         EyeDiagnosisCard()
 
         Button(onClick = { navController.navigate("post") }) {

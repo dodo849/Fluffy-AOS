@@ -32,7 +32,7 @@ fun RoundedButton(onClick: () -> Unit, text: String) {
             text,
             color = main_orange,
             fontWeight = FontWeight(600),
-            fontSize = 16.sp
+            fontSize = 18.sp
         )
     }
 }

@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -25,8 +26,10 @@ import com.example.fluffy_aos.R
 import com.example.fluffy_aos.global.LocalNavController
 import com.example.fluffy_aos.ui.common.Card
 import com.example.fluffy_aos.ui.record.component.RecordHeader
+import com.example.fluffy_aos.ui.record.component.WeightCard
 import com.example.fluffy_aos.ui.theme.FluffyAOSTheme
 import com.example.fluffy_aos.ui.theme.gray_background
+import com.example.fluffy_aos.ui.theme.gray_text_light
 
 @Composable
 fun RecordView() {
@@ -36,30 +39,17 @@ fun RecordView() {
         modifier = Modifier
             .background(gray_background)
             .padding(20.dp)
-            .verticalScroll(rememberScrollState())
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+
     ) {
         RecordHeader()
+
+        Text("체중", fontWeight = FontWeight.Bold, fontSize = 20.sp)
         WeightCard()
     }
 }
 
-@Composable
-fun WeightCard() {
-    Card(backgroundColor = Color.White) {
-        Column(verticalArrangement = Arrangement.spacedBy(7.dp)) {
-            Text("체중", fontWeight = FontWeight.Bold, fontSize = 20.sp)
-            Image(
-                painter = painterResource(id = R.drawable.weight_graph),
-                contentDescription = "Dog and Cat",
-                modifier = Modifier
-                    .size(350.dp)
-                    .align(Alignment.CenterHorizontally)
-            )
-        }
-
-    }
-}
 
 
 @Preview(showBackground = true)
