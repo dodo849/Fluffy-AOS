@@ -28,7 +28,7 @@ fun PostCards() {
 internal fun PostCardsRow(title: String) {
     Column {
         Row {
-            Spacer(modifier = Modifier.padding(horizontal = 20.dp))
+            Spacer(modifier = Modifier.padding(horizontal = 10.dp))
             Text(
                 "다이어트 정보",
                 fontSize = 20.sp,
