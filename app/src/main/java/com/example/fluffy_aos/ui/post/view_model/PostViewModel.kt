@@ -1,8 +1,8 @@
 package com.example.fluffy_aos.ui.post.view_model
 
 import androidx.lifecycle.ViewModel
-import com.example.fluffy_aos.model.PostsSection
-import com.example.fluffy_aos.model.postDummy
+import com.example.fluffy_aos.model.post.PostsSection
+import com.example.fluffy_aos.model.post.postDummy
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

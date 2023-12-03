@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.model
+package com.example.fluffy_aos.model.post
 
 data class PostsSection(
     val category: String,
