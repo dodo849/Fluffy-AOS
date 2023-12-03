@@ -17,12 +17,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.fluffy_aos.ui.common.Card
 import com.example.fluffy_aos.ui.common.RoundedButton
+import com.example.fluffy_aos.ui.common.RoundedButtonState
 
 @Composable
 fun DiagnosisCardView(
     title: String,
     detail: String,
     @DrawableRes imageRes: Int,
+    ready: Boolean = true,
     onClick: () -> Unit
 ) {
     Card {
@@ -49,7 +51,18 @@ fun DiagnosisCardView(
             )
             Spacer(modifier = Modifier.padding(5.dp))
 
-            RoundedButton(onClick = onClick, text = "진단 시작하기")
+            if (ready) {
+                RoundedButton(
+                    text = "진단 시작하기",
+                    state = RoundedButtonState.NORMAL,
+                    onClick = onClick
+                )
+            } else {
+                RoundedButton(
+                    text = "준비중입니다",
+                    state = RoundedButtonState.DISABLED, onClick = onClick
+                )
+            }
         }
     }
 }

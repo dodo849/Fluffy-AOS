@@ -17,6 +17,7 @@ import com.example.fluffy_aos.global.LocalNavController
 import com.example.fluffy_aos.ui.home.component.BcsDiagnosisCard
 import com.example.fluffy_aos.ui.home.component.EyeDiagnosisCard
 import com.example.fluffy_aos.ui.home.component.HomeHeader
+import com.example.fluffy_aos.ui.home.component.SkinDiagnosisCard
 import com.example.fluffy_aos.ui.theme.FluffyAOSTheme
 
 @Composable
@@ -34,6 +35,8 @@ fun HomeView() {
         BcsDiagnosisCard()
 
         EyeDiagnosisCard()
+
+        SkinDiagnosisCard()
 
         Button(onClick = { navController.navigate("post") }) {
             Text("Go to Post")
