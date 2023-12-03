@@ -16,11 +16,14 @@ import com.example.fluffy_aos.ui.theme.gray_background
 import com.example.fluffy_aos.ui.theme.gray_text_light
 import com.example.fluffy_aos.ui.theme.main_orange
 import com.example.fluffy_aos.ui.theme.main_orange_light
+import com.example.fluffy_aos.ui.theme.main_yellow
+import com.example.fluffy_aos.ui.theme.main_yellow_light
 
 
 enum class RoundedButtonState {
     NORMAL,
-    DISABLED
+    DISABLED,
+    SECONDARY,
 }
 
 @Composable
@@ -33,10 +36,12 @@ fun RoundedButton(
     val backgroundColor = when (state) {
         RoundedButtonState.NORMAL -> main_orange_light
         RoundedButtonState.DISABLED -> Color.LightGray
+        RoundedButtonState.SECONDARY -> main_yellow_light
     }
     val contentColor = when (state) {
         RoundedButtonState.NORMAL -> main_orange
         RoundedButtonState.DISABLED -> gray_text_light
+        RoundedButtonState.SECONDARY -> main_yellow
     }
 
     Button(
