@@ -18,6 +18,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.fluffy_aos.db.DbManager
+import com.example.fluffy_aos.db.PetDummy
+import com.example.fluffy_aos.db.PetRepository
 import com.example.fluffy_aos.global.LocalNavController
 import com.example.fluffy_aos.ui.bcs_diagnosis.BcsDiagnosisView
 import com.example.fluffy_aos.ui.bottom_navigation.BottomNavigationBar
@@ -34,6 +37,9 @@ import com.example.fluffy_aos.ui.theme.FluffyAOSTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        setDatabase()
+
         setContent {
             val navController = rememberNavController()
             CompositionLocalProvider(LocalNavController provides navController) {
@@ -47,6 +53,24 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
+        }
+    }
+
+    override fun onDestroy() {
+        // 앱이 종료될 때 DbManager에서 데이터베이스를 삭제하고 닫음
+        DbManager.closeDatabase()
+        deleteDatabase("fluffy_database") // 데이터베이스 삭제
+        super.onDestroy()
+    }
+
+    private fun setDatabase() {
+
+        DbManager.init(this)
+
+//        PetDummy(PetRepository(DbManager)).insertDummy()
+
+        PetRepository(DbManager).readAllPets().forEach {
+            println("pet" + it.toString())
         }
     }
 
