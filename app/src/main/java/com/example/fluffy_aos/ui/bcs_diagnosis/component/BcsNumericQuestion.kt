@@ -25,7 +25,11 @@ import com.example.fluffy_aos.ui.common.Card
 import com.example.fluffy_aos.ui.common.RoundedButton
 
 @Composable
-fun BcsNumericQuestion(question: String, onClickNextButton: () -> Unit = {}) {
+fun BcsNumericQuestion(
+    question: String,
+    suffix: String = "",
+    onClickNextButton: (String) -> Unit = {},
+) {
     var text by remember { mutableStateOf("") }
 
     Card {
@@ -41,7 +45,7 @@ fun BcsNumericQuestion(question: String, onClickNextButton: () -> Unit = {}) {
                 text,
                 onValueChange = { text = it },
                 shape = RoundedCornerShape(20.dp),
-                suffix = { Text(text = "cm") },
+                suffix = { Text(text = suffix) },
                 colors = TextFieldDefaults.colors(
                     focusedContainerColor = Color.White,
                     unfocusedContainerColor = Color.White,
@@ -57,7 +61,11 @@ fun BcsNumericQuestion(question: String, onClickNextButton: () -> Unit = {}) {
                     .height(65.dp)
                     .border(0.dp, Color.Transparent)
             )
-            RoundedButton(onClick = onClickNextButton, text = "다음으로")
+
+            RoundedButton(onClick = {
+                onClickNextButton(text)
+                text = ""
+            }, text = "다음으로")
         }
     }
 }

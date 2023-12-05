@@ -8,7 +8,7 @@ import androidx.compose.runtime.setValue
 
 @Composable
 fun Funnel(
-    survey: MutableMap<String, Any>,
+    result: MutableMap<String, Any>,
     steps: List<Step>) {
     var currentStep by remember { mutableStateOf(steps[0].name) }
 
@@ -16,7 +16,7 @@ fun Funnel(
         if (currentStep == step.name) {
             step.content() { nextStep, input ->
                 currentStep = nextStep ?: currentStep
-                survey[step.name] = input ?: ""
+                result[step.name] = input ?: ""
             }
         }
     }

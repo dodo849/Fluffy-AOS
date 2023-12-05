@@ -9,5 +9,7 @@ data class BcsQuestion(
     @Json(name = "order") val order: Int,
     @Json(name = "description") val description: String,
     @Json(name = "responseType") val responseType: String,
+    @Json(name = "responseSuffix") val responseSuffix: String,
     @Json(name = "selections") val selections: List<SelectionItem>
+
 )

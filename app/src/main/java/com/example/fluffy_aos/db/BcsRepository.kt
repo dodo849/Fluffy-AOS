@@ -10,7 +10,6 @@ class BcsRepository(
 ) {
     fun getBcsSurvey(): BcsSurvey? {
         val jsonString = jsonReader.readJsonFile("bcs_survey")
-        println("bcs_survey.json: $jsonString")
         return jsonParser.parse(jsonString, BcsSurvey::class.java)
     }
 

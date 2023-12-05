@@ -23,7 +23,11 @@ import com.example.fluffy_aos.ui.common.RoundedButton
 import com.example.fluffy_aos.ui.theme.main_orange
 
 @Composable
-fun BcsSelectQuestion(question: String, options: List<String>, onClickNextButton: () -> Unit = {}) {
+fun BcsSelectQuestion(
+    question: String,
+    options: List<String>,
+    onClickNextButton: (Int) -> Unit = {}
+) {
 
     var selectedOption by remember { mutableStateOf(0) }
 
@@ -54,7 +58,10 @@ fun BcsSelectQuestion(question: String, options: List<String>, onClickNextButton
                     Text("$item", fontSize = 16.sp)
                 }
             }
-            RoundedButton(onClick = onClickNextButton, text = "다음으로")
+            RoundedButton(onClick = {
+                onClickNextButton(selectedOption)
+                selectedOption = 0
+            }, text = "다음으로")
         }
     }
 }

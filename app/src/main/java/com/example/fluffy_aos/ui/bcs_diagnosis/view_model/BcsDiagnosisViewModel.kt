@@ -15,7 +15,13 @@ class BcsDiagnosisViewModel(
     private val _questions = MutableStateFlow<List<BcsQuestion>>(emptyList())
     val questions: StateFlow<List<BcsQuestion>> = _questions.asStateFlow()
 
-    fun getBcsSurvey() {
+    val surveyResult = mutableMapOf<String, Any>()
+
+    init {
+        setBcsSurvey()
+    }
+
+    private fun setBcsSurvey() {
 
         val bcsSurvey = bcsRepository.getBcsSurvey()
 
@@ -23,6 +29,4 @@ class BcsDiagnosisViewModel(
             bcsSurvey?.questions ?: emptyList()
         }
     }
-
-
 }

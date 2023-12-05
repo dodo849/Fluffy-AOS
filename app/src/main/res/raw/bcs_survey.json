@@ -5,35 +5,40 @@
       "fieldName": "weight",
       "order": 1,
       "description": "체중을 입력해주세요",
-      "responseType": "Double",
+      "responseType": "Real",
+      "responseSuffix": "kg",
       "selections" : []
     },
     {
       "fieldName": "shoulder-height",
       "order": 2,
       "description": "견갑부 높이를 입력해주세요",
-      "responseType": "Double",
+      "responseType": "Real",
+      "responseSuffix": "cm",
       "selections" : []
     },
     {
       "fieldName": "neck-size",
       "order": 3,
       "description": "목둘레를 입력해주세요",
-      "responseType": "Double",
+      "responseType": "Real",
+      "responseSuffix": "cm",
       "selections" : []
     },
     {
       "fieldName": "back-length",
       "order": 4,
       "description": "등허리 길이를 입력해주세요",
-      "responseType": "Double",
+      "responseType": "Real",
+      "responseSuffix": "cm",
       "selections" : []
     },
     {
-      "fieldName": "neck-size",
+      "fieldName": "chest-size",
       "order": 5,
       "description": "흉곽둘레 길이를 입력해주세요",
-      "responseType": "Double",
+      "responseType": "Real",
+      "responseSuffix": "cm",
       "selections" : []
     },
     {
@@ -41,6 +46,7 @@
       "order": 6,
       "description": "운동강도는 어떻게 되나요?",
       "responseType": "Selection",
+      "responseSuffix": "",
       "selections" : [
         {
           "order": 1,
@@ -64,6 +70,7 @@
       "order": 7,
       "description": "생활환경 어떻게 되나요?",
       "responseType": "Selection",
+      "responseSuffix": "",
       "selections" : [
         {
           "order": 1,
@@ -78,10 +85,11 @@
       ]
     },
     {
-      "fieldName": "environment",
+      "fieldName": "defecation",
       "order": 8,
       "description": "배변 상태는 어떻나요?",
-      "responseType": "Double",
+      "responseType": "Selection",
+      "responseSuffix": "",
       "selections" : [
         {
           "order": 1,
@@ -100,6 +108,7 @@
       "order": 9,
       "description": "1일 식이 횟수는 몇번인가요?",
       "responseType": "Integer",
+      "responseSuffix": "",
       "selections" : [
         {
           "order": 1,
@@ -127,21 +136,24 @@
       "fieldName": "food-amount",
       "order": 10,
       "description": "1회 식사량은 어느정도인가요? (1회 식사량을 종이컵 기준으로 소수점 입력)",
-      "responseType": "Double",
+      "responseType": "Real",
+      "responseSuffix": "",
       "selections" : []
     },
     {
       "fieldName": "snack-amount",
       "order": 11,
       "description": "간식량은 어느정도인가요? (사료 대비 %로 입력)",
-      "responseType": "Double",
+      "responseType": "Real",
+      "responseSuffix": "%",
       "selections" : []
     },
     {
       "fieldName": "food-kind",
       "order": 12,
       "description": "식사는 어떤 종류인가요?",
-      "responseType": "Integer",
+      "responseType": "Selection",
+      "responseSuffix": "",
       "selections" : [
         {
           "order": 1,

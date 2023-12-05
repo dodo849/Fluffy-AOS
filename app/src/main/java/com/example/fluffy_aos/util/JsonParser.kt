@@ -1,7 +1,10 @@
 package com.example.fluffy_aos.util
 
+import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import java.lang.reflect.Type
 
 class JsonParser<T> {
     private val moshi = Moshi.Builder()
