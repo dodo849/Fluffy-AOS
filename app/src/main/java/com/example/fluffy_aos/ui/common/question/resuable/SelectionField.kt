@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.bcs_diagnosis.resuable
+package com.example.fluffy_aos.ui.common.question.resuable
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

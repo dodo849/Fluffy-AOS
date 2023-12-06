@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.bcs_diagnosis.component
+package com.example.fluffy_aos.ui.common.question.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,8 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.fluffy_aos.ui.bcs_diagnosis.resuable.NumericField
-import com.example.fluffy_aos.ui.bcs_diagnosis.resuable.SelectionField
+import com.example.fluffy_aos.ui.common.question.resuable.NumericField
+import com.example.fluffy_aos.ui.common.question.resuable.SelectionField
 import com.example.fluffy_aos.ui.common.reusable.Card
 import com.example.fluffy_aos.ui.common.reusable.RoundedButton
 import com.example.fluffy_aos.ui.common.reusable.RoundedButtonState

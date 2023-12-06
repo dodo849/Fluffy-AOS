@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.funnel
+package com.example.fluffy_aos.ui.common.funnel
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue

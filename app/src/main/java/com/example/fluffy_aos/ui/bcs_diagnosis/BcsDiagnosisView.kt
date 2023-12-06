@@ -11,12 +11,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.fluffy_aos.funnel.Funnel
-import com.example.fluffy_aos.funnel.Step
+import com.example.fluffy_aos.ui.common.funnel.Funnel
+import com.example.fluffy_aos.ui.common.funnel.Step
 import com.example.fluffy_aos.global.LocalNavController
 import com.example.fluffy_aos.model.question.BcsQuestion
-import com.example.fluffy_aos.ui.bcs_diagnosis.component.QuestionCard
-import com.example.fluffy_aos.ui.bcs_diagnosis.component.QuestionType
+import com.example.fluffy_aos.ui.common.question.component.QuestionCard
+import com.example.fluffy_aos.ui.common.question.component.QuestionType
 import com.example.fluffy_aos.ui.bcs_diagnosis.view_model.BcsDiagnosisViewModel
 import com.example.fluffy_aos.ui.common.reusable.BackButton
 

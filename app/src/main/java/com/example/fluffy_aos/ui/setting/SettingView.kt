@@ -1,12 +1,8 @@
 package com.example.fluffy_aos.ui.setting
 
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.fluffy_aos.funnel.Funnel
-import com.example.fluffy_aos.funnel.Step
-import com.example.fluffy_aos.ui.bcs_diagnosis.component.QuestionCard
 import com.example.fluffy_aos.ui.theme.FluffyAOSTheme
 
 @Composable
