@@ -16,7 +16,6 @@ import com.example.fluffy_aos.funnel.Step
 import com.example.fluffy_aos.global.LocalNavController
 import com.example.fluffy_aos.model.question.BcsQuestion
 import com.example.fluffy_aos.ui.bcs_diagnosis.component.QuestionCard
-import com.example.fluffy_aos.ui.bcs_diagnosis.component.BcsSelectQuestion
 import com.example.fluffy_aos.ui.bcs_diagnosis.component.QuestionType
 import com.example.fluffy_aos.ui.bcs_diagnosis.view_model.BcsDiagnosisViewModel
 import com.example.fluffy_aos.ui.common.BackButton
@@ -56,15 +55,16 @@ fun BcsDiagnosisView(
                             getStepContent(
                                 question = question,
                                 onClickPreviousButton = {
-                                    val previousFieldName = questions.getOrNull(index - 1)?.fieldName
+                                    val previousFieldName =
+                                        questions.getOrNull(index - 1)?.fieldName
                                     it(previousFieldName, null)
-                                    viewModel.surveyResult.getFieldValue(previousFieldName ?: "")
+                                    viewModel.surveyResult[previousFieldName ?: ""] ?: ""
                                 },
                                 onClickNextButton = { input ->
-                                    it(
-                                        questions.getOrNull(index + 1)?.fieldName,
-                                        input
-                                    )
+                                    val nextFieldName =
+                                        questions.getOrNull(index + 1)?.fieldName
+                                    it(nextFieldName, input)
+                                    viewModel.surveyResult[nextFieldName] ?: ""
                                 })
                         }
                     )
@@ -79,8 +79,8 @@ fun BcsDiagnosisView(
 @Composable
 private fun getStepContent(
     question: BcsQuestion,
-    onClickPreviousButton: () -> String,
-    onClickNextButton: (Any?) -> Unit
+    onClickPreviousButton: () -> Any,
+    onClickNextButton: (Any?) -> Any
 ) {
     val QUESTION_DESCRIPTION = "Q${question.order}. ${question.description}"
     when (question.responseType) {
@@ -93,6 +93,7 @@ private fun getStepContent(
                 onClickNextButton = onClickNextButton
             )
         }
+
         "Selection" -> {
             QuestionCard(
                 questionType = QuestionType.SELECTION,

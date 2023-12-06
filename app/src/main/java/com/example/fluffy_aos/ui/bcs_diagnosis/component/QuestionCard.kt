@@ -38,8 +38,8 @@ fun QuestionCard(
     question: String,
     suffix: String = "",
     options: List<String> = listOf(),
-    onClickPreviousButton: () -> String = { "" },
-    onClickNextButton: (String) -> Unit = {},
+    onClickPreviousButton: () -> Any,
+    onClickNextButton: (String) -> Any?,
 ) {
     var text by remember { mutableStateOf("") }
     var selectedOption by remember { mutableStateOf(0) }
@@ -65,15 +65,14 @@ fun QuestionCard(
 
             RoundedButton(
                 onClick = {
-                    text = onClickPreviousButton()
+                    text = onClickPreviousButton().toString()
                 }, state = RoundedButtonState.SECONDARY,
                 text = "이전으로"
             )
 
             RoundedButton(onClick = {
-                onClickNextButton(text)
-                text = ""
-                println("onlcick NExtVutton $text")
+                val nextValue = onClickNextButton(text)
+                text = nextValue?.toString() ?: ""
             }, text = "다음으로")
         }
     }
