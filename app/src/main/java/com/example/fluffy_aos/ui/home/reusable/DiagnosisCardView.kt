@@ -15,9 +15,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.fluffy_aos.ui.common.Card
-import com.example.fluffy_aos.ui.common.RoundedButton
-import com.example.fluffy_aos.ui.common.RoundedButtonState
+import com.example.fluffy_aos.ui.common.reusable.Card
+import com.example.fluffy_aos.ui.common.reusable.RoundedButton
+import com.example.fluffy_aos.ui.common.reusable.RoundedButtonState
 
 @Composable
 fun DiagnosisCardView(

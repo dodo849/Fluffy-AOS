@@ -18,8 +18,7 @@ import com.example.fluffy_aos.model.question.BcsQuestion
 import com.example.fluffy_aos.ui.bcs_diagnosis.component.QuestionCard
 import com.example.fluffy_aos.ui.bcs_diagnosis.component.QuestionType
 import com.example.fluffy_aos.ui.bcs_diagnosis.view_model.BcsDiagnosisViewModel
-import com.example.fluffy_aos.ui.common.BackButton
-import com.patrykandpatrick.vico.core.extension.getFieldValue
+import com.example.fluffy_aos.ui.common.reusable.BackButton
 
 @Composable
 fun BcsDiagnosisView(

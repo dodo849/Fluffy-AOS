@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.common
+package com.example.fluffy_aos.ui.common.reusable
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,7 +12,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.fluffy_aos.ui.theme.gray_background
 import com.example.fluffy_aos.ui.theme.gray_text_light
 import com.example.fluffy_aos.ui.theme.main_orange
 import com.example.fluffy_aos.ui.theme.main_orange_light

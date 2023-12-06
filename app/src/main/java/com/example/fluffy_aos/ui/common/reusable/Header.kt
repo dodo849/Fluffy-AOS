@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.common
+package com.example.fluffy_aos.ui.common.reusable
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.background

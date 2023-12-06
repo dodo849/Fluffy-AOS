@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.common
+package com.example.fluffy_aos.ui.common.reusable
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
