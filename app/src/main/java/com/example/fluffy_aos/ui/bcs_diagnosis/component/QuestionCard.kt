@@ -21,16 +21,28 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.fluffy_aos.ui.bcs_diagnosis.resuable.NumericField
+import com.example.fluffy_aos.ui.bcs_diagnosis.resuable.SelectionField
 import com.example.fluffy_aos.ui.common.Card
 import com.example.fluffy_aos.ui.common.RoundedButton
+import com.example.fluffy_aos.ui.common.RoundedButtonState
+
+enum class QuestionType {
+    NUMERIC,
+    SELECTION,
+}
 
 @Composable
-fun BcsNumericQuestion(
+fun QuestionCard(
+    questionType: QuestionType,
     question: String,
     suffix: String = "",
+    options: List<String> = listOf(),
+    onClickPreviousButton: () -> String = { "" },
     onClickNextButton: (String) -> Unit = {},
 ) {
     var text by remember { mutableStateOf("") }
+    var selectedOption by remember { mutableStateOf(0) }
 
     Card {
         Column(
@@ -41,30 +53,27 @@ fun BcsNumericQuestion(
                 fontWeight = FontWeight.Bold,
                 fontSize = 16.sp,
             )
-            TextField(
-                text,
-                onValueChange = { text = it },
-                shape = RoundedCornerShape(20.dp),
-                suffix = { Text(text = suffix) },
-                colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color.White,
-                    unfocusedContainerColor = Color.White,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
 
-                    ),
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    keyboardType = KeyboardType.Number
-                ),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(65.dp)
-                    .border(0.dp, Color.Transparent)
+            when (questionType) {
+                QuestionType.NUMERIC ->
+                    NumericField(suffix = suffix, text = text, onValueChange = { text = it })
+
+                QuestionType.SELECTION ->
+                    SelectionField(options = options, onValueChange = { selectedOption = it })
+            }
+
+
+            RoundedButton(
+                onClick = {
+                    text = onClickPreviousButton()
+                }, state = RoundedButtonState.SECONDARY,
+                text = "이전으로"
             )
 
             RoundedButton(onClick = {
                 onClickNextButton(text)
                 text = ""
+                println("onlcick NExtVutton $text")
             }, text = "다음으로")
         }
     }

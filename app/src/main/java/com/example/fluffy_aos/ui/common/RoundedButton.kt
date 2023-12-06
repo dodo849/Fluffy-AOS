@@ -46,6 +46,7 @@ fun RoundedButton(
 
     Button(
         onClick = onClick,
+        enabled = state != RoundedButtonState.DISABLED,
         colors = ButtonDefaults.buttonColors(backgroundColor),
         shape = RoundedCornerShape(20.dp),
         contentPadding = PaddingValues(

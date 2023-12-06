@@ -16,7 +16,9 @@ fun Funnel(
         if (currentStep == step.name) {
             step.content() { nextStep, input ->
                 currentStep = nextStep ?: currentStep
-                result[step.name] = input ?: ""
+                if (input != null) {
+                    result[step.name] = input
+                }
             }
         }
     }
