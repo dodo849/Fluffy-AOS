@@ -1,19 +1,19 @@
-package com.example.fluffy_aos.ui.common.question.component
+package com.example.fluffy_aos.ui.common.survey.component
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import com.example.fluffy_aos.ui.common.question.display_model.QuestionOrder
-import com.example.fluffy_aos.ui.common.question.resuable.NumericField
-import com.example.fluffy_aos.ui.common.question.resuable.QuestionCard
+import com.example.fluffy_aos.ui.common.survey.display_model.QuestionOrderType
+import com.example.fluffy_aos.ui.common.survey.resuable.NumericField
+import com.example.fluffy_aos.ui.common.survey.resuable.QuestionCard
 
 @Composable
 fun NumericQuestionCard(
     question: String,
     suffix: String = "",
-    order: QuestionOrder = QuestionOrder.NOTHING,
+    order: QuestionOrderType = QuestionOrderType.NOTHING,
     initialText: String,
     onClickPreviousButton: (Any) -> Unit,
     onClickNextButton: (Any) -> Unit

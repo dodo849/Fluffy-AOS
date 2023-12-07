@@ -1,6 +1,6 @@
 package com.example.fluffy_aos.model.question
 
-import com.example.fluffy_aos.ui.common.question.display_model.SelectionDisplayModel
+import com.example.fluffy_aos.ui.common.survey.display_model.SelectionDisplayModel
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.common.question
+package com.example.fluffy_aos.ui.common.survey
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
@@ -10,14 +10,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.example.fluffy_aos.ui.common.funnel.Funnel
 import com.example.fluffy_aos.ui.common.funnel.Step
-import com.example.fluffy_aos.ui.common.question.component.NumericQuestionCard
-import com.example.fluffy_aos.ui.common.question.component.SelectionQuestionCard
-import com.example.fluffy_aos.ui.common.question.display_model.QuestionDisplayModel
-import com.example.fluffy_aos.ui.common.question.display_model.QuestionOrder
+import com.example.fluffy_aos.ui.common.survey.component.NumericQuestionCard
+import com.example.fluffy_aos.ui.common.survey.component.SelectionQuestionCard
+import com.example.fluffy_aos.ui.common.survey.display_model.QuestionDisplayModel
+import com.example.fluffy_aos.ui.common.survey.display_model.QuestionOrderType
 
 
 @Composable
-fun QuestionView(
+fun SurveyView(
     questions: List<QuestionDisplayModel>,
     onSubmit: (Map<String, Any>) -> Unit
 ) {
@@ -33,25 +33,21 @@ fun QuestionView(
 
     Column {
         Funnel(
-            result = surveyResult, // 퍼넬이 여기에 값 넣어줌
             steps = questions.mapIndexed { index, question ->
                 Step(
                     name = question.fieldName
-                ) {
+                ) { onChangeStep ->
                     getStepContent(
                         question = question,
                         value = surveyResult[question.fieldName] ?: "",
-                        order = question.order,
+                        orderType = QuestionOrderType.from(index+1, questions.size),
                         onClickPreviousButton = { input ->
-                            it(questions.getOrNull(index - 1)?.fieldName, input)
-
+                            onChangeStep(questions.getOrNull(index - 1)?.fieldName)
+                            surveyResult[question.fieldName] = input
                         },
                         onClickNextButton = { input ->
-                            it(questions.getOrNull(index + 1)?.fieldName, input)
-//                            surveyResult[questions.getOrNull(index + 1)?.fieldName] ?: ""
-                        },
-                        onSubmit = {
-                            onSubmit(surveyResult)
+                            onChangeStep(questions.getOrNull(index + 1)?.fieldName)
+                            surveyResult[question.fieldName] = input
                         }
                     )
                 }
@@ -68,11 +64,10 @@ fun QuestionView(
 @Composable
 private fun getStepContent(
     question: QuestionDisplayModel,
-    order: QuestionOrder = QuestionOrder.NOTHING,
+    orderType: QuestionOrderType,
     value: Any, // 기본 값. 이전값이 있다면 그 값
     onClickPreviousButton: (Any) -> Unit,
     onClickNextButton: (Any) -> Unit,
-    onSubmit: () -> Unit
 ) {
     val QUESTION_DESCRIPTION = "Q${question.order}. ${question.description}"
 
@@ -81,7 +76,7 @@ private fun getStepContent(
             NumericQuestionCard(
                 question = QUESTION_DESCRIPTION,
                 initialText = value.toString(),
-                order = order,
+                order = orderType,
                 onClickPreviousButton = onClickPreviousButton,
                 onClickNextButton = onClickNextButton,
             )
@@ -90,7 +85,7 @@ private fun getStepContent(
             SelectionQuestionCard(
                 question = QUESTION_DESCRIPTION,
                 options = question.selections.map { it.description },
-                order = order,
+                order = orderType,
                 initialSelected = (value.toString().toIntOrNull() ?: 0),
                 onClickPreviousButton = onClickPreviousButton,
                 onClickNextButton = onClickNextButton,

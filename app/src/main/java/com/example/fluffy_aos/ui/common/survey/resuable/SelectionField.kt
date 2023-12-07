@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.common.question.resuable
+package com.example.fluffy_aos.ui.common.survey.resuable
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

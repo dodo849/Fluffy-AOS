@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 
 class Step(
     val name: String,
-    val content: @Composable (callback: (nextStep: String?, input: Any?) -> Unit) -> Unit,
+    val content: @Composable (callback: (nextStep: String?) -> Unit) -> Unit,
 ) {
 
 }

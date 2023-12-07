@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.common.question.resuable
+package com.example.fluffy_aos.ui.common.survey.resuable
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

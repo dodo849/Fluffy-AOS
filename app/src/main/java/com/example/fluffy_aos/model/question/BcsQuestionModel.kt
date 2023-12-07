@@ -1,7 +1,6 @@
 package com.example.fluffy_aos.model.question
 
-import com.example.fluffy_aos.ui.common.question.display_model.QuestionDisplayModel
-import com.example.fluffy_aos.ui.common.question.display_model.QuestionOrder
+import com.example.fluffy_aos.ui.common.survey.display_model.QuestionDisplayModel
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -14,18 +13,11 @@ data class BcsQuestionModel(
     @Json(name = "responseSuffix") val responseSuffix: String,
     @Json(name = "selections") val selections: List<SelectionModel>
 ) {
-    fun mapToDisplayModel(listSize: Int = 2): QuestionDisplayModel {
-        assert(listSize >= 2) { "질문 문항은 2개 이상이어야합니다" }
+    fun mapToDisplayModel(): QuestionDisplayModel {
 
         return QuestionDisplayModel(
             fieldName = fieldName,
-            order = if (order == listSize) {
-                QuestionOrder.LAST
-            } else if (order == 1) {
-                QuestionOrder.FIRST
-            } else {
-                QuestionOrder.NOTHING
-            },
+            order = order,
             description = description,
             responseType = responseType,
             selections = selections.map { it.mapToDisplayModel() }

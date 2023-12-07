@@ -9,17 +9,13 @@ import com.patrykandpatrick.vico.core.extension.setFieldValue
 
 @Composable
 fun Funnel(
-    result: MutableMap<String, Any>,
     steps: List<Step>) {
     var currentStep by remember { mutableStateOf(steps[0].name) }
 
     steps.forEach { step ->
         if (currentStep == step.name) {
-            step.content() { nextStep, input ->
+            step.content() { nextStep  ->
                 currentStep = nextStep ?: currentStep
-                if (input != null) {
-                    result[step.name] = input
-                }
             }
         }
     }
