@@ -1,10 +1,6 @@
 package com.example.fluffy_aos.ui.common.question
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -12,17 +8,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.example.fluffy_aos.global.LocalNavController
 import com.example.fluffy_aos.model.question.BcsQuestion
 import com.example.fluffy_aos.ui.common.funnel.Funnel
 import com.example.fluffy_aos.ui.common.funnel.Step
 import com.example.fluffy_aos.ui.common.question.component.NumericQuestionCard
 import com.example.fluffy_aos.ui.common.question.component.SelectionQuestionCard
-import com.example.fluffy_aos.ui.common.question.resuable.NumericField
-import com.example.fluffy_aos.ui.common.question.resuable.QuestionCard
-import com.example.fluffy_aos.ui.common.reusable.BackButton
 
 // TODO: BCSQuestionView 추상화하기
 enum class QuestionOrder {
@@ -53,11 +43,12 @@ fun QuestionView(
                 ) {
                     getStepContent(
                         question = question,
-                        value = surveyResult[question.fieldName] ?: "default",
+                        value = surveyResult[question.fieldName] ?: "",
                         onClickPreviousButton = { input ->
                             it(questions.getOrNull(index - 1)?.fieldName, input)
                         },
                         onClickNextButton = { input ->
+                            surveyResult[question.fieldName] = input
                             it(questions.getOrNull(index + 1)?.fieldName, input)
                         },
                         onSubmit = {
