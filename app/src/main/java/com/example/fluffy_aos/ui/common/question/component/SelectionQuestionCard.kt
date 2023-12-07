@@ -18,7 +18,7 @@ fun SelectionQuestionCard(
     onClickNextButton: (Any) -> Unit
 ) {
 
-    var selectedOption by remember(initialSelected) { mutableStateOf(initialSelected)  }
+    var selectedOption by remember(question) { mutableStateOf(initialSelected)  }
 
     QuestionCard(
         question = question,

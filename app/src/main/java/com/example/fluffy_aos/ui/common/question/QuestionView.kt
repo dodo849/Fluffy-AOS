@@ -19,6 +19,7 @@ enum class QuestionOrder {
 }
 
 
+
 /// FIXME: 필드값 제대로 초기화되지 않는 문제 있음. 입력중에 넘기면 그 값이 그대로 다음 필드로 넘어가고, 이전 다음 몇번 누르며 괜찮아짐. 왜?
 @Composable
 fun QuestionView(
@@ -47,9 +48,11 @@ fun QuestionView(
                         value = surveyResult[question.fieldName] ?: "",
                         onClickPreviousButton = { input ->
                             it(questions.getOrNull(index - 1)?.fieldName, input)
+
                         },
                         onClickNextButton = { input ->
                             it(questions.getOrNull(index + 1)?.fieldName, input)
+//                            surveyResult[questions.getOrNull(index + 1)?.fieldName] ?: ""
                         },
                         onSubmit = {
                             onSubmit(surveyResult)
