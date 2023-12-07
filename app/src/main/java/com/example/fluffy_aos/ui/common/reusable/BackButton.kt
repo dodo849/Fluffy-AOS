@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.fluffy_aos.global.LocalNavController
+import com.example.fluffy_aos.ui.theme.gray_text_light
 
 @Composable
 fun BackButton() {
@@ -22,7 +23,13 @@ fun BackButton() {
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.clickable { navController.navigateUp() }
     ) {
-        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "뒤로가기")
-        Text(text = "뒤로가기", modifier = Modifier.padding(start = 4.dp))
+        Icon(
+            imageVector = Icons.Default.ArrowBack,
+            contentDescription = "뒤로가기", tint = gray_text_light
+        )
+        Text(
+            text = "뒤로가기",
+            modifier = Modifier.padding(start = 4.dp), color = gray_text_light
+        )
     }
 }

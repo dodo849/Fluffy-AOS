@@ -11,8 +11,9 @@ fun QuestionButtonGroup(
     order: QuestionOrderType,
     onClickPreviousButton: () -> Unit,
     onClickNextButton: () -> Unit,
-    onSubmit: () -> Unit = {},
 ) {
+
+    val nextButtonText = if (order == QuestionOrderType.LAST) "완료하기" else "다음으로"
 
     if (order != QuestionOrderType.FIRST) {
         RoundedButton(
@@ -21,14 +22,6 @@ fun QuestionButtonGroup(
         )
     }
 
-    if (order == QuestionOrderType.LAST) {
-        RoundedButton(onClick = {
-            onSubmit()
-            onClickNextButton()
-        }, text = "완료하기")
+    RoundedButton(onClick = onClickNextButton, text = nextButtonText)
 
-    } else {
-        RoundedButton(onClick = onClickNextButton, text = "다음으로")
-
-    }
 }

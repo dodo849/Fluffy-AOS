@@ -17,7 +17,6 @@ fun QuestionCard(
     order: QuestionOrderType,
     onClickPreviousButton: () -> Unit,
     onClickNextButton: () -> Unit,
-    onSubmit: () -> Unit = {},
     field : @Composable () -> Unit
 ) {
 

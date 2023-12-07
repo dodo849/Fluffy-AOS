@@ -34,26 +34,31 @@ fun SurveyView(
     Column {
         Funnel(
             steps = questions.mapIndexed { index, question ->
+                val questionOrderType = QuestionOrderType.from(index+1, questions.size)
                 Step(
                     name = question.fieldName
                 ) { onChangeStep ->
                     getStepContent(
                         question = question,
                         value = surveyResult[question.fieldName] ?: "",
-                        orderType = QuestionOrderType.from(index+1, questions.size),
+                        orderType = questionOrderType,
                         onClickPreviousButton = { input ->
                             onChangeStep(questions.getOrNull(index - 1)?.fieldName)
                             surveyResult[question.fieldName] = input
                         },
                         onClickNextButton = { input ->
-                            onChangeStep(questions.getOrNull(index + 1)?.fieldName)
-                            surveyResult[question.fieldName] = input
-                        }
+                            if (questionOrderType == QuestionOrderType.LAST) {
+                                onSubmit(surveyResult)
+                            } else {
+                                onChangeStep(questions.getOrNull(index + 1)?.fieldName)
+                                surveyResult[question.fieldName] = input
+                            }
+                        },
                     )
                 }
             }
         )
-        Button(onClick = { text = surveyResult.toString() }) {
+        Button(onClick = {            text = surveyResult.toString() }) {
             Text("show result")
         }
         Text("${text}")

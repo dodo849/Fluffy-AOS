@@ -33,7 +33,7 @@ class BcsDiagnosisViewModel(
         }
     }
 
-    fun saveBcs() {
+    fun saveBcs(surveyResult: Map<String, Any>) {
 //        bcsRepository.insertBcs(surveyResult)
     }
 }

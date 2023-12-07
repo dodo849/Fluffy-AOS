@@ -1,5 +1,7 @@
 package com.example.fluffy_aos.ui.common.funnel
 
+import androidx.compose.animation.Crossfade
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -9,14 +11,26 @@ import com.patrykandpatrick.vico.core.extension.setFieldValue
 
 @Composable
 fun Funnel(
-    steps: List<Step>) {
+    steps: List<Step>
+) {
     var currentStep by remember { mutableStateOf(steps[0].name) }
 
-    steps.forEach { step ->
-        if (currentStep == step.name) {
-            step.content() { nextStep  ->
+    Crossfade(
+        targetState = currentStep, animationSpec = tween(durationMillis = 500),
+        label = ""
+    ) { targetStep ->
+        steps.firstOrNull { it.name == targetStep }?.content?.let {
+            it() { nextStep ->
                 currentStep = nextStep ?: currentStep
             }
         }
     }
+
+//    steps.forEach { step ->
+//        if (currentStep == step.name) {
+//            step.content() { nextStep ->
+//                currentStep = nextStep ?: currentStep
+//            }
+//        }
+//    }
 }

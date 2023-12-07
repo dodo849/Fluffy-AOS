@@ -16,7 +16,7 @@ fun NumericQuestionCard(
     order: QuestionOrderType = QuestionOrderType.NOTHING,
     initialText: String,
     onClickPreviousButton: (Any) -> Unit,
-    onClickNextButton: (Any) -> Unit
+    onClickNextButton: (Any) -> Unit,
 ) {
     // ✅1. remember()안에 변수를 넣어주면 해당 변수가 변화하는 시점에 mutableState를 새로 만들어준다
     // 원래라면 상위 컴포넌트가 리컴포즈 되어도 text는 이전 상태를 유지하는데 초기화 시점을 정해주면 text 상태도 같이 초기화 된다
