@@ -27,8 +27,10 @@ fun SelectionQuestionCard(
     ) {
         SelectionField(
             options = options,
-            selectedOption = selectedOption,
-            onValueChange = {}
+            initialSelected = selectedOption,
+            onValueChange = {
+                selectedOption = it
+            }
         )
     }
 }

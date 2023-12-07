@@ -89,7 +89,7 @@ private fun getStepContent(
             SelectionQuestionCard(
                 question = QUESTION_DESCRIPTION,
                 options = question.selections.map { it.description },
-                initialSelected = value as Int,
+                initialSelected = (value.toString().toIntOrNull() ?: 0),
                 onClickPreviousButton = onClickPreviousButton,
                 onClickNextButton = onClickNextButton,
             )
