@@ -19,7 +19,23 @@ object DbManager {
             "age integer," +
             "sex text);"
 
-    private const val DROP_TABLE_QUERY = "DROP TABLE if exists pet"
+    private const val CREATE_BCS_TABLE_QUERY = "CREATE TABLE if not exists bcs (" +
+            "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "weight double," +
+            "shoulder_height double," +
+            "neck_size double," +
+            "back_length double," +
+            "chest_size double," +
+            "exercise_selection integer," +
+            "environment_selection integer," +
+            "bowel_condition double," +
+            "food_count integer," +
+            "food_amount double," +
+            "snack_amount double," +
+            "food_kind integer" +
+            ");"
+
+    private const val DROP_TABLE_QUERY = "DROP TABLE if exists pet, bcs"
 
     private var dbHelper: DbHelper? = null
 
@@ -45,6 +61,7 @@ object DbManager {
 
         override fun onCreate(db: SQLiteDatabase) {
             db.execSQL(DbManager.CREATE_PET_TABLE_QUERY)
+//            db.execSQL(DbManager.CREATE_BCS_TABLE_QUERY)
         }
 
         override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {

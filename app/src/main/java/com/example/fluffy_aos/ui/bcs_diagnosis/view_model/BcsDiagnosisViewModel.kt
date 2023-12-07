@@ -18,15 +18,22 @@ class BcsDiagnosisViewModel(
     val surveyResult = mutableMapOf<String, Any>()
 
     init {
-        setBcsSurvey()
+        getBcsQuestion()
+
+//        val temp = bcsRepository.readAllBcs()
+//        println("_questions = ${temp}")
     }
 
-    private fun setBcsSurvey() {
+    private fun getBcsQuestion() {
 
         val bcsSurvey = bcsRepository.getBcsSurvey()
 
         _questions.update { currentState ->
             bcsSurvey?.questions ?: emptyList()
         }
+    }
+
+    fun saveBcs() {
+//        bcsRepository.insertBcs(surveyResult)
     }
 }

@@ -20,9 +20,10 @@ import com.example.fluffy_aos.ui.theme.main_orange
 @Composable
 fun SelectionField(
     options: List<String>,
+    selectedOption: Int,
     onValueChange: (Int) -> Unit,
 ) {
-    var selectedOption by remember { mutableStateOf(0) }
+//    var selectedOption by remember { mutableStateOf(0) }
 
     options.forEachIndexed { index, item ->
         Row(
@@ -34,8 +35,8 @@ fun SelectionField(
             RadioButton(
                 selected = selectedOption == index,
                 onClick = {
-                    selectedOption = index
-                    onValueChange(selectedOption)
+//                    selectedOption = index
+                    onValueChange(index)
                 },
                 colors = RadioButtonDefaults.colors(
                     selectedColor = main_orange, // 선택된 상태의 색상

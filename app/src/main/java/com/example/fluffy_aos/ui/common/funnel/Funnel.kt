@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import com.patrykandpatrick.vico.core.extension.setFieldValue
 
 @Composable
 fun Funnel(
