@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.bcs_diagnosis.component
+package com.example.fluffy_aos.ui.bcs_survey.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

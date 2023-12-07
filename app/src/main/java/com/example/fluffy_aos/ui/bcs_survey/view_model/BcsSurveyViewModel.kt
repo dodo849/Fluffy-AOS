@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.bcs_diagnosis.view_model
+package com.example.fluffy_aos.ui.bcs_survey.view_model
 
 import androidx.lifecycle.ViewModel
 import com.example.fluffy_aos.db.BcsRepository
@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class BcsDiagnosisViewModel(
+class BcsSurveyViewModel(
     private val bcsRepository: BcsRepository
 ): ViewModel() {
 

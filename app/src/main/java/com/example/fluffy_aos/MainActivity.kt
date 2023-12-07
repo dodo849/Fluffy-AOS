@@ -17,8 +17,8 @@ import com.example.fluffy_aos.db.BcsRepository
 import com.example.fluffy_aos.db.DbManager
 import com.example.fluffy_aos.db.PetRepository
 import com.example.fluffy_aos.global.LocalNavController
-import com.example.fluffy_aos.ui.bcs_diagnosis.BcsDiagnosisView
-import com.example.fluffy_aos.ui.bcs_diagnosis.view_model.BcsDiagnosisViewModel
+import com.example.fluffy_aos.ui.bcs_survey.BcsSurveyView
+import com.example.fluffy_aos.ui.bcs_survey.view_model.BcsSurveyViewModel
 import com.example.fluffy_aos.ui.bottom_navigation.BottomNavigationBar
 import com.example.fluffy_aos.ui.home.HomeView
 import com.example.fluffy_aos.ui.post.PostView
@@ -87,8 +87,8 @@ class MainActivity : ComponentActivity() {
             composable("setting") { SettingView() }
 
             composable("bcs_diagnosis") {
-                BcsDiagnosisView(
-                    BcsDiagnosisViewModel(
+                BcsSurveyView(
+                    BcsSurveyViewModel(
                         BcsRepository(
                             JsonReader,
                             JsonParser()

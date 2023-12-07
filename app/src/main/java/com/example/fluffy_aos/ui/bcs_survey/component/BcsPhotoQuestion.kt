@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.bcs_diagnosis.component
+package com.example.fluffy_aos.ui.bcs_survey.component
 
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
