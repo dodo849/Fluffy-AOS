@@ -26,11 +26,9 @@ fun NumericQuestionCard(
         question = question,
         onClickPreviousButton = {
             onClickPreviousButton(text)
-//            text = initialText
         },
         onClickNextButton = {
             onClickNextButton(text)
-//            text = initialText
         },
     ) {
         NumericField(suffix = suffix, text = text, onValueChange = { text = it })

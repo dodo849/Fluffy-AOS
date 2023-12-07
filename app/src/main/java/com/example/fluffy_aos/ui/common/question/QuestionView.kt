@@ -14,11 +14,12 @@ import com.example.fluffy_aos.ui.common.funnel.Step
 import com.example.fluffy_aos.ui.common.question.component.NumericQuestionCard
 import com.example.fluffy_aos.ui.common.question.component.SelectionQuestionCard
 
-// TODO: BCSQuestionView 추상화하기
 enum class QuestionOrder {
     FIRST, LAST, NOTHING
 }
 
+
+/// FIXME: 필드값 제대로 초기화되지 않는 문제 있음. 입력중에 넘기면 그 값이 그대로 다음 필드로 넘어가고, 이전 다음 몇번 누르며 괜찮아짐. 왜?
 @Composable
 fun QuestionView(
     questions: List<BcsQuestion>,
@@ -48,7 +49,6 @@ fun QuestionView(
                             it(questions.getOrNull(index - 1)?.fieldName, input)
                         },
                         onClickNextButton = { input ->
-                            surveyResult[question.fieldName] = input
                             it(questions.getOrNull(index + 1)?.fieldName, input)
                         },
                         onSubmit = {
