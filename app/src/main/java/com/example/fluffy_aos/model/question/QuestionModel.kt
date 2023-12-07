@@ -20,6 +20,7 @@ data class QuestionModel(
             order = order,
             description = description,
             responseType = responseType,
+            responseSuffix = responseSuffix,
             selections = selections.map { it.mapToDisplayModel() }
         )
     }

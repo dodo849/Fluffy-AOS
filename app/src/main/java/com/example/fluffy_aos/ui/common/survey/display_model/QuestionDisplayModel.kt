@@ -5,5 +5,6 @@ data class QuestionDisplayModel(
     val order: Int,
     val description: String,
     val responseType: String,
+    val responseSuffix: String,
     val selections: List<SelectionDisplayModel>
 )

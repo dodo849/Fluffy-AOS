@@ -10,8 +10,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.example.fluffy_aos.ui.common.funnel.Funnel
 import com.example.fluffy_aos.ui.common.funnel.Step
+import com.example.fluffy_aos.ui.common.survey.component.DropdownQuestionCard
 import com.example.fluffy_aos.ui.common.survey.component.NumericQuestionCard
 import com.example.fluffy_aos.ui.common.survey.component.SelectionQuestionCard
+import com.example.fluffy_aos.ui.common.survey.component.StringQuestionCard
 import com.example.fluffy_aos.ui.common.survey.display_model.QuestionDisplayModel
 import com.example.fluffy_aos.ui.common.survey.display_model.QuestionOrderType
 
@@ -23,6 +25,7 @@ fun SurveyView(
 ) {
     var text by remember { mutableStateOf("") } // FIXME: temp
 
+    // NOTE: Selection의 경우 order로 저장 나중에 데이터 처리할때 code로 바꿔야함
     var surveyResult by remember {
         mutableStateOf(mutableMapOf<String, Any>().apply {
             questions.forEach { question ->
@@ -40,8 +43,9 @@ fun SurveyView(
                 ) { onChangeStep ->
                     getStepContent(
                         question = question,
-                        value = surveyResult[question.fieldName] ?: "",
+                        suffix = question.responseSuffix,
                         orderType = questionOrderType,
+                        value = surveyResult[question.fieldName] ?: "",
                         onClickPreviousButton = { input ->
                             onChangeStep(questions.getOrNull(index - 1)?.fieldName)
                             surveyResult[question.fieldName] = input
@@ -58,7 +62,7 @@ fun SurveyView(
                 }
             }
         )
-        Button(onClick = {            text = surveyResult.toString() }) {
+        Button(onClick = { text = surveyResult.toString() }) {
             Text("show result")
         }
         Text("${text}")
@@ -70,6 +74,7 @@ fun SurveyView(
 private fun getStepContent(
     question: QuestionDisplayModel,
     orderType: QuestionOrderType,
+    suffix: String = "",
     value: Any, // 기본 값. 이전값이 있다면 그 값
     onClickPreviousButton: (Any) -> Unit,
     onClickNextButton: (Any) -> Unit,
@@ -81,13 +86,32 @@ private fun getStepContent(
             NumericQuestionCard(
                 question = QUESTION_DESCRIPTION,
                 initialText = value.toString(),
+                suffix = suffix,
                 order = orderType,
                 onClickPreviousButton = onClickPreviousButton,
                 onClickNextButton = onClickNextButton,
             )
-
         "Selection" -> {
             SelectionQuestionCard(
+                question = QUESTION_DESCRIPTION,
+                options = question.selections.map { it.description },
+                order = orderType,
+                initialSelected = (value.toString().toIntOrNull() ?: 0),
+                onClickPreviousButton = onClickPreviousButton,
+                onClickNextButton = onClickNextButton,
+            )
+        }
+        "String" -> {
+            StringQuestionCard(
+                question = QUESTION_DESCRIPTION,
+                initialText = value.toString(),
+                order = orderType,
+                onClickPreviousButton = onClickPreviousButton,
+                onClickNextButton = onClickNextButton,
+            )
+        }
+        "Dropdown" -> {
+            DropdownQuestionCard(
                 question = QUESTION_DESCRIPTION,
                 options = question.selections.map { it.description },
                 order = orderType,

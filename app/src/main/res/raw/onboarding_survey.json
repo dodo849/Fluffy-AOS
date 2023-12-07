@@ -5,7 +5,7 @@
       "fieldName": "nickname",
       "order": 1,
       "description": "반려동물의 이름을 입력해주세요",
-      "responseType": "Text",
+      "responseType": "String",
       "responseSuffix": "",
       "selections": []
     },
@@ -218,7 +218,7 @@
       "fieldName": "class",
       "order": 6,
       "description": "장모종인지 단모종인지 입력해주세요",
-      "responseType": "Integer",
+      "responseType": "Selection",
       "responseSuffix": "",
       "selections": [
         {
