@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class BcsQuestionModel(
+data class QuestionModel(
     @Json(name = "fieldName") val fieldName: String,
     @Json(name = "order") val order: Int,
     @Json(name = "description") val description: String,

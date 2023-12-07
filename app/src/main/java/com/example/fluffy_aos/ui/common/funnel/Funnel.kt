@@ -25,12 +25,4 @@ fun Funnel(
             }
         }
     }
-
-//    steps.forEach { step ->
-//        if (currentStep == step.name) {
-//            step.content() { nextStep ->
-//                currentStep = nextStep ?: currentStep
-//            }
-//        }
-//    }
 }

@@ -38,9 +38,7 @@ fun HomeView() {
 
         SkinDiagnosisCard()
 
-        Button(onClick = { navController.navigate("post") }) {
-            Text("Go to Post")
-        }
+        Spacer(modifier = Modifier.padding(25.dp))
     }
 }
 

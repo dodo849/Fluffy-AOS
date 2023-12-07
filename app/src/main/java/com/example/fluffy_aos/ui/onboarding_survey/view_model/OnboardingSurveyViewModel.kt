@@ -1,15 +1,16 @@
-package com.example.fluffy_aos.ui.bcs_survey.view_model
+package com.example.fluffy_aos.ui.onboarding_survey.view_model
 
 import androidx.lifecycle.ViewModel
 import com.example.fluffy_aos.db.BcsRepository
+import com.example.fluffy_aos.db.OnboardingRepository
 import com.example.fluffy_aos.model.question.QuestionModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class BcsSurveyViewModel(
-    private val bcsRepository: BcsRepository
+class OnboardingSurveyViewModel (
+    private val onboardingRepository: OnboardingRepository
 ): ViewModel() {
 
     private val _questions = MutableStateFlow<List<QuestionModel>>(emptyList())
@@ -18,22 +19,19 @@ class BcsSurveyViewModel(
     val surveyResult = mutableMapOf<String, Any>()
 
     init {
-        getBcsQuestion()
-
-//        val temp = bcsRepository.readAllBcs()
-//        println("_questions = ${temp}")
+        getOnboardingSurvey()
     }
 
-    private fun getBcsQuestion() {
+    private fun getOnboardingSurvey() {
 
-        val bcsSurvey = bcsRepository.getBcsSurvey()
+        val survey = onboardingRepository.getOnboardingSurvey()
 
         _questions.update { currentState ->
-            bcsSurvey?.questions ?: emptyList()
+            survey?.questions ?: emptyList()
         }
     }
 
-    fun saveBcs(surveyResult: Map<String, Any>) {
+    fun savePet(surveyResult: Map<String, Any>) {
 //        bcsRepository.insertBcs(surveyResult)
     }
 }

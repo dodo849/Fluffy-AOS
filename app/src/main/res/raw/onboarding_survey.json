@@ -1,19 +1,21 @@
 {
-  "questionType": "Onbaording",
+  "questionType": "Onboarding",
   "questions": [
     {
       "fieldName": "nickname",
       "order": 1,
       "description": "반려동물의 이름을 입력해주세요",
       "responseType": "Text",
-      "selections" : []
+      "responseSuffix": "",
+      "selections": []
     },
     {
-      "fieldName": "",
+      "fieldName": "species",
       "order": 2,
       "description": "반려견인가요 반려묘인가요?",
       "responseType": "Selection",
-      "selections" : [
+      "responseSuffix": "",
+      "selections": [
         {
           "order": 1,
           "code": "10",
@@ -29,16 +31,18 @@
     {
       "fieldName": "age",
       "order": 3,
-      "description": "반려동물의 나이를 입력해주세요",
+      "description": "나이를 입력해주세요",
       "responseType": "Integer",
-      "selections" : []
+      "responseSuffix": "",
+      "selections": []
     },
     {
       "fieldName": "sex",
       "order": 4,
       "description": "성별을 입력해주세요",
-      "responseType": " Selection",
-      "selections" : [
+      "responseType": "Selection",
+      "responseSuffix": "",
+      "selections": [
         {
           "order": 1,
           "code": "IM",
@@ -66,45 +70,157 @@
       "order": 5,
       "description": "품종을 골라주세요",
       "responseType": "Dropdown",
-      "selections" : [
-        [
-          {"order": 1, "code": "GRE", "description": "그레이트 피레니즈"},
-          {"order": 2, "code": "DAL", "description": "달마시안"},
-          {"order": 3, "code": "DAS", "description": "닥스훈트 단모"},
-          {"order": 4, "code": "DOB", "description": "도베르만 핀셔"},
-          {"order": 5, "code": "GOL", "description": "골든리트리버"},
-          {"order": 6, "code": "LAB", "description": "래브라도 리트리버"},
-          {"order": 7, "code": "MAL", "description": "말티즈"},
-          {"order": 8, "code": "BUL", "description": "불독"},
-          {"order": 9, "code": "BEA", "description": "비글"},
-          {"order": 10, "code": "BIC", "description": "비숑 프리제"},
-          {"order": 11, "code": "SHE", "description": "슈나우저"},
-          {"order": 12, "code": "SCH", "description": "스코티시 테리어"},
-          {"order": 13, "code": "DRI", "description": "닥스훈트 장모"},
-          {"order": 14, "code": "WEL", "description": "웰시코기"},
-          {"order": 15, "code": "GER", "description": "저먼 셰퍼드"},
-          {"order": 16, "code": "JIN", "description": "진도"},
-          {"order": 17, "code": "CHL", "description": "시추"},
-          {"order": 18, "code": "CHS", "description": "치와와"},
-          {"order": 19, "code": "COC", "description": "코커스페리엘"},
-          {"order": 20, "code": "TER", "description": "테리어"},
-          {"order": 21, "code": "POM", "description": "포메라니안"},
-          {"order": 22, "code": "POO", "description": "푸들"},
-          {"order": 23, "code": "HOU", "description": "하운드"},
-          {"order": 24, "code": "HUS", "description": "허스키"},
-          {"order": 25, "code": "MUT", "description": "말라뮤트"},
-          {"order": 26, "code": "MIL", "description": "믹스 장모"},
-          {"order": 27, "code": "MIS", "description": "믹스 단모"},
-          {"order": 28, "code": "ETC", "description": "기타"}
-        ]
+      "responseSuffix": "",
+      "selections": [
+        {
+          "order": 1,
+          "code": "GRE",
+          "description": "그레이트 피레니즈"
+        },
+        {
+          "order": 2,
+          "code": "DAL",
+          "description": "달마시안"
+        },
+        {
+          "order": 3,
+          "code": "DAS",
+          "description": "닥스훈트 단모"
+        },
+        {
+          "order": 4,
+          "code": "DOB",
+          "description": "도베르만 핀셔"
+        },
+        {
+          "order": 5,
+          "code": "GOL",
+          "description": "골든리트리버"
+        },
+        {
+          "order": 6,
+          "code": "LAB",
+          "description": "래브라도 리트리버"
+        },
+        {
+          "order": 7,
+          "code": "MAL",
+          "description": "말티즈"
+        },
+        {
+          "order": 8,
+          "code": "BUL",
+          "description": "불독"
+        },
+        {
+          "order": 9,
+          "code": "BEA",
+          "description": "비글"
+        },
+        {
+          "order": 10,
+          "code": "BIC",
+          "description": "비숑 프리제"
+        },
+        {
+          "order": 11,
+          "code": "SHE",
+          "description": "슈나우저"
+        },
+        {
+          "order": 12,
+          "code": "SCH",
+          "description": "스코티시 테리어"
+        },
+        {
+          "order": 13,
+          "code": "DRI",
+          "description": "닥스훈트 장모"
+        },
+        {
+          "order": 14,
+          "code": "WEL",
+          "description": "웰시코기"
+        },
+        {
+          "order": 15,
+          "code": "GER",
+          "description": "저먼 셰퍼드"
+        },
+        {
+          "order": 16,
+          "code": "JIN",
+          "description": "진도"
+        },
+        {
+          "order": 17,
+          "code": "CHL",
+          "description": "시추"
+        },
+        {
+          "order": 18,
+          "code": "CHS",
+          "description": "치와와"
+        },
+        {
+          "order": 19,
+          "code": "COC",
+          "description": "코커스페리엘"
+        },
+        {
+          "order": 20,
+          "code": "TER",
+          "description": "테리어"
+        },
+        {
+          "order": 21,
+          "code": "POM",
+          "description": "포메라니안"
+        },
+        {
+          "order": 22,
+          "code": "POO",
+          "description": "푸들"
+        },
+        {
+          "order": 23,
+          "code": "HOU",
+          "description": "하운드"
+        },
+        {
+          "order": 24,
+          "code": "HUS",
+          "description": "허스키"
+        },
+        {
+          "order": 25,
+          "code": "MUT",
+          "description": "말라뮤트"
+        },
+        {
+          "order": 26,
+          "code": "MIL",
+          "description": "믹스 장모"
+        },
+        {
+          "order": 27,
+          "code": "MIS",
+          "description": "믹스 단모"
+        },
+        {
+          "order": 28,
+          "code": "ETC",
+          "description": "기타"
+        }
       ]
     },
     {
       "fieldName": "class",
       "order": 6,
-      "description": "반려동물의 나이를 입력해주세요",
+      "description": "장모종인지 단모종인지 입력해주세요",
       "responseType": "Integer",
-      "selections" : [
+      "responseSuffix": "",
+      "selections": [
         {
           "order": 1,
           "code": "LH",

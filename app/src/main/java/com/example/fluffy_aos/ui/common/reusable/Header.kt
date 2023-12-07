@@ -2,6 +2,7 @@ package com.example.fluffy_aos.ui.common.reusable
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -20,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.fluffy_aos.global.LocalNavController
 
 @Composable
 fun Header(backgroundColor: Color) {
@@ -27,22 +29,28 @@ fun Header(backgroundColor: Color) {
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
+
     ) {
-        Box(modifier = Modifier
-            .clip(RoundedCornerShape(10.dp))
-            .background(backgroundColor)
-            .padding(vertical = 10.dp, horizontal = 20.dp)
+        Box(
+            modifier = Modifier
+                .clip(RoundedCornerShape(10.dp))
+                .background(backgroundColor)
+                .padding(vertical = 10.dp, horizontal = 20.dp)
         ) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                Text("초코",
+                Text(
+                    "초코",
                     fontSize = 24.sp,
-                    fontWeight = FontWeight.Black)
-                Text("비글",
+                    fontWeight = FontWeight.Black
+                )
+                Text(
+                    "비글",
                     fontSize = 16.sp,
-                    fontWeight = FontWeight.Normal)
+                    fontWeight = FontWeight.Normal
+                )
             }
         }
 

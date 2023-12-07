@@ -13,8 +13,8 @@ data class SelectionModel(
     fun mapToDisplayModel(): SelectionDisplayModel {
         return SelectionDisplayModel(
             order = order,
-            description = description,
-            value = code.toInt()
+            code = code,
+            description = description
         )
     }
 }

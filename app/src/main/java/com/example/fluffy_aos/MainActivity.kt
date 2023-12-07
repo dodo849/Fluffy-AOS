@@ -15,12 +15,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.fluffy_aos.db.BcsRepository
 import com.example.fluffy_aos.db.DbManager
+import com.example.fluffy_aos.db.OnboardingRepository
 import com.example.fluffy_aos.db.PetRepository
 import com.example.fluffy_aos.global.LocalNavController
 import com.example.fluffy_aos.ui.bcs_survey.BcsSurveyView
 import com.example.fluffy_aos.ui.bcs_survey.view_model.BcsSurveyViewModel
 import com.example.fluffy_aos.ui.bottom_navigation.BottomNavigationBar
 import com.example.fluffy_aos.ui.home.HomeView
+import com.example.fluffy_aos.ui.onboarding_survey.OnboardingSurveyView
+import com.example.fluffy_aos.ui.onboarding_survey.view_model.OnboardingSurveyViewModel
 import com.example.fluffy_aos.ui.post.PostView
 import com.example.fluffy_aos.ui.post.view_model.PostViewModel
 import com.example.fluffy_aos.ui.record.RecordView
@@ -86,14 +89,14 @@ class MainActivity : ComponentActivity() {
             composable("post") { PostView(PostViewModel()) }
             composable("setting") { SettingView() }
 
-            composable("bcs_diagnosis") {
+            composable("bcs_survey") {
                 BcsSurveyView(
-                    BcsSurveyViewModel(
-                        BcsRepository(
-                            JsonReader,
-                            JsonParser()
-                        )
-                    )
+                    BcsSurveyViewModel(BcsRepository())
+                )
+            }
+            composable("onboarding_survey") {
+                OnboardingSurveyView(
+                    OnboardingSurveyViewModel(OnboardingRepository())
                 )
             }
         }

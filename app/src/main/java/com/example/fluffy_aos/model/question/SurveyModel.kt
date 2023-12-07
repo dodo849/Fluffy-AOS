@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class BcsSurveyModel(
+data class SurveyModel(
     @Json(name = "questionType") val questionType: String,
-    @Json(name = "questions") val questions: List<BcsQuestionModel>
+    @Json(name = "questions") val questions: List<QuestionModel>
 )
