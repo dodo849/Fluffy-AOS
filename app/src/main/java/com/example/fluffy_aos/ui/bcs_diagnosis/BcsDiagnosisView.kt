@@ -41,6 +41,8 @@ fun BcsDiagnosisView(
     ) {
         BackButton()
 
-        QuestionView(questions = questions, onSubmit = { viewModel.saveBcs() })
+        QuestionView(
+            questions = questions.map { it.mapToDisplayModel(questions.size) },
+            onSubmit = { viewModel.saveBcs() })
     }
 }

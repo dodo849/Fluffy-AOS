@@ -8,22 +8,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import com.example.fluffy_aos.model.question.BcsQuestion
 import com.example.fluffy_aos.ui.common.funnel.Funnel
 import com.example.fluffy_aos.ui.common.funnel.Step
 import com.example.fluffy_aos.ui.common.question.component.NumericQuestionCard
 import com.example.fluffy_aos.ui.common.question.component.SelectionQuestionCard
-
-enum class QuestionOrder {
-    FIRST, LAST, NOTHING
-}
+import com.example.fluffy_aos.ui.common.question.display_model.QuestionDisplayModel
+import com.example.fluffy_aos.ui.common.question.display_model.QuestionOrder
 
 
-
-/// FIXME: 필드값 제대로 초기화되지 않는 문제 있음. 입력중에 넘기면 그 값이 그대로 다음 필드로 넘어가고, 이전 다음 몇번 누르며 괜찮아짐. 왜?
 @Composable
 fun QuestionView(
-    questions: List<BcsQuestion>,
+    questions: List<QuestionDisplayModel>,
     onSubmit: (Map<String, Any>) -> Unit
 ) {
     var text by remember { mutableStateOf("") } // FIXME: temp
@@ -46,6 +41,7 @@ fun QuestionView(
                     getStepContent(
                         question = question,
                         value = surveyResult[question.fieldName] ?: "",
+                        order = question.order,
                         onClickPreviousButton = { input ->
                             it(questions.getOrNull(index - 1)?.fieldName, input)
 
@@ -71,7 +67,8 @@ fun QuestionView(
 
 @Composable
 private fun getStepContent(
-    question: BcsQuestion,
+    question: QuestionDisplayModel,
+    order: QuestionOrder = QuestionOrder.NOTHING,
     value: Any, // 기본 값. 이전값이 있다면 그 값
     onClickPreviousButton: (Any) -> Unit,
     onClickNextButton: (Any) -> Unit,
@@ -84,6 +81,7 @@ private fun getStepContent(
             NumericQuestionCard(
                 question = QUESTION_DESCRIPTION,
                 initialText = value.toString(),
+                order = order,
                 onClickPreviousButton = onClickPreviousButton,
                 onClickNextButton = onClickNextButton,
             )
@@ -92,6 +90,7 @@ private fun getStepContent(
             SelectionQuestionCard(
                 question = QUESTION_DESCRIPTION,
                 options = question.selections.map { it.description },
+                order = order,
                 initialSelected = (value.toString().toIntOrNull() ?: 0),
                 onClickPreviousButton = onClickPreviousButton,
                 onClickNextButton = onClickNextButton,

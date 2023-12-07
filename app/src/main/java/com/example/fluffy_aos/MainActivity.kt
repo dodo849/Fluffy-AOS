@@ -17,7 +17,6 @@ import com.example.fluffy_aos.db.BcsRepository
 import com.example.fluffy_aos.db.DbManager
 import com.example.fluffy_aos.db.PetRepository
 import com.example.fluffy_aos.global.LocalNavController
-import com.example.fluffy_aos.model.question.BcsSurvey
 import com.example.fluffy_aos.ui.bcs_diagnosis.BcsDiagnosisView
 import com.example.fluffy_aos.ui.bcs_diagnosis.view_model.BcsDiagnosisViewModel
 import com.example.fluffy_aos.ui.bottom_navigation.BottomNavigationBar

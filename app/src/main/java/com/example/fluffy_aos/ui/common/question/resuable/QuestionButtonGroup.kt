@@ -1,7 +1,7 @@
 package com.example.fluffy_aos.ui.common.question.resuable
 
 import androidx.compose.runtime.Composable
-import com.example.fluffy_aos.ui.common.question.QuestionOrder
+import com.example.fluffy_aos.ui.common.question.display_model.QuestionOrder
 import com.example.fluffy_aos.ui.common.reusable.RoundedButton
 import com.example.fluffy_aos.ui.common.reusable.RoundedButtonState
 

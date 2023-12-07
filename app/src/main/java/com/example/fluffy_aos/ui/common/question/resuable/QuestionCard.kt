@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.fluffy_aos.ui.common.question.QuestionOrder
+import com.example.fluffy_aos.ui.common.question.display_model.QuestionOrder
 import com.example.fluffy_aos.ui.common.reusable.Card
 
 
@@ -14,7 +14,7 @@ import com.example.fluffy_aos.ui.common.reusable.Card
 @Composable
 fun QuestionCard(
     question: String,
-    order: QuestionOrder = QuestionOrder.NOTHING,
+    order: QuestionOrder,
     onClickPreviousButton: () -> Unit,
     onClickNextButton: () -> Unit,
     onSubmit: () -> Unit = {},

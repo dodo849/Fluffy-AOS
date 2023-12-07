@@ -2,7 +2,7 @@ package com.example.fluffy_aos.ui.bcs_diagnosis.view_model
 
 import androidx.lifecycle.ViewModel
 import com.example.fluffy_aos.db.BcsRepository
-import com.example.fluffy_aos.model.question.BcsQuestion
+import com.example.fluffy_aos.model.question.BcsQuestionModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -12,8 +12,8 @@ class BcsDiagnosisViewModel(
     private val bcsRepository: BcsRepository
 ): ViewModel() {
 
-    private val _questions = MutableStateFlow<List<BcsQuestion>>(emptyList())
-    val questions: StateFlow<List<BcsQuestion>> = _questions.asStateFlow()
+    private val _questions = MutableStateFlow<List<BcsQuestionModel>>(emptyList())
+    val questions: StateFlow<List<BcsQuestionModel>> = _questions.asStateFlow()
 
     val surveyResult = mutableMapOf<String, Any>()
 

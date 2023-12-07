@@ -1,19 +1,18 @@
 package com.example.fluffy_aos.db
 
 import android.content.ContentValues
-import com.example.fluffy_aos.model.pet.Pet
-import com.example.fluffy_aos.model.question.BcsSurvey
+import com.example.fluffy_aos.model.question.BcsSurveyModel
 import com.example.fluffy_aos.util.JsonParser
 import com.example.fluffy_aos.util.JsonReader
 
 class BcsRepository(
     private val jsonReader: JsonReader,
-    private val jsonParser: JsonParser<BcsSurvey>,
+    private val jsonParser: JsonParser<BcsSurveyModel>,
     private val dbManager: DbManager = DbManager
 ) {
-    fun getBcsSurvey(): BcsSurvey? {
+    fun getBcsSurvey(): BcsSurveyModel? {
         val jsonString = jsonReader.readJsonFile("bcs_survey")
-        return jsonParser.parse(jsonString, BcsSurvey::class.java)
+        return jsonParser.parse(jsonString, BcsSurveyModel::class.java)
     }
 
     fun readAllBcs(): Map<String, Any> {

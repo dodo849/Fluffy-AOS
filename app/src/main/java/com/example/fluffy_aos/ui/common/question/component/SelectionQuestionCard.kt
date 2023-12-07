@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import com.example.fluffy_aos.ui.common.question.display_model.QuestionOrder
 import com.example.fluffy_aos.ui.common.question.resuable.QuestionCard
 import com.example.fluffy_aos.ui.common.question.resuable.SelectionField
 
@@ -13,6 +14,7 @@ import com.example.fluffy_aos.ui.common.question.resuable.SelectionField
 fun SelectionQuestionCard(
     question: String,
     options: List<String>,
+    order: QuestionOrder = QuestionOrder.NOTHING,
     initialSelected: Int = 0,
     onClickPreviousButton: (Any) -> Unit,
     onClickNextButton: (Any) -> Unit
@@ -22,6 +24,7 @@ fun SelectionQuestionCard(
 
     QuestionCard(
         question = question,
+        order = order,
         onClickPreviousButton = { onClickPreviousButton(selectedOption) },
         onClickNextButton = { onClickNextButton(selectedOption) },
     ) {

@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import com.example.fluffy_aos.ui.common.question.display_model.QuestionOrder
 import com.example.fluffy_aos.ui.common.question.resuable.NumericField
 import com.example.fluffy_aos.ui.common.question.resuable.QuestionCard
 
@@ -12,6 +13,7 @@ import com.example.fluffy_aos.ui.common.question.resuable.QuestionCard
 fun NumericQuestionCard(
     question: String,
     suffix: String = "",
+    order: QuestionOrder = QuestionOrder.NOTHING,
     initialText: String,
     onClickPreviousButton: (Any) -> Unit,
     onClickNextButton: (Any) -> Unit
@@ -27,6 +29,7 @@ fun NumericQuestionCard(
 
     QuestionCard(
         question = question,
+        order = order,
         onClickPreviousButton = {
             onClickPreviousButton(text)
         },
