@@ -1,14 +1,13 @@
-package com.example.fluffy_aos.ui.home.view_model
+package com.example.fluffy_aos.ui.record.view_model
 
 import com.example.fluffy_aos.db.PetRepository
 import com.example.fluffy_aos.model.pet.Pet
-import com.example.fluffy_aos.model.question.QuestionModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class HomeViewModel(
+class RecordViewModel(
     private val petRepository: PetRepository
 ) {
 

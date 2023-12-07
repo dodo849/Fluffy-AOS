@@ -16,17 +16,20 @@ import androidx.navigation.compose.rememberNavController
 import com.example.fluffy_aos.db.BcsRepository
 import com.example.fluffy_aos.db.DbManager
 import com.example.fluffy_aos.db.OnboardingRepository
+import com.example.fluffy_aos.db.PetDummy
 import com.example.fluffy_aos.db.PetRepository
 import com.example.fluffy_aos.global.LocalNavController
 import com.example.fluffy_aos.ui.bcs_survey.BcsSurveyView
 import com.example.fluffy_aos.ui.bcs_survey.view_model.BcsSurveyViewModel
 import com.example.fluffy_aos.ui.bottom_navigation.BottomNavigationBar
 import com.example.fluffy_aos.ui.home.HomeView
+import com.example.fluffy_aos.ui.home.view_model.HomeViewModel
 import com.example.fluffy_aos.ui.onboarding_survey.OnboardingSurveyView
 import com.example.fluffy_aos.ui.onboarding_survey.view_model.OnboardingSurveyViewModel
 import com.example.fluffy_aos.ui.post.PostView
 import com.example.fluffy_aos.ui.post.view_model.PostViewModel
 import com.example.fluffy_aos.ui.record.RecordView
+import com.example.fluffy_aos.ui.record.view_model.RecordViewModel
 import com.example.fluffy_aos.ui.setting.SettingView
 import com.example.fluffy_aos.util.JsonParser
 import com.example.fluffy_aos.util.JsonReader
@@ -69,9 +72,9 @@ class MainActivity : ComponentActivity() {
 
 //        PetDummy(PetRepository(DbManager)).insertDummy()
 
-        PetRepository(DbManager).readAllPets().forEach {
-            println("pet" + it.toString())
-        }
+//        PetRepository().readAllPets().forEach {
+//            println("pet" + it.toString())
+//        }
     }
 
     private fun setJsonManager() {
@@ -84,8 +87,8 @@ class MainActivity : ComponentActivity() {
             navController = navController,
             startDestination = "home",
         ) {
-            composable("home") { HomeView() }
-            composable("record") { RecordView() }
+            composable("home") { HomeView(HomeViewModel(PetRepository())) }
+            composable("record") { RecordView(RecordViewModel(PetRepository())) }
             composable("post") { PostView(PostViewModel()) }
             composable("setting") { SettingView() }
 

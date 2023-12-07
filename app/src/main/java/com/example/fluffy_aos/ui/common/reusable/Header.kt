@@ -22,9 +22,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.fluffy_aos.global.LocalNavController
+import com.example.fluffy_aos.model.pet.Pet
 
 @Composable
-fun Header(backgroundColor: Color) {
+fun Header(
+    petName: String,
+    petBreed: String,
+    backgroundColor: Color
+) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -42,12 +47,12 @@ fun Header(backgroundColor: Color) {
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
-                    "초코",
+                    petName,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Black
                 )
                 Text(
-                    "비글",
+                    petBreed,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal
                 )

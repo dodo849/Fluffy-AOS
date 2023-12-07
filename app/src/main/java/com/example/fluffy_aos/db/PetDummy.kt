@@ -7,10 +7,9 @@ class PetDummy(private val repository: PetRepository) {
     fun insertDummy() {
         repository.insertPet(
             Pet(
-                name = "초코",
+                name = "플러피",
                 species = "허스키",
-                breedGroup = "허스키",
-                breed = "포유류",
+                breed = "HUS",
                 furType = "장모",
                 age = 1,
                 sex = "수컷"

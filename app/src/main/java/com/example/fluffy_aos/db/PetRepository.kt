@@ -3,7 +3,7 @@ package com.example.fluffy_aos.db
 import android.content.ContentValues
 import com.example.fluffy_aos.model.pet.Pet
 
-class PetRepository(private val dbManager: DbManager) {
+class PetRepository(private val dbManager: DbManager = DbManager) {
 
     fun readAllPets(): List<Pet> {
         val petList = mutableListOf<Pet>()
@@ -25,14 +25,13 @@ class PetRepository(private val dbManager: DbManager) {
                     val id = cursor.getLong(cursor.getColumnIndexOrThrow("_id"))
                     val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
                     val species = cursor.getString(cursor.getColumnIndexOrThrow("species"))
-                    val breedGroup = cursor.getString(cursor.getColumnIndexOrThrow("breed_group"))
                     val breed = cursor.getString(cursor.getColumnIndexOrThrow("breed"))
-                    val purType = cursor.getString(cursor.getColumnIndexOrThrow("furType"))
+                    val furType = cursor.getString(cursor.getColumnIndexOrThrow("furType"))
                     val age = cursor.getInt(cursor.getColumnIndexOrThrow("age"))
                     val sex = cursor.getString(cursor.getColumnIndexOrThrow("sex"))
 
-                    val pet = Pet(id, name, species, breedGroup, breed, purType, age, sex)
-                    println(pet.toString())
+                    val pet = Pet(id, name, species, breed, furType, age, sex)
+                    petList.add(pet)
                 }
             }
         }
@@ -46,7 +45,6 @@ class PetRepository(private val dbManager: DbManager) {
         val values = ContentValues().apply {
             put("name", pet.name)
             put("species", pet.species)
-            put("breed_group", pet.breedGroup)
             put("breed", pet.breed)
             put("furType", pet.furType)
             put("age", pet.age)
