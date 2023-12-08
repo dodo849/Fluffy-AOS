@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.bcs_survey.component
+package com.example.fluffy_aos.ui.home.sub_page.bcs_survey.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

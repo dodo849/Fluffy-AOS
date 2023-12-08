@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.bcs_survey.view_model
+package com.example.fluffy_aos.ui.home.sub_page.bcs_survey.view_model
 
 import androidx.lifecycle.ViewModel
 import com.example.fluffy_aos.db.BcsRepository
