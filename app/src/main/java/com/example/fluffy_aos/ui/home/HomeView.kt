@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.fluffy_aos.global.LocalNavController
+import com.example.fluffy_aos.model.pet.PetConverter
 import com.example.fluffy_aos.ui.home.component.BcsDiagnosisCard
 import com.example.fluffy_aos.ui.home.component.EyeDiagnosisCard
 import com.example.fluffy_aos.ui.home.component.HomeHeader

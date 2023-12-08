@@ -3,8 +3,13 @@ package com.example.fluffy_aos.data.repository
 import android.content.ContentValues
 import com.example.fluffy_aos.data.db.DbManager
 import com.example.fluffy_aos.model.pet.Pet
+import com.example.fluffy_aos.model.pet.PetConverter
 
-class PetRepository(private val dbManager: DbManager = DbManager) {
+class PetRepository(
+    private val dbManager: DbManager = DbManager,
+    private val petConverter: PetConverter = PetConverter(),
+) {
+
 
     fun readAllPets(): List<Pet> {
         val petList = mutableListOf<Pet>()
@@ -26,12 +31,24 @@ class PetRepository(private val dbManager: DbManager = DbManager) {
                     val id = cursor.getLong(cursor.getColumnIndexOrThrow("_id"))
                     val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
                     val species = cursor.getString(cursor.getColumnIndexOrThrow("species"))
+                    val speciesDescription = petConverter.codeToDescription("species", species)
                     val breed = cursor.getString(cursor.getColumnIndexOrThrow("breed"))
+                    val breedDescription = petConverter.codeToDescription("breed", breed)
                     val furType = cursor.getString(cursor.getColumnIndexOrThrow("furType"))
+                    val furTypeDescription = petConverter.codeToDescription("furType", furType)
                     val age = cursor.getInt(cursor.getColumnIndexOrThrow("age"))
                     val sex = cursor.getString(cursor.getColumnIndexOrThrow("sex"))
+                    val sexDescription = petConverter.codeToDescription("sex", sex)
 
-                    val pet = Pet(id, name, species, breed, furType, age, sex)
+                    val pet = Pet(
+                        id,
+                        name,
+                        speciesDescription,
+                        breedDescription,
+                        furTypeDescription,
+                        age,
+                        sexDescription
+                    )
                     petList.add(pet)
                 }
             }
@@ -42,7 +59,6 @@ class PetRepository(private val dbManager: DbManager = DbManager) {
 
     fun insertPet(pet: Pet): Long {
         val db = dbManager.getWritableDatabase()
-
         val values = ContentValues().apply {
             put("name", pet.name)
             put("species", pet.species)

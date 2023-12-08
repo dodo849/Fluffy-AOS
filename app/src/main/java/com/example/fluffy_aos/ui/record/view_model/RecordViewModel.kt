@@ -2,6 +2,7 @@ package com.example.fluffy_aos.ui.record.view_model
 
 import com.example.fluffy_aos.data.repository.PetRepository
 import com.example.fluffy_aos.model.pet.Pet
+import com.example.fluffy_aos.model.pet.PetConverter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

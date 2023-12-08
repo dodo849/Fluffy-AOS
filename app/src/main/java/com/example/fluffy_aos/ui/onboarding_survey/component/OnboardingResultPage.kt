@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.onboarding_survey.view_model.component
+package com.example.fluffy_aos.ui.onboarding_survey.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

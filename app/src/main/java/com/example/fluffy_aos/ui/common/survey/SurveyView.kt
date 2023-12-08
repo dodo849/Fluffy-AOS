@@ -51,11 +51,11 @@ fun SurveyView(
                             surveyResult[question.fieldName] = input
                         },
                         onClickNextButton = { input ->
+                            surveyResult[question.fieldName] = input
                             if (questionOrderType == QuestionOrderType.LAST) {
                                 onSubmit(surveyResult)
                             } else {
                                 onChangeStep(questions.getOrNull(index + 1)?.fieldName)
-                                surveyResult[question.fieldName] = input
                             }
                         },
                     )
