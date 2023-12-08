@@ -14,12 +14,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.fluffy_aos.global.LocalNavController
-import com.example.fluffy_aos.ui.home.sub_page.bcs_survey.component.BcsResultPage
 import com.example.fluffy_aos.ui.home.sub_page.bcs_survey.view_model.BcsSurveyViewModel
 import com.example.fluffy_aos.ui.common.funnel.Funnel
 import com.example.fluffy_aos.ui.common.funnel.Step
 import com.example.fluffy_aos.ui.common.survey.SurveyView
 import com.example.fluffy_aos.ui.common.reusable.BackButton
+import com.example.fluffy_aos.ui.home.sub_page.bcs_survey.component.BcsResultPage
 
 @Composable
 fun BcsSurveyView(

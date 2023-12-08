@@ -101,7 +101,7 @@ class MainActivity : ComponentActivity() {
             }
             composable("onboarding_survey") {
                 OnboardingSurveyView(
-                    OnboardingSurveyViewModel(OnboardingRepository())
+                    OnboardingSurveyViewModel(OnboardingRepository(), PetRepository())
                 )
             }
             composable("my_pets") {
