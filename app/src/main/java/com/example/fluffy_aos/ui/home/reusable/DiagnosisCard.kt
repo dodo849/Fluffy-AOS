@@ -20,7 +20,7 @@ import com.example.fluffy_aos.ui.common.reusable.RoundedButton
 import com.example.fluffy_aos.ui.common.reusable.RoundedButtonState
 
 @Composable
-fun DiagnosisCardView(
+fun DiagnosisCard(
     title: String,
     detail: String,
     @DrawableRes imageRes: Int,
