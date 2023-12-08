@@ -11,7 +11,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.fluffy_aos.global.LocalNavController
 import com.example.fluffy_aos.ui.common.reusable.BackButton
+import com.example.fluffy_aos.ui.common.reusable.RoundedButton
+import com.example.fluffy_aos.ui.common.reusable.RoundedOutlineButton
 import com.example.fluffy_aos.ui.setting.sub_page.my_pets.component.PetCardList
 import com.example.fluffy_aos.ui.setting.sub_page.my_pets.view_model.MyPetsViewModel
 
@@ -19,6 +22,7 @@ import com.example.fluffy_aos.ui.setting.sub_page.my_pets.view_model.MyPetsViewM
 fun MyPetsView(
     viewModel: MyPetsViewModel
 ) {
+    val navController = LocalNavController.current
 
     val pets by viewModel.pets.collectAsState()
 
@@ -32,5 +36,9 @@ fun MyPetsView(
         BackButton()
 
         PetCardList(pets = pets)
+
+        RoundedOutlineButton(text = "반려동물 추가하기") {
+            navController.navigate("onboarding_survey")
+        }
     }
 }
