@@ -21,6 +21,7 @@ import com.example.fluffy_aos.ui.common.funnel.Step
 import com.example.fluffy_aos.ui.common.reusable.BackButton
 import com.example.fluffy_aos.ui.common.survey.SurveyView
 import com.example.fluffy_aos.ui.onboarding_survey.view_model.OnboardingSurveyViewModel
+import com.example.fluffy_aos.ui.theme.page_padding
 
 @Composable
 fun OnboardingSurveyView(
@@ -37,7 +38,7 @@ fun OnboardingSurveyView(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
-            .padding(25.dp, 25.dp, 25.dp, 25.dp)
+            .padding(page_padding)
     ) {
         BackButton()
 

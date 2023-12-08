@@ -23,6 +23,7 @@ import com.example.fluffy_aos.ui.home.component.HomeHeader
 import com.example.fluffy_aos.ui.home.component.SkinDiagnosisCard
 import com.example.fluffy_aos.ui.home.view_model.HomeViewModel
 import com.example.fluffy_aos.ui.theme.FluffyAOSTheme
+import com.example.fluffy_aos.ui.theme.page_padding
 
 @Composable
 fun HomeView(
@@ -34,7 +35,7 @@ fun HomeView(
 
     Column(
         modifier = Modifier
-            .padding(20.dp)
+            .padding(page_padding)
             .verticalScroll(rememberScrollState())
             .fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(20.dp)

@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.sp
 import com.example.fluffy_aos.global.LocalNavController
 import com.example.fluffy_aos.ui.setting.component.SettingList
 import com.example.fluffy_aos.ui.theme.FluffyAOSTheme
+import com.example.fluffy_aos.ui.theme.page_padding
 
 @Composable
 fun SettingView() {
@@ -21,7 +22,7 @@ fun SettingView() {
     val survey: MutableMap<String, Any> = mutableMapOf()
 
     Column(
-        modifier = Modifier.padding(20.dp)
+        modifier = Modifier.padding(page_padding)
     ) {
         Text(
             "설정",
