@@ -24,7 +24,7 @@ fun SelectionField(
     onValueChange: (Int) -> Unit,
 ) {
 
-    var selectedOption by remember(initialSelected) { mutableStateOf(initialSelected) }
+    var selectedOption by remember(initialSelected) { mutableStateOf(initialSelected-1) }
 
     options.forEachIndexed { index, item ->
         Row(
@@ -36,7 +36,7 @@ fun SelectionField(
             RadioButton(
                 selected = selectedOption == index,
                 onClick = {
-                    onValueChange(index)
+                    onValueChange(index+1)
                 },
                 colors = RadioButtonDefaults.colors(
                     selectedColor = main_orange, // 선택된 상태의 색상

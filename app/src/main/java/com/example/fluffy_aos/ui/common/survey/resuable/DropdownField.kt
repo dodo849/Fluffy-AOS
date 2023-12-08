@@ -71,7 +71,7 @@ fun DropdownField(
                     text = { Text("$item") },
                     onClick = {
                         selectedOption = index
-                        onValueChange(index)
+                        onValueChange(index+1)
                         expanded = false
                     },
                 )

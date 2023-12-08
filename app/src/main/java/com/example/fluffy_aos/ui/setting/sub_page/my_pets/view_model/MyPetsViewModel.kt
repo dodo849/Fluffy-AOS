@@ -20,13 +20,14 @@ class MyPetsViewModel(
 
     fun deletePet(id: Long) {
         petRepository.deletePet(id)
+        getPets()
     }
 
     private fun getPets() {
         val newPets: List<Pet> = petRepository.readAllPets()
 
-        _pets.update { currentState ->
-            currentState + newPets
+        _pets.update {
+            newPets
         }
     }
 }

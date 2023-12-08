@@ -31,7 +31,6 @@ fun MyPetsView(
 
     val pets by viewModel.pets.collectAsState()
 
-    var showDialog by remember() { mutableStateOf(false) }
     var deletePetId by remember() { mutableStateOf(-1L) }
 
     Column(
@@ -44,47 +43,13 @@ fun MyPetsView(
         BackButton()
 
         PetCardList(pets = pets, onClickDelete = {
-            showDialog = true
-            deletePetId = it
+            viewModel.deletePet(it)
         })
 
         RoundedOutlineButton(text = "반려동물 추가하기") {
             navController.navigate("onboarding_survey")
         }
 
-        if (showDialog) {
-            AlertDialog(
-                onDismissRequest = {
-                    // 사용자가 다이얼로그 외부를 터치하여 닫을 때 호출
-                    showDialog = false
-                },
-                title = {
-                    Text(text = "펫 삭제")
-                },
-                text = {
-                    Text(text = "정말로 이 펫을 삭제하시겠습니까?")
-                },
-                confirmButton = {
-                    TextButton(
-                        onClick = {
-                            showDialog = false
-                            viewModel.deletePet(deletePetId)
-                        }
-                    ) {
-                        Text("삭제")
-                    }
-                },
-                dismissButton = {
-                    TextButton(
-                        onClick = {
-                            showDialog = false
-                        }
-                    ) {
-                        Text("취소")
-                    }
-                }
-            )
-        }
 
     }
 }
