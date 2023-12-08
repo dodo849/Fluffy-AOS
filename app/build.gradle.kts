@@ -65,6 +65,7 @@ dependencies {
     implementation("com.patrykandpatrick.vico:views:1.13.0")
     implementation("com.patrykandpatrick.vico:compose:1.13.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
+    implementation("org.tensorflow:tensorflow-lite-support:0.3.0")
 
     testImplementation("junit:junit:4.13.2")
 
