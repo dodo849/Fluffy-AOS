@@ -70,4 +70,15 @@ class PetRepository(
 
         return db.insert("pet", null, values)
     }
+
+    fun deletePet(petId: Long): Int {
+        val db = dbManager.getWritableDatabase()
+
+        return db.use {
+            val whereClause = "_id = ?"
+            val whereArgs = arrayOf(petId.toString())
+
+            it.delete("pet", whereClause, whereArgs)
+        }
+    }
 }

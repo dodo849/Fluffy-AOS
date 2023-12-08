@@ -18,6 +18,10 @@ class MyPetsViewModel(
         getPets()
     }
 
+    fun deletePet(id: Long) {
+        petRepository.deletePet(id)
+    }
+
     private fun getPets() {
         val newPets: List<Pet> = petRepository.readAllPets()
 
