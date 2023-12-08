@@ -1,6 +1,6 @@
 package com.example.fluffy_aos.ui.setting.sub_page.my_pets.view_model
 
-import com.example.fluffy_aos.db.PetRepository
+import com.example.fluffy_aos.data.repository.PetRepository
 import com.example.fluffy_aos.model.pet.Pet
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

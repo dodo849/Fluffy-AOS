@@ -13,11 +13,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.fluffy_aos.db.BcsRepository
-import com.example.fluffy_aos.db.DbManager
-import com.example.fluffy_aos.db.OnboardingRepository
-import com.example.fluffy_aos.db.PetDummy
-import com.example.fluffy_aos.db.PetRepository
+import com.example.fluffy_aos.data.repository.BcsRepository
+import com.example.fluffy_aos.data.db.DbManager
+import com.example.fluffy_aos.data.repository.OnboardingRepository
+import com.example.fluffy_aos.data.repository.PetRepository
 import com.example.fluffy_aos.global.LocalNavController
 import com.example.fluffy_aos.ui.home.sub_page.bcs_survey.BcsSurveyView
 import com.example.fluffy_aos.ui.home.sub_page.bcs_survey.view_model.BcsSurveyViewModel
@@ -33,7 +32,6 @@ import com.example.fluffy_aos.ui.record.view_model.RecordViewModel
 import com.example.fluffy_aos.ui.setting.SettingView
 import com.example.fluffy_aos.ui.setting.sub_page.my_pets.MyPetsView
 import com.example.fluffy_aos.ui.setting.sub_page.my_pets.view_model.MyPetsViewModel
-import com.example.fluffy_aos.util.JsonParser
 import com.example.fluffy_aos.util.JsonReader
 
 

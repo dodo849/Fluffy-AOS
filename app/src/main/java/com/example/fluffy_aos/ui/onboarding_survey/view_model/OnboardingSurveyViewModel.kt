@@ -1,9 +1,8 @@
 package com.example.fluffy_aos.ui.onboarding_survey.view_model
 
 import androidx.lifecycle.ViewModel
-import com.example.fluffy_aos.db.BcsRepository
-import com.example.fluffy_aos.db.OnboardingRepository
-import com.example.fluffy_aos.db.PetRepository
+import com.example.fluffy_aos.data.repository.OnboardingRepository
+import com.example.fluffy_aos.data.repository.PetRepository
 import com.example.fluffy_aos.model.pet.Pet
 import com.example.fluffy_aos.model.question.QuestionModel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.db
+package com.example.fluffy_aos.data.repository
 
 import com.example.fluffy_aos.model.pet.Pet
 

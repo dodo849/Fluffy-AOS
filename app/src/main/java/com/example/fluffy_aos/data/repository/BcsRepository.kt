@@ -1,6 +1,7 @@
-package com.example.fluffy_aos.db
+package com.example.fluffy_aos.data.repository
 
 import android.content.ContentValues
+import com.example.fluffy_aos.data.db.DbManager
 import com.example.fluffy_aos.model.question.SurveyModel
 import com.example.fluffy_aos.util.JsonParser
 import com.example.fluffy_aos.util.JsonReader

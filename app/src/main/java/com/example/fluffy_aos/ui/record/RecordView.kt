@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
-import com.example.fluffy_aos.db.PetRepository
+import com.example.fluffy_aos.data.repository.PetRepository
 import com.example.fluffy_aos.global.LocalNavController
 import com.example.fluffy_aos.ui.common.reusable.Card
 import com.example.fluffy_aos.ui.record.component.RecordHeader

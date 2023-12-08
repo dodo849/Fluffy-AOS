@@ -1,7 +1,7 @@
 package com.example.fluffy_aos.ui.home.sub_page.bcs_survey.view_model
 
 import androidx.lifecycle.ViewModel
-import com.example.fluffy_aos.db.BcsRepository
+import com.example.fluffy_aos.data.repository.BcsRepository
 import com.example.fluffy_aos.model.question.QuestionModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

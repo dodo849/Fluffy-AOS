@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.db
+package com.example.fluffy_aos.data.db
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
@@ -60,8 +60,8 @@ object DbManager {
     ) : SQLiteOpenHelper(context, name, factory, version) {
 
         override fun onCreate(db: SQLiteDatabase) {
-            db.execSQL(DbManager.CREATE_PET_TABLE_QUERY)
-            db.execSQL(DbManager.CREATE_BCS_TABLE_QUERY)
+            db.execSQL(CREATE_PET_TABLE_QUERY)
+            db.execSQL(CREATE_BCS_TABLE_QUERY)
         }
 
         override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
