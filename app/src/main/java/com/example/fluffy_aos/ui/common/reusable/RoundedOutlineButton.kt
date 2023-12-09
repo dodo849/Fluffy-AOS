@@ -35,7 +35,7 @@ fun RoundedOutlineButton(
     Button(
         onClick = onClick,
         enabled = state != RoundedButtonState.DISABLED,
-        colors = ButtonDefaults.buttonColors(Color.White),
+        colors = ButtonDefaults.buttonColors(Color.Transparent),
         shape = RoundedCornerShape(20.dp),
         contentPadding = PaddingValues(
             start = 20.dp,
