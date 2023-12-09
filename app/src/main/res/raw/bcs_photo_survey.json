@@ -1,0 +1,13 @@
+{
+  "questionType": "BcsPhoto",
+  "questions": [
+    {
+      "fieldName": "photo",
+      "order": 1,
+      "description": "사진을 입력해주세요",
+      "responseType": "Photo",
+      "responseSuffix": "",
+      "selections": []
+    }
+  ]
+}

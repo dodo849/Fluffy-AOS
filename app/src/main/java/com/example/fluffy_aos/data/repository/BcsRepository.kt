@@ -11,6 +11,11 @@ class BcsRepository(
     private val jsonParser: JsonParser<SurveyModel> = JsonParser(),
     private val dbManager: DbManager = DbManager
 ) {
+
+    fun getBcsPhotoSurvey(): SurveyModel? {
+        val jsonString = jsonReader.readJsonFile("bcs_photo_survey")
+        return jsonParser.parse(jsonString, SurveyModel::class.java)
+    }
     fun getBcsSurvey(): SurveyModel? {
         val jsonString = jsonReader.readJsonFile("bcs_survey")
         return jsonParser.parse(jsonString, SurveyModel::class.java)

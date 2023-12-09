@@ -12,6 +12,7 @@ import com.example.fluffy_aos.ui.common.funnel.Funnel
 import com.example.fluffy_aos.ui.common.funnel.Step
 import com.example.fluffy_aos.ui.common.survey.component.DropdownQuestionCard
 import com.example.fluffy_aos.ui.common.survey.component.NumericQuestionCard
+import com.example.fluffy_aos.ui.common.survey.component.PhotoQuestionCard
 import com.example.fluffy_aos.ui.common.survey.component.SelectionQuestionCard
 import com.example.fluffy_aos.ui.common.survey.component.StringQuestionCard
 import com.example.fluffy_aos.ui.common.survey.display_model.QuestionDisplayModel
@@ -116,6 +117,14 @@ private fun getStepContent(
                 options = question.selections.map { it.description },
                 order = orderType,
                 initialSelected = (value.toString().toIntOrNull() ?: 0),
+                onClickPreviousButton = onClickPreviousButton,
+                onClickNextButton = onClickNextButton,
+            )
+        }
+        "Photo" -> {
+            PhotoQuestionCard(
+                question = QUESTION_DESCRIPTION,
+                order = orderType,
                 onClickPreviousButton = onClickPreviousButton,
                 onClickNextButton = onClickNextButton,
             )

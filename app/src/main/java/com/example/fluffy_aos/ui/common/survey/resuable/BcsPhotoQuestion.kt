@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.home.sub_page.bcs_survey.component
+package com.example.fluffy_aos.ui.common.survey.resuable
 
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult

@@ -30,6 +30,7 @@ import com.example.fluffy_aos.ui.post.view_model.PostViewModel
 import com.example.fluffy_aos.ui.record.RecordView
 import com.example.fluffy_aos.ui.record.view_model.RecordViewModel
 import com.example.fluffy_aos.ui.setting.SettingView
+import com.example.fluffy_aos.ui.setting.sub_page.PhotoTestSurvey
 import com.example.fluffy_aos.ui.setting.sub_page.my_pets.MyPetsView
 import com.example.fluffy_aos.ui.setting.sub_page.my_pets.view_model.MyPetsViewModel
 import com.example.fluffy_aos.util.JsonReader
@@ -91,6 +92,7 @@ class MainActivity : ComponentActivity() {
             composable("record") { RecordView(RecordViewModel(PetRepository())) }
             composable("post") { PostView(PostViewModel()) }
             composable("setting") { SettingView() }
+            composable("photo_test") { PhotoTestSurvey() } // FIXME: 테스트 후 삭제
 
             composable("bcs_survey") {
                 BcsSurveyView(

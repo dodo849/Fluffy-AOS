@@ -34,8 +34,11 @@ fun SettingView() {
             items = listOf(
                 Pair("내 반려동물들", "my_pets"),
                 Pair("설정", "setting_detail"),
+                Pair("사진 테스트", "photo_test"),
             )
         )
+
+
     }
 
 //
