@@ -5,6 +5,9 @@ import com.example.fluffy_aos.data.db.DbManager
 import com.example.fluffy_aos.model.question.SurveyModel
 import com.example.fluffy_aos.util.JsonParser
 import com.example.fluffy_aos.util.JsonReader
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class BcsRepository(
     private val jsonReader: JsonReader = JsonReader,
@@ -16,82 +19,79 @@ class BcsRepository(
         val jsonString = jsonReader.readJsonFile("bcs_photo_survey")
         return jsonParser.parse(jsonString, SurveyModel::class.java)
     }
+
     fun getBcsSurvey(): SurveyModel? {
         val jsonString = jsonReader.readJsonFile("bcs_survey")
         return jsonParser.parse(jsonString, SurveyModel::class.java)
     }
 
-    fun readAllBcs(): Map<String, Any> {
-        val bcsMap = mutableMapOf<String, Any>()
+    fun readBcsByPet(petId: Long): Map<Date, Map<String, String>> {
+        val bcsMaps = mutableMapOf<Date, Map<String, String>>()
         val db = dbManager.getWritableDatabase()
 
         db.use {
             val cursor = it.query(
                 "bcs",
                 null,
-                null,
-                null,
+                "pet_id = ?",
+                arrayOf(petId.toString()),
                 null,
                 null,
                 null
             )
 
+
             cursor?.use { cursor ->
                 while (cursor.moveToNext()) {
-                    val id = cursor.getLong(cursor.getColumnIndexOrThrow("_id"))
-                    val weight = cursor.getDouble(cursor.getColumnIndexOrThrow("weight"))
-                    val shoulderHeight = cursor.getDouble(cursor.getColumnIndexOrThrow("shoulder_height"))
-                    val neckSize = cursor.getDouble(cursor.getColumnIndexOrThrow("neck_size"))
-                    val backLength = cursor.getDouble(cursor.getColumnIndexOrThrow("back_length"))
-                    val chestSize = cursor.getDouble(cursor.getColumnIndexOrThrow("chest_size"))
-                    val exerciseSelection = cursor.getInt(cursor.getColumnIndexOrThrow("exercise_selection"))
-                    val environmentSelection = cursor.getInt(cursor.getColumnIndexOrThrow("environment_selection"))
-                    val bowelCondition = cursor.getDouble(cursor.getColumnIndexOrThrow("bowel_condition"))
-                    val foodCount = cursor.getInt(cursor.getColumnIndexOrThrow("food_count"))
-                    val foodAmount = cursor.getDouble(cursor.getColumnIndexOrThrow("food_amount"))
-                    val snackAmount = cursor.getDouble(cursor.getColumnIndexOrThrow("snack_amount"))
-                    val foodKind = cursor.getInt(cursor.getColumnIndexOrThrow("food_kind"))
+                    val date = parseDate(cursor.getString(cursor.getColumnIndexOrThrow("date")))
+                    val fieldName = cursor.getString(cursor.getColumnIndexOrThrow("field_name"))
+                    val value = cursor.getString(cursor.getColumnIndexOrThrow("value"))
 
-                    bcsMap["_id"] = id
-                    bcsMap["weight"] = weight
-                    bcsMap["shoulder-height"] = shoulderHeight
-                    bcsMap["neck-size"] = neckSize
-                    bcsMap["back-length"] = backLength
-                    bcsMap["chest-size"] = chestSize
-                    bcsMap["exercise-selection"] = exerciseSelection
-                    bcsMap["environment-selection"] = environmentSelection
-                    bcsMap["bowel-condition"] = bowelCondition
-                    bcsMap["food-count"] = foodCount
-                    bcsMap["food-amount"] = foodAmount
-                    bcsMap["snack-amount"] = snackAmount
-                    bcsMap["food-kind"] = foodKind
+                    val existingMap = bcsMaps[date]?.toMutableMap()
+                    if (existingMap == null) {
+                        // 해당 날짜에 대한 맵이 없으면 새로 생성하여 값 추가
+                        val newMap = mutableMapOf(fieldName to value)
+                        bcsMaps[date] = newMap
+                    } else {
+                        // 이미 해당 날짜에 대한 맵이 있으면 기존 맵에 값 추가
+                        existingMap[fieldName] = value
+                    }
                 }
             }
         }
 
-        return bcsMap
+        return bcsMaps.toMap()
     }
 
-    fun insertBcs(result: Map<String, Any>): Long {
+    fun saveBcs(petId: Long, bcs: Map<String, Any>): Long {
         val db = dbManager.getWritableDatabase()
 
+        val currentDate = getCurrentDate()
+
         val values = ContentValues().apply {
-            put("weight", (result["weight"] as? Double) ?: 0.0)
-            put("shoulder_height", (result["shoulder-height"] as? Double) ?: 0.0)
-            put("neck_size", (result["neck-size"] as? Double) ?: 0.0)
-            put("back_length", (result["back-length"] as? Double) ?: 0.0)
-            put("chest_size", (result["chest-size"] as? Double) ?: 0.0)
-            put("exercise_selection", (result["exercise"] as? Int) ?: 0)
-            put("environment_selection", (result["environment"] as? Int) ?: 0)
-            put("bowel_condition", (result["bowel-condition"] as? Double) ?: 0.0)
-            put("food_count", (result["food-count"] as? Int) ?: 0)
-            put("food_amount", (result["food-amount"] as? Double) ?: 0.0)
-            put("snack_amount", (result["snack-amount"] as? Double) ?: 0.0)
-            put("food_kind", (result["food-kind"] as? Int) ?: 0)
+            put("pet_id", petId)
+            put("date", currentDate)
+            bcs.forEach { (key, value) ->
+                put(key, value.toString())
+            }
         }
-
-
-        return db.insert("pet", null, values)
+        return db.insert("bcs", null, values)
     }
 
+    private fun getCurrentDate(): String {
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        return sdf.format(Date())
+    }
+
+    private fun parseDate(dateString: String): Date {
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        return sdf.parse(dateString) ?: Date()
+    }
 }
+
+//"_id integer primary key autoincrement," +
+//"pet_id integer," +
+//"date text," +
+//"field_name text," +
+//"value text" +
+//");"

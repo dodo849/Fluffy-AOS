@@ -27,7 +27,6 @@ fun PhotoField(
 
     val launcher =
         rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-            val bitmap = uri?.let { /* 이미지를 비트맵으로 변환하는 로직을 추가하세요 */ }
             println("uri = ${uri}")
             onChangeValue(uri ?: Uri.EMPTY)
         }

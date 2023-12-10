@@ -20,6 +20,7 @@ import java.nio.ByteOrder;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 
+/// 추론하는법: https://www.tensorflow.org/lite/guide/inference?hl=ko
 public class TfliteSample{
     private static final String MODEL_PATH = "your_model.tflite"; // 모델 파일 경로
     private static final int IMAGE_SIZE = 224; // 모델의 입력 크기에 맞게 조정

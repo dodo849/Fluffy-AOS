@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -60,8 +61,8 @@ fun Header(
         }
 
         Icon(
-            imageVector = Icons.Outlined.Notifications,
-            contentDescription = "알림",
+            imageVector = Icons.Outlined.Settings,
+            contentDescription = "반려동물 설정",
             modifier = Modifier.size(30.dp)
         )
     }
