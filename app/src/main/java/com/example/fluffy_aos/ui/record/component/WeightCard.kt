@@ -29,10 +29,13 @@ import com.patrykandpatrick.vico.core.entry.entryModelOf
 import com.patrykandpatrick.vico.core.marker.Marker
 
 @Composable
-fun WeightCard() {
+fun WeightCard(weightList: List<Double>) {
+
+    val lastWeight = weightList.lastOrNull() ?: 0.0
+
     Card(backgroundColor = Color.White) {
         Column(verticalArrangement = Arrangement.spacedBy(7.dp)) {
-            WeightCardHeader("10.6kg")
+            WeightCardHeader(lastWeight.toString())
             WeightGraph()
 //            Image(
 //                painter = painterResource(id = R.drawable.weight_graph),

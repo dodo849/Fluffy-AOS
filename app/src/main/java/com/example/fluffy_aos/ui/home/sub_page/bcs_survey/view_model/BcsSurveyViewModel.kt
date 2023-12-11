@@ -1,6 +1,7 @@
 package com.example.fluffy_aos.ui.home.sub_page.bcs_survey.view_model
 
 import androidx.lifecycle.ViewModel
+import com.example.fluffy_aos.data.db.PreferencesManager
 import com.example.fluffy_aos.data.repository.BcsRepository
 import com.example.fluffy_aos.model.question.QuestionModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -9,7 +10,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 class BcsSurveyViewModel(
-    private val bcsRepository: BcsRepository
+    private val bcsRepository: BcsRepository,
+    private val preferencesManager: PreferencesManager = PreferencesManager,
 ): ViewModel() {
 
     private val _questions = MutableStateFlow<List<QuestionModel>>(emptyList())
@@ -34,6 +36,7 @@ class BcsSurveyViewModel(
     }
 
     fun saveBcs(surveyResult: Map<String, Any>) {
-//        bcsRepository.insertBcs(surveyResult)
+        val petId = preferencesManager.getValue("petId", "0L").toLong()
+        bcsRepository.saveBcs(petId, surveyResult)
     }
 }

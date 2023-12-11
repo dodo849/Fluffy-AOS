@@ -41,7 +41,7 @@ fun RecordView(
 
     val navController = LocalNavController.current
 
-    val pet by viewModel.pet.collectAsState()
+    val weightList by viewModel.weightList.collectAsState()
 
     Column(
         verticalArrangement = Arrangement.spacedBy(15.dp),
@@ -55,7 +55,7 @@ fun RecordView(
         Header(backgroundColor = gray_background_deep)
 
         Text("체중", fontWeight = FontWeight.Bold, fontSize = 20.sp)
-        WeightCard()
+        WeightCard(weightList = weightList)
         Spacer(modifier = Modifier.padding(5.dp))
 
         BcsRecordCard()

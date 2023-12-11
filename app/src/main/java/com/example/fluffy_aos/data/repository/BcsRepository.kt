@@ -54,6 +54,7 @@ class BcsRepository(
                     } else {
                         // 이미 해당 날짜에 대한 맵이 있으면 기존 맵에 값 추가
                         existingMap[fieldName] = value
+                        bcsMaps[date] = existingMap
                     }
                 }
             }
@@ -62,19 +63,20 @@ class BcsRepository(
         return bcsMaps.toMap()
     }
 
-    fun saveBcs(petId: Long, bcs: Map<String, Any>): Long {
+    fun saveBcs(petId: Long, bcs: Map<String, Any>) {
         val db = dbManager.getWritableDatabase()
 
         val currentDate = getCurrentDate()
 
-        val values = ContentValues().apply {
-            put("pet_id", petId)
-            put("date", currentDate)
-            bcs.forEach { (key, value) ->
-                put(key, value.toString())
+        bcs.forEach() { (key, value) ->
+            val values = ContentValues().apply {
+                put("pet_id", petId)
+                put("date", currentDate)
+                put("field_name", key)
+                put("value", value.toString())
             }
+            db.insert("bcs", null, values)
         }
-        return db.insert("bcs", null, values)
     }
 
     private fun getCurrentDate(): String {
