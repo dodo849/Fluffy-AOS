@@ -1,7 +1,6 @@
 package com.example.fluffy_aos.ui.common.header
 
 import com.example.fluffy_aos.data.db.PreferencesManager
-import com.example.fluffy_aos.data.repository.BcsRepository
 import com.example.fluffy_aos.data.repository.PetRepository
 import com.example.fluffy_aos.model.pet.Pet
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,22 +13,37 @@ class HeaderViewModel(
     private val preferenceManager: PreferencesManager = PreferencesManager,
 ) {
 
-    private val _pet = MutableStateFlow<Pet>(Pet.getEmptyPet())
-    val pet: StateFlow<Pet> = _pet.asStateFlow()
+    private val _pets = MutableStateFlow<List<Pet>>(emptyList())
+    val pets: StateFlow<List<Pet>> = _pets.asStateFlow()
+
+    private val _currentPet = MutableStateFlow<Pet>(Pet.getEmptyPet())
+    val currentPet: StateFlow<Pet> = _currentPet.asStateFlow()
 
 
     init {
-        getPet()
+        getPets()
     }
 
-    private fun getPet() {
+    fun changeCurrentPet(selectedPetId: Long) {
+        preferenceManager.saveValue("petId", selectedPetId.toString())
+    }
 
+
+    private fun getPets() {
         val pets: List<Pet> = petRepository.readAllPets()
 
-        _pet.update { currentState ->
-            val latestPet = pets.lastOrNull()
-            println("Latest pet: $latestPet")
-            latestPet ?: currentState
+        _pets.update { currentState ->
+            pets
+        }
+
+        val currentPetId = preferenceManager.getValue("petId", "0").toLong()
+
+        _currentPet.update { currentState ->
+            if (currentPetId != 0L) {
+                pets.find { it.id == currentPetId } ?: currentState
+            } else {
+                currentState
+            }
         }
     }
 }

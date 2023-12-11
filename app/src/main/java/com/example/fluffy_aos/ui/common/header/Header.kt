@@ -3,9 +3,12 @@ package com.example.fluffy_aos.ui.common.header
 import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -31,6 +34,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.fluffy_aos.ui.theme.gray_background
+import com.example.fluffy_aos.ui.theme.gray_background_deep
+import com.example.fluffy_aos.ui.theme.page_padding
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -39,7 +44,8 @@ fun Header(
     backgroundColor: Color = gray_background
 ) {
 
-    val pet by viewModel.pet.collectAsState()
+    val currentPet by viewModel.currentPet.collectAsState()
+    val pets by viewModel.pets.collectAsState()
 
     val sheetState = rememberModalBottomSheetState()
     var isBottomSheetVisible by remember { mutableStateOf(false) }
@@ -61,12 +67,12 @@ fun Header(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
-                    pet.name,
+                    currentPet.name,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Black
                 )
                 Text(
-                    pet.breed,
+                    currentPet.breed,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal
                 )
@@ -90,13 +96,41 @@ fun Header(
                 },
                 sheetState = sheetState
             ) {
-                // Sheet content
-                Button(onClick = {
-//                    if (!isBottomSheetVisible.isVisible) {
-//                        showBottomSheet = false
-//                    }
-                }) {
-                    Text("Hide bottom sheet")
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier = Modifier
+                        .padding(page_padding)
+                ) {
+
+                    Text(
+                        "반려동물 선택",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    pets.forEach {
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(20.dp))
+                                .clickable(onClick = {
+                                    viewModel.changeCurrentPet(it.id)
+                                    isBottomSheetVisible = false
+                                })
+                                .background(gray_background_deep)
+                                .fillMaxWidth()
+                                .padding(20.dp)
+                        ) {
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                            ) {
+                            Text(it.name, fontWeight = FontWeight.Bold)
+                            Text(it.breed, fontWeight = FontWeight.Normal)
+                            }
+                        }
+
+                    }
+
+                    Spacer(modifier = Modifier.padding(20.dp))
                 }
             }
         }

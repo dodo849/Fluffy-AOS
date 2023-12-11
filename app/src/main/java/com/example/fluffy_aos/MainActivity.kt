@@ -55,7 +55,9 @@ class MainActivity : ComponentActivity() {
             CompositionLocalProvider(LocalNavController provides navController) {
                 MaterialTheme(
                     colorScheme = MaterialTheme.colorScheme.copy(
-                        primary = main_orange
+                        primary = main_orange,
+                        background = Color.White,
+                        surface = Color.White
                     )
                 ) {
                     Scaffold(

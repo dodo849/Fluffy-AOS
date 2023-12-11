@@ -23,7 +23,6 @@ class RecordViewModel(
     init {
         getPet()
     }
-
     private fun getPet() {
 
         val pets: List<Pet> = petRepository.readAllPets()
