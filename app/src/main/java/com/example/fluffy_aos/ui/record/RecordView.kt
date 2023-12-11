@@ -22,14 +22,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
+import com.example.fluffy_aos.data.repository.BcsRepository
 import com.example.fluffy_aos.data.repository.PetRepository
 import com.example.fluffy_aos.global.LocalNavController
+import com.example.fluffy_aos.ui.common.header.Header
 import com.example.fluffy_aos.ui.common.reusable.Card
-import com.example.fluffy_aos.ui.record.component.RecordHeader
 import com.example.fluffy_aos.ui.record.component.WeightCard
 import com.example.fluffy_aos.ui.record.view_model.RecordViewModel
 import com.example.fluffy_aos.ui.theme.FluffyAOSTheme
 import com.example.fluffy_aos.ui.theme.gray_background
+import com.example.fluffy_aos.ui.theme.gray_background_deep
 import com.example.fluffy_aos.ui.theme.main_orange
 
 @Composable
@@ -50,7 +52,7 @@ fun RecordView(
             .verticalScroll(rememberScrollState())
 
     ) {
-        RecordHeader(pet.name, pet.breed)
+        Header(backgroundColor = gray_background_deep)
 
         Text("체중", fontWeight = FontWeight.Bold, fontSize = 20.sp)
         WeightCard()
@@ -99,7 +101,7 @@ fun RecordViewPreview() {
     val navController = rememberNavController()
     CompositionLocalProvider(LocalNavController provides navController) {
         FluffyAOSTheme {
-            RecordView(RecordViewModel(PetRepository()))
+            RecordView(RecordViewModel(PetRepository(), BcsRepository()))
         }
     }
 }

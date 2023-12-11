@@ -40,7 +40,6 @@ class BcsRepository(
                 null
             )
 
-
             cursor?.use { cursor ->
                 while (cursor.moveToNext()) {
                     val date = parseDate(cursor.getString(cursor.getColumnIndexOrThrow("date")))

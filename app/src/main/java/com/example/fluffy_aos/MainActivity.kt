@@ -1,20 +1,24 @@
 package com.example.fluffy_aos
 
 import android.os.Bundle
+import android.preference.PreferenceManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.fluffy_aos.data.repository.BcsRepository
 import com.example.fluffy_aos.data.db.DbManager
+import com.example.fluffy_aos.data.db.PreferencesManager
 import com.example.fluffy_aos.data.repository.OnboardingRepository
 import com.example.fluffy_aos.data.repository.PetRepository
 import com.example.fluffy_aos.global.LocalNavController
@@ -33,6 +37,7 @@ import com.example.fluffy_aos.ui.setting.SettingView
 import com.example.fluffy_aos.ui.setting.sub_page.PhotoTestSurvey
 import com.example.fluffy_aos.ui.setting.sub_page.my_pets.MyPetsView
 import com.example.fluffy_aos.ui.setting.sub_page.my_pets.view_model.MyPetsViewModel
+import com.example.fluffy_aos.ui.theme.main_orange
 import com.example.fluffy_aos.util.JsonReader
 
 
@@ -42,12 +47,17 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setDatabase()
+        setPreferences()
         setJsonManager()
 
         setContent {
             val navController = rememberNavController()
             CompositionLocalProvider(LocalNavController provides navController) {
-                MaterialTheme {
+                MaterialTheme(
+                    colorScheme = MaterialTheme.colorScheme.copy(
+                        primary = main_orange
+                    )
+                ) {
                     Scaffold(
                         bottomBar = {
                             BottomNavigationBar()
@@ -78,6 +88,20 @@ class MainActivity : ComponentActivity() {
 //        }
     }
 
+    private fun setPreferences() {
+        PreferencesManager.init(this)
+
+        // 선택된 반려동물이 없으면 마지막 반려동물을 선택
+//        val petId = PreferencesManager.getValue("pet_id", "0").toLong()
+//        if (petId == 0L) {
+//            val pets = PetRepository().readAllPets()
+//            if (pets.isNotEmpty()) {
+//                val lastPet = pets.last()
+//                PreferencesManager.saveValue("pet_id", lastPet.id.toString())
+//            }
+//        }
+    }
+
     private fun setJsonManager() {
         JsonReader.init(this)
     }
@@ -89,7 +113,7 @@ class MainActivity : ComponentActivity() {
             startDestination = "home",
         ) {
             composable("home") { HomeView(HomeViewModel(PetRepository())) }
-            composable("record") { RecordView(RecordViewModel(PetRepository())) }
+            composable("record") { RecordView(RecordViewModel(PetRepository(), BcsRepository())) }
             composable("post") { PostView(PostViewModel()) }
             composable("setting") { SettingView() }
             composable("photo_test") { PhotoTestSurvey() } // FIXME: 테스트 후 삭제
