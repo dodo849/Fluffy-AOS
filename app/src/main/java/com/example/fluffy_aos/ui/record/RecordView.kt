@@ -59,6 +59,7 @@ fun RecordView(
 
         Text("체중", fontWeight = FontWeight.Bold, fontSize = 20.sp)
         WeightCard(weightList = weightList)
+
         Spacer(modifier = Modifier.padding(5.dp))
 
         BcsRecordCard(bcsLevel = bcsLevel)
@@ -85,10 +86,13 @@ fun BcsRecordCard(bcsLevel: BcsLevel) {
                         "BCS", fontWeight = FontWeight.Bold,
                         fontSize = 20.sp
                     )
-                    Text(
-                        "${bcsLevel.levelToNum()}단계", fontWeight = FontWeight.Bold, fontSize = 20.sp,
-                        color = main_orange
-                    )
+                    if (bcsLevel != BcsLevel.UNKNOWN) {
+                        Text(
+                            "${bcsLevel.levelToNum()}단계", fontWeight = FontWeight.Bold, fontSize = 20.sp,
+                            color = main_orange
+                        )
+                    }
+
                     Text(
                         ": ${bcsLevel.getKr()}", fontWeight = FontWeight.Bold, fontSize = 20.sp,
                         color = gray_text_light

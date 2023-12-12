@@ -52,7 +52,7 @@ class BcsSurveyViewModel(
         CoroutineScope(Dispatchers.IO).async {
             val result = PredictRepository().sendHttpPostRequest(predictDto)
             _bcsLevel.update {
-                BcsLevel.numToBcsLevel(result?.bcs ?: 1)
+                BcsLevel.numToBcsLevel(result?.bcs ?: 0)
             }
             preferencesManager.saveValue("bcs_level", result?.bcs.toString())
             println("bcs result = $result")

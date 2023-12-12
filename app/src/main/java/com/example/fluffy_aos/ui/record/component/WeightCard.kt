@@ -43,13 +43,18 @@ fun WeightCard(weightList: List<Pair<String, Double>>) {
 
     Card(backgroundColor = Color.White) {
         Column(verticalArrangement = Arrangement.spacedBy(7.dp)) {
-            WeightCardHeader(lastWeight.toString())
-            WeightGraph(
-                x = weightList.map {
-                    it.first
-                },
-                y = weightList.map { it.second }
-            )
+            if(weightList.isEmpty()) {
+                WeightCardHeader("-")
+                Text("체중 기록이 없습니다", color = gray_text_light)
+            } else {
+                WeightCardHeader(lastWeight.toString())
+                WeightGraph(
+                    x = weightList.map {
+                        it.first
+                    },
+                    y = weightList.map { it.second }
+                )
+            }
         }
     }
 }

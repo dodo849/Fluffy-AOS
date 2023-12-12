@@ -66,16 +66,24 @@ fun Header(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                Text(
-                    currentPet.name,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Black
-                )
-                Text(
-                    currentPet.breed,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Normal
-                )
+                if (currentPet.name.length == 0) {
+                    Text(
+                        "설정에서 반려동물을 등록해주세요",
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Normal
+                    )
+                } else {
+                    Text(
+                        currentPet.name,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Black
+                    )
+                    Text(
+                        currentPet.breed,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Normal
+                    )
+                }
             }
         }
 
@@ -107,6 +115,14 @@ fun Header(
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold
                     )
+
+                    if (pets.isEmpty()) {
+                        Text(
+                            "등록된 반려동물이 없습니다. 설정탭 > 내 반려동물들에서 반려동물을 등록해주세요.",
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Normal
+                        )
+                    }
 
                     pets.forEach {
                         Box(

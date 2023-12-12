@@ -1,6 +1,7 @@
 package com.example.fluffy_aos.model.bcs
 
 enum class BcsLevel {
+    UNKNOWN,
     LEVEL_1,
     LEVEL_2,
     LEVEL_3,
@@ -14,6 +15,7 @@ enum class BcsLevel {
     companion object {
         fun numToBcsLevel(num: Int): BcsLevel {
             return when (num) {
+                0 -> UNKNOWN
                 1 -> LEVEL_1
                 2 -> LEVEL_2
                 3 -> LEVEL_3
@@ -31,6 +33,7 @@ enum class BcsLevel {
 
     fun levelToNum(): Int {
         return when (this) {
+            UNKNOWN -> 0
             LEVEL_1 -> 1
             LEVEL_2 -> 2
             LEVEL_3 -> 3
@@ -45,6 +48,7 @@ enum class BcsLevel {
 
     fun getKr(): String {
         return when (this) {
+            UNKNOWN -> "진단 결과 없음"
             LEVEL_1 -> "마른 상태"
             LEVEL_2 -> "마른 상태"
             LEVEL_3 -> "약간 마른 상태"
@@ -59,6 +63,7 @@ enum class BcsLevel {
 
     fun getDescription(): String {
         return when (this) {
+            UNKNOWN -> "진단 결과가 없습니다. 홈 탭에서 BCS 진단을 진행해주세요!"
             LEVEL_1 -> "극심한 근육 손실이 있고, 뼈가 눈에 띄게 돌출되어 있을 것으로 예상됩니다. 건강 문제가 우려되므로 빠른 시일 내에 의료기관에 방문하는 것을 권장드립니다."
             LEVEL_2 -> "근육량이 적고, 뼈가 쉽게 만져지는 상태일 것으로 예상됩니다. 수의사와 상담하여 체중 증가를 위한 적절한 식단 계획이 필요합니다."
             LEVEL_3 -> "약간 마른 상태로 건강에 극심한 문제는 없을 것으로 예상되나, 현재보다 체중을 증량하는 것이 반려동물의 건강에 도움이 될 것으로 보입니다."
@@ -73,6 +78,7 @@ enum class BcsLevel {
 
     fun getImoji(): String {
         return when (this) {
+            UNKNOWN -> ""
             LEVEL_1 -> "‼️"
             LEVEL_2 -> "❗️"
             LEVEL_3 -> "⚠️"

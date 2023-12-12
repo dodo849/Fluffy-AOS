@@ -33,16 +33,26 @@ class RecordViewModel(
     }
 
     private fun getBcsLevel() {
-        val bcsLevel = preferenceManager.getValue("bcs_level", "1").toInt()
-        _bcsLevel.update {
-            BcsLevel.numToBcsLevel(bcsLevel)
+        if (bcsSurveyList.isEmpty()) {
+            _bcsLevel.update {
+                BcsLevel.UNKNOWN
+            }
+        } else {
+            val bcsLevel = preferenceManager.getValue("bcs_level", "-1").toInt()
+            _bcsLevel.update {
+                BcsLevel.numToBcsLevel(bcsLevel)
+            }
         }
+
     }
 
-
     private fun getBcs() {
-        val petId = preferenceManager.getValue("petId", "0L").toLong()
-        bcsSurveyList = bcsRepository.readBcsByPet(petId = petId)
+        val petId = preferenceManager.getValue("petId", "-1L").toLong()
+        if (petId == -1L) {
+            bcsSurveyList = emptyMap()
+        } else {
+            bcsSurveyList = bcsRepository.readBcsByPet(petId = petId)
+        }
     }
 
     private fun getWeight() {

@@ -23,19 +23,12 @@ android {
 
         python {
             version "3.8"
-            pip {
-                install "pandas"
-                install "tensorflow"
-            }
+//            pip {
+//                install "pandas"
+//                install "tensorflow"
+//            }
             extractPackages "main"
         }
-
-//        sourceSets {
-//            main {
-//                python.srcDir "app/src/main/java/com/example/fluffy_aos/ai"
-//                python.srcDir "app/src/python"
-//            }
-//        }
     }
 
     buildTypes {
