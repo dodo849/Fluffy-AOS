@@ -38,7 +38,7 @@ fun SurveyView(
     Column {
         Funnel(
             steps = questions.mapIndexed { index, question ->
-                val questionOrderType = QuestionOrderType.from(index+1, questions.size)
+                val questionOrderType = QuestionOrderType.from(index + 1, questions.size)
                 Step(
                     name = question.fieldName
                 ) { onChangeStep ->
@@ -92,6 +92,7 @@ private fun getStepContent(
                 onClickPreviousButton = onClickPreviousButton,
                 onClickNextButton = onClickNextButton,
             )
+
         "Selection" -> {
             SelectionQuestionCard(
                 question = QUESTION_DESCRIPTION,
@@ -102,6 +103,7 @@ private fun getStepContent(
                 onClickNextButton = onClickNextButton,
             )
         }
+
         "String" -> {
             StringQuestionCard(
                 question = QUESTION_DESCRIPTION,
@@ -111,6 +113,7 @@ private fun getStepContent(
                 onClickNextButton = onClickNextButton,
             )
         }
+
         "Dropdown" -> {
             DropdownQuestionCard(
                 question = QUESTION_DESCRIPTION,
@@ -121,6 +124,7 @@ private fun getStepContent(
                 onClickNextButton = onClickNextButton,
             )
         }
+
         "Photo" -> {
             PhotoQuestionCard(
                 question = QUESTION_DESCRIPTION,

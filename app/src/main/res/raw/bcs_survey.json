@@ -171,6 +171,30 @@
           "description": "사람 음식 위주"
         }
       ]
+    },
+    {
+      "fieldName": "photo-1",
+      "order": 12,
+      "description": "반려동물을 정면에서 찍은 사진을 올려주세요",
+      "responseType": "Photo",
+      "responseSuffix": "",
+      "selections" : []
+    },
+    {
+      "fieldName": "photo-2",
+      "order": 13,
+      "description": "반려동물을 측면에서 찍은 사진을 올려주세요",
+      "responseType": "Photo",
+      "responseSuffix": "",
+      "selections" : []
+    },
+    {
+      "fieldName": "photo-3",
+      "order": 14,
+      "description": "반려동물을 후면에서 찍은 사진을 올려주세요",
+      "responseType": "Photo",
+      "responseSuffix": "",
+      "selections" : []
     }
   ]
 }

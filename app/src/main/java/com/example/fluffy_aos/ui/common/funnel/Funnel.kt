@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import com.patrykandpatrick.vico.core.extension.setFieldValue
 
@@ -13,7 +14,7 @@ import com.patrykandpatrick.vico.core.extension.setFieldValue
 fun Funnel(
     steps: List<Step>
 ) {
-    var currentStep by remember { mutableStateOf(steps[0].name) }
+    var currentStep by rememberSaveable { mutableStateOf(steps[0].name) }
 
     Crossfade(
         targetState = currentStep, animationSpec = tween(durationMillis = 500),

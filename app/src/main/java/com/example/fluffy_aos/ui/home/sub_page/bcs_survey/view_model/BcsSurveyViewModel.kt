@@ -74,6 +74,10 @@ class BcsSurveyViewModel(
         mutableSurvey["sex"] = petConverter.descriptionToOrder("sex", pet?.sex ?: "")
         mutableSurvey["group"] = 1
 
+        mutableSurvey.remove("photo-1")
+        mutableSurvey.remove("photo-2")
+        mutableSurvey.remove("photo-3")
+
         val predictItem = mutableSurvey.map {
             PredictItem(
                 fieldName = it.key,
