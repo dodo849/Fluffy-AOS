@@ -40,6 +40,7 @@ class RecordViewModel(
         val newWeightList = bcsSurveyList.map() { (date, bcsSurvey) ->
             val dateFormat = SimpleDateFormat("M/d")
             val formattedDate = dateFormat.format(date)
+//            val formattedDate = date.day.toInt()
             Pair(formattedDate, bcsSurvey["weight"]?.toDouble() ?: 0.0)
         }
 

@@ -1,5 +1,7 @@
 package com.example.fluffy_aos.ui.record.component
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,11 +24,17 @@ import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
 import com.patrykandpatrick.vico.compose.chart.Chart
 import com.patrykandpatrick.vico.compose.chart.line.lineChart
 import com.patrykandpatrick.vico.compose.chart.line.lineSpec
+import com.patrykandpatrick.vico.core.axis.AxisPosition
+import com.patrykandpatrick.vico.core.axis.formatter.AxisValueFormatter
 import com.patrykandpatrick.vico.core.axis.formatter.DecimalFormatAxisValueFormatter
 import com.patrykandpatrick.vico.core.axis.vertical.VerticalAxis
 import com.patrykandpatrick.vico.core.chart.values.AxisValuesOverrider
 import com.patrykandpatrick.vico.core.entry.entryModelOf
 import com.patrykandpatrick.vico.core.marker.Marker
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Date
 
 @Composable
 fun WeightCard(weightList: List<Pair<String, Double>>) {
@@ -37,7 +45,9 @@ fun WeightCard(weightList: List<Pair<String, Double>>) {
         Column(verticalArrangement = Arrangement.spacedBy(7.dp)) {
             WeightCardHeader(lastWeight.toString())
             WeightGraph(
-                x = weightList.map { it.first },
+                x = weightList.map {
+                    it.first
+                },
                 y = weightList.map { it.second }
             )
 //            Image(
@@ -73,7 +83,7 @@ private fun WeightCardHeader(weight: String) {
             )
         }
         Text(
-            weight,
+            "${weight}kg",
             fontWeight = FontWeight.Bold,
             fontSize = 34.sp
         )
@@ -82,16 +92,28 @@ private fun WeightCardHeader(weight: String) {
 
 private val markerMap: Map<Float, Marker>
     @Composable get() = mapOf(
+        0f to rememberMarker(),
+        1f to rememberMarker(),
+        2f to rememberMarker(),
+        3f to rememberMarker(),
         4f to rememberMarker(),
         5f to rememberMarker(),
-        6f to rememberMarker(),
-        7f to rememberMarker()
     )
 
+
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 private fun WeightGraph(x: List<String>, y: List<Double>) {
 
-    val chartEntryModel = entryModelOf(Pair(4, 6.5f), Pair(5, 8.1f), Pair(6, 7.3f), Pair(7, 6.9f))
+    val chartEntryModel = entryModelOf(*y.mapIndexed { index, value ->
+        if (index <= 5) {
+            Pair(index, value.toFloat())
+        } else {
+            null
+        }
+    }.filterNotNull().toTypedArray())
+
+//    val chartEntryModel = entryModelOf(Pair(4, 6.5f), Pair(5, 8.1f), Pair(6, 7.3f), Pair(7, 6.9f))
 
     Chart(
         chart = lineChart(
@@ -114,7 +136,9 @@ private fun WeightGraph(x: List<String>, y: List<Double>) {
         ),
         bottomAxis = rememberBottomAxis(
             guideline = axisGuidelineComponent(thickness = 0.dp),
-            valueFormatter = DecimalFormatAxisValueFormatter("#"),
+            valueFormatter = AxisValueFormatter() { value, _ ->
+                x[value.toInt()]
+            }
         ),
     )
 
