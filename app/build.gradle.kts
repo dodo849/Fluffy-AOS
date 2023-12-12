@@ -1,7 +1,10 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.chaquo.python")
 }
+
+apply(mapOf("plugin" to "com.chaquo.python"))
 
 android {
     namespace = "com.example.fluffy_aos"
@@ -18,7 +21,13 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        ndk {
+            abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+        }
     }
+
+
 
     buildTypes {
         release {
@@ -49,6 +58,17 @@ android {
     }
 }
 
+//tasks.withType<com.chaquo.python.PythonTask>().configureEach {
+//    // Python 환경 설정
+//    setBuildPython("C:/Python/Python39/python.exe")
+//
+//    // 필요한 Python 패키지 설치
+//    pip {
+//        install("numpy")
+//        install("pandas")
+//    }
+//}
+
 dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
@@ -65,7 +85,9 @@ dependencies {
     implementation("com.patrykandpatrick.vico:views:1.13.0")
     implementation("com.patrykandpatrick.vico:compose:1.13.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
-    implementation("org.tensorflow:tensorflow-lite-support:0.3.0")
+//    implementation("org.tensorflow:tensorflow-lite-support:0.3.0")
+//    implementation("com.chaquo.python:python-standalone:5.2.0")
+
 
     testImplementation("junit:junit:4.13.2")
 

@@ -29,14 +29,17 @@ import com.patrykandpatrick.vico.core.entry.entryModelOf
 import com.patrykandpatrick.vico.core.marker.Marker
 
 @Composable
-fun WeightCard(weightList: List<Double>) {
+fun WeightCard(weightList: List<Pair<String, Double>>) {
 
-    val lastWeight = weightList.lastOrNull() ?: 0.0
+    val lastWeight = weightList.lastOrNull()?.second ?: 0.0
 
     Card(backgroundColor = Color.White) {
         Column(verticalArrangement = Arrangement.spacedBy(7.dp)) {
             WeightCardHeader(lastWeight.toString())
-            WeightGraph()
+            WeightGraph(
+                x = weightList.map { it.first },
+                y = weightList.map { it.second }
+            )
 //            Image(
 //                painter = painterResource(id = R.drawable.weight_graph),
 //                contentDescription = "Dog and Cat",
@@ -86,7 +89,8 @@ private val markerMap: Map<Float, Marker>
     )
 
 @Composable
-private fun WeightGraph() {
+private fun WeightGraph(x: List<String>, y: List<Double>) {
+
     val chartEntryModel = entryModelOf(Pair(4, 6.5f), Pair(5, 8.1f), Pair(6, 7.3f), Pair(7, 6.9f))
 
     Chart(
@@ -110,7 +114,7 @@ private fun WeightGraph() {
         ),
         bottomAxis = rememberBottomAxis(
             guideline = axisGuidelineComponent(thickness = 0.dp),
-            valueFormatter = DecimalFormatAxisValueFormatter("#월"),
+            valueFormatter = DecimalFormatAxisValueFormatter("#"),
         ),
     )
 
