@@ -12,7 +12,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -21,7 +20,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.fluffy_aos.global.LocalNavController
 import com.example.fluffy_aos.global.LocalNavControllerProvider
 import com.example.fluffy_aos.ui.post.component.PostCards
 import com.example.fluffy_aos.ui.post.view_model.PostViewModel
@@ -30,7 +28,7 @@ import com.example.fluffy_aos.ui.theme.FluffyAOSTheme
 @Composable
 fun PostView(viewModel: PostViewModel) {
 //    val navController = LocalNavController.current
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.post.collectAsState()
 
     Column(
         verticalArrangement = Arrangement.spacedBy(15.dp),
@@ -55,7 +53,7 @@ fun PostView(viewModel: PostViewModel) {
             }
         }
 
-        PostCards(state.posts)
+        PostCards(state.posts, viewModel)
 
         Spacer(modifier = Modifier.height(50.dp))
 

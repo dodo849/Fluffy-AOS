@@ -18,6 +18,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.chaquo.python.Python
 import com.chaquo.python.android.AndroidPlatform
 import com.example.fluffy_aos.ai.ModelManager
@@ -35,6 +36,7 @@ import com.example.fluffy_aos.ui.home.view_model.HomeViewModel
 import com.example.fluffy_aos.ui.onboarding_survey.OnboardingSurveyView
 import com.example.fluffy_aos.ui.onboarding_survey.view_model.OnboardingSurveyViewModel
 import com.example.fluffy_aos.ui.post.PostView
+import com.example.fluffy_aos.ui.post.sub_page.post_detail.PostDetailView
 import com.example.fluffy_aos.ui.post.view_model.PostViewModel
 import com.example.fluffy_aos.ui.record.RecordView
 import com.example.fluffy_aos.ui.record.view_model.RecordViewModel
@@ -148,6 +150,9 @@ class MainActivity : ComponentActivity() {
             }
             composable("my_pets") {
                 MyPetsView(MyPetsViewModel(PetRepository()))
+            }
+            composable("post_detail") {
+                PostDetailView(PostViewModel())
             }
         }
     }
