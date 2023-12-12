@@ -67,7 +67,7 @@ class BcsSurveyViewModel(
 
         val petConverter = PetConverter()
 
-        mutableSurvey["species"] =  petConverter.descriptionToOrder("species", pet?.species ?: "")
+//        mutableSurvey["species"] =  petConverter.descriptionToOrder("species", pet?.species ?: "") // 현재 반려견만 지원
         mutableSurvey["breed"] = petConverter.descriptionToOrder("breed", pet?.breed ?: "")
         mutableSurvey["class"] = petConverter.descriptionToOrder("furType", pet?.furType ?: "")
         mutableSurvey["age"] = pet?.age ?: ""

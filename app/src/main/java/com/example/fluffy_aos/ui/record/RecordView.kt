@@ -55,7 +55,9 @@ fun RecordView(
             .verticalScroll(rememberScrollState())
 
     ) {
-        Header(backgroundColor = gray_background_deep)
+        Header(backgroundColor = gray_background_deep, onPetChange = {
+            viewModel.onPetChange()
+        })
 
         Text("체중", fontWeight = FontWeight.Bold, fontSize = 20.sp)
         WeightCard(weightList = weightList)
@@ -88,7 +90,9 @@ fun BcsRecordCard(bcsLevel: BcsLevel) {
                     )
                     if (bcsLevel != BcsLevel.UNKNOWN) {
                         Text(
-                            "${bcsLevel.levelToNum()}단계", fontWeight = FontWeight.Bold, fontSize = 20.sp,
+                            "${bcsLevel.levelToNum()}단계",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 20.sp,
                             color = main_orange
                         )
                     }
@@ -97,9 +101,17 @@ fun BcsRecordCard(bcsLevel: BcsLevel) {
                         ": ${bcsLevel.getKr()}", fontWeight = FontWeight.Bold, fontSize = 20.sp,
                         color = gray_text_light
                     )
+
                 }
                 Spacer(modifier = Modifier.padding(3.dp))
                 Text(bcsLevel.getDescription())
+
+                Spacer(modifier = Modifier.padding(8.dp))
+                Text(
+                    "* 플러피의 진단결과는 참고용으로만 활용하시고, 정확한 진단은 수의사와 상담하시길 바랍니다.",
+                    fontWeight = FontWeight.Bold, fontSize = 13.sp,
+                    color = gray_text_light
+                )
             }
         }
     }

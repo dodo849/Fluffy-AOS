@@ -135,7 +135,7 @@
     {
       "fieldName": "food-amount",
       "order": 10,
-      "description": "1회 식사량은 어느정도인가요? (1회 식사량을 종이컵 기준으로 소수점 입력)",
+      "description": "1회 식사량은 어느정도인가요? (1회 식사량을 종이컵 기준으로 입력)",
       "responseType": "Real",
       "responseSuffix": "",
       "selections" : []

@@ -41,7 +41,8 @@ import com.example.fluffy_aos.ui.theme.page_padding
 @Composable
 fun Header(
     viewModel: HeaderViewModel = HeaderViewModel(),
-    backgroundColor: Color = gray_background
+    backgroundColor: Color = gray_background,
+    onPetChange: () -> Unit = {}
 ) {
 
     val currentPet by viewModel.currentPet.collectAsState()
@@ -131,6 +132,7 @@ fun Header(
                                 .clickable(onClick = {
                                     viewModel.changeCurrentPet(it.id)
                                     isBottomSheetVisible = false
+                                    onPetChange()
                                 })
                                 .background(gray_background_deep)
                                 .fillMaxWidth()

@@ -32,6 +32,12 @@ class RecordViewModel(
         getBcsLevel()
     }
 
+    fun onPetChange() {
+        getBcs()
+        getWeight()
+        getBcsLevel()
+    }
+
     private fun getBcsLevel() {
         if (bcsSurveyList.isEmpty()) {
             _bcsLevel.update {
