@@ -25,7 +25,7 @@ import com.example.fluffy_aos.ui.theme.main_orange
 import kotlinx.coroutines.delay
 
 @Composable
-fun BcsDiagnosisLoadingView(goNextPage: () -> Unit = {}) {
+fun BcsLoadingPage(goNextPage: () -> Unit = {}) {
     var progressVisible by remember { mutableStateOf(true) }
 
     Card {

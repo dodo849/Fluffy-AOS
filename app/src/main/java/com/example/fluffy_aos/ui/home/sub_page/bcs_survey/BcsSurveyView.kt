@@ -20,7 +20,11 @@ import com.example.fluffy_aos.ui.common.funnel.Funnel
 import com.example.fluffy_aos.ui.common.funnel.Step
 import com.example.fluffy_aos.ui.common.survey.SurveyView
 import com.example.fluffy_aos.ui.common.reusable.BackButton
+import com.example.fluffy_aos.ui.home.sub_page.bcs_survey.component.BcsLoadingPage
 import com.example.fluffy_aos.ui.home.sub_page.bcs_survey.component.BcsResultPage
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 
 @Composable
 fun BcsSurveyView(
@@ -50,9 +54,16 @@ fun BcsSurveyView(
                         questions = questions.map { it.mapToDisplayModel() },
                         onSubmit = {
                             viewModel.saveBcs(it)
-                            onChangeStep("result")
+                            onChangeStep("loading")
                         }
                     )
+                },
+                Step(
+                    name = "loading",
+                ) {onChangeStep ->
+                    BcsLoadingPage {
+                        onChangeStep("result")
+                    }
                 },
                 Step(
                     name = "result"

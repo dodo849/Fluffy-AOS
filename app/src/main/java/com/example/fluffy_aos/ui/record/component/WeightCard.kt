@@ -50,15 +50,7 @@ fun WeightCard(weightList: List<Pair<String, Double>>) {
                 },
                 y = weightList.map { it.second }
             )
-//            Image(
-//                painter = painterResource(id = R.drawable.weight_graph),
-//                contentDescription = "Dog and Cat",
-//                modifier = Modifier
-//                    .size(400.dp, 240.dp)
-//                    .align(Alignment.CenterHorizontally)
-//            )
         }
-
     }
 }
 
@@ -101,19 +93,12 @@ private val markerMap: Map<Float, Marker>
     )
 
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 private fun WeightGraph(x: List<String>, y: List<Double>) {
 
-    val chartEntryModel = entryModelOf(*y.mapIndexed { index, value ->
-        if (index <= 5) {
-            Pair(index, value.toFloat())
-        } else {
-            null
-        }
+    val chartEntryModel = entryModelOf(*y.takeLast(6).mapIndexed { index, value ->
+        Pair(index, value.toFloat())
     }.filterNotNull().toTypedArray())
-
-//    val chartEntryModel = entryModelOf(Pair(4, 6.5f), Pair(5, 8.1f), Pair(6, 7.3f), Pair(7, 6.9f))
 
     Chart(
         chart = lineChart(
