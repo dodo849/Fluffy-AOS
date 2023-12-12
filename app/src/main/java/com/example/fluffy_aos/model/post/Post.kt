@@ -1,6 +1,7 @@
 package com.example.fluffy_aos.model.post
 
 data class Post(
+    val id: Long,
     val title: String,
     val subTitle: String,
     val imageUrl: String,

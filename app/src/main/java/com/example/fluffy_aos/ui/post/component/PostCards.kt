@@ -22,15 +22,14 @@ import com.example.fluffy_aos.ui.post.view_model.PostViewModel
 
 @Composable
 fun PostCards(postsSections: List<PostsSection>) {
-    postsSections.forEachIndexed() { index, it ->
-        PostCardsRow(it, index)
+    postsSections.forEach {
+        PostCardsRow(it)
     }
 }
 
 @Composable
 internal fun PostCardsRow(
-    postsSection: PostsSection,
-    sectionIndex: Int
+    postsSection: PostsSection
 ) {
 
     val navController = LocalNavController.current
@@ -52,10 +51,10 @@ internal fun PostCardsRow(
                 .horizontalScroll(rememberScrollState())
                 .fillMaxSize(),
         ) {
-            postsSection.posts.forEachIndexed { index, it ->
+            postsSection.posts.forEach {
                 Column(
                     modifier = Modifier.clickable {
-                        navController.navigate("post_detail/${sectionIndex}/${index}")
+                        navController.navigate("post_detail/${postsSection.id}/${it.id}")
                     }
                 ) {
                     PostCard(it)

@@ -34,13 +34,13 @@ fun PostDetailView(navBackStackEntry: NavBackStackEntry) {
     val postId = navBackStackEntry.arguments?.getString("postId") ?: ""
 
     var sectionTitle = ""
-    var currentPost: Post? = Post("", "", "")
+    var currentPost: Post? = null
     var imageUrl = ""
-    postDummy.forEachIndexed { index, postsSection ->
-        if (index == sectionId.toInt()) {
-            sectionTitle = postsSection.title
-            postsSection.posts.forEachIndexed { index, post ->
-                if (index == postId.toInt()) {
+    postDummy.forEach {
+        if (it.id == sectionId.toLong()) {
+            sectionTitle = it.title
+            it.posts.forEach {post ->
+                if (post.id == postId.toLong()) {
                     currentPost = post
                     imageUrl = post.imageUrl
                 }
