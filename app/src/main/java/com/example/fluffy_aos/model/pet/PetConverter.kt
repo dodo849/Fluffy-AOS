@@ -53,4 +53,20 @@ class PetConverter(
 
         return selectedDescription ?: return "알 수 없음"
     }
+
+    fun descriptionToOrder(fieldName: String, description: String): Int {
+        val jsonString = jsonReader.readJsonFile("onboarding_survey")
+        val surveyModel = jsonParser.parse(
+            jsonString,
+            SurveyModel::class.java
+        ) ?: return 0
+
+        val selectedOrder = surveyModel.questions
+            .filter { it.fieldName == fieldName }
+            .flatMap { it.selections }
+            .firstOrNull { it.description == description }
+            ?.order
+
+        return selectedOrder ?: return 0
+    }
 }

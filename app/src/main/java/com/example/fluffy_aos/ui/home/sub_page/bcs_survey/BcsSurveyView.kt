@@ -19,6 +19,7 @@ import com.example.fluffy_aos.ui.common.funnel.Funnel
 import com.example.fluffy_aos.ui.common.funnel.Step
 import com.example.fluffy_aos.ui.common.survey.SurveyView
 import com.example.fluffy_aos.ui.common.reusable.BackButton
+import com.example.fluffy_aos.ui.home.sub_page.bcs_survey.component.BcsLoadingPage
 import com.example.fluffy_aos.ui.home.sub_page.bcs_survey.component.BcsResultPage
 
 @Composable
@@ -28,6 +29,7 @@ fun BcsSurveyView(
     val navController = LocalNavController.current
 
     val questions by viewModel.questions.collectAsState()
+    val predictedBcsLevel by viewModel.bcsLevel.collectAsState()
 
     var text by remember { mutableStateOf("") }
 
@@ -49,14 +51,21 @@ fun BcsSurveyView(
                         questions = questions.map { it.mapToDisplayModel() },
                         onSubmit = {
                             viewModel.saveBcs(it)
-                            onChangeStep("result")
+                            onChangeStep("loading")
                         }
                     )
                 },
                 Step(
+                    name = "loading",
+                ) {onChangeStep ->
+                    BcsLoadingPage {
+                        onChangeStep("result")
+                    }
+                },
+                Step(
                     name = "result"
                 ) { onChangeStep ->
-                    BcsResultPage()
+                    BcsResultPage(bcsLevel = predictedBcsLevel)
                 }
             )
         )

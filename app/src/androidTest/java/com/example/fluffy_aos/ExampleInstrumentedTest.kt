@@ -3,6 +3,10 @@ package com.example.fluffy_aos
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.fluffy_aos.ai.ModelManager
+import com.example.fluffy_aos.data.repository.PredictRepository
+import com.example.fluffy_aos.model.predict.PredictItem
+import com.example.fluffy_aos.model.predict.PredictRequestDto
+import org.json.JSONArray
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -21,10 +25,5 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.example.fluffy_aos", appContext.packageName)
-    }
-
-    @Test
-    fun test() {
-        ModelManager.main(emptyArray())
     }
 }

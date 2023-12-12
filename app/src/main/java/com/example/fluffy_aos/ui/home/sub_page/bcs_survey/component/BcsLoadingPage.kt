@@ -25,7 +25,7 @@ import com.example.fluffy_aos.ui.theme.main_orange
 import kotlinx.coroutines.delay
 
 @Composable
-fun BcsDiagnosisLoadingView(goNextPage: () -> Unit = {}) {
+fun BcsLoadingPage(goNextPage: () -> Unit = {}) {
     var progressVisible by remember { mutableStateOf(true) }
 
     Card {
@@ -47,7 +47,7 @@ fun BcsDiagnosisLoadingView(goNextPage: () -> Unit = {}) {
 
 
     LaunchedEffect(Unit) {
-        delay(4000L) // 3초 대기
+        delay(3000L) // 3초 대기
         progressVisible = false
         goNextPage()
         // 이후에 다음 화면으로 이동하는 로직 추가

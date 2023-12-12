@@ -1,5 +1,9 @@
 package com.example.fluffy_aos
 
+import com.example.fluffy_aos.data.repository.PredictRepository
+import com.example.fluffy_aos.model.predict.PredictItem
+import com.example.fluffy_aos.model.predict.PredictRequestDto
+import org.json.JSONArray
 import org.junit.Test
 
 import org.junit.Assert.*

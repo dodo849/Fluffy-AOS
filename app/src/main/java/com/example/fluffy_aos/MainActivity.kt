@@ -16,6 +16,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.chaquo.python.Python
+import com.chaquo.python.android.AndroidPlatform
+import com.example.fluffy_aos.ai.ModelManager
 import com.example.fluffy_aos.data.repository.BcsRepository
 import com.example.fluffy_aos.data.db.DbManager
 import com.example.fluffy_aos.data.db.PreferencesManager
@@ -49,6 +52,7 @@ class MainActivity : ComponentActivity() {
         setDatabase()
         setPreferences()
         setJsonManager()
+        setPython()
 
         setContent {
             val navController = rememberNavController()
@@ -106,6 +110,15 @@ class MainActivity : ComponentActivity() {
 
     private fun setJsonManager() {
         JsonReader.init(this)
+    }
+
+    private fun setPython() {
+        if (! Python.isStarted()) {
+            Python.start(AndroidPlatform(this));
+        }
+
+        // TODO: 모델 로드
+//        ModelManager().execute()
     }
 
     @Composable

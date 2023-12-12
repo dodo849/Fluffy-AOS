@@ -10,6 +10,49 @@ class PetRepository(
     private val petConverter: PetConverter = PetConverter(),
 ) {
 
+    fun readPetById(id: Long): Pet? {
+        val db = dbManager.getWritableDatabase()
+        var pet: Pet? = null
+
+        db.use { database ->
+            val cursor = database.query(
+                "pet",
+                null,
+                "_id = ?",
+                arrayOf(id.toString()),
+                null,
+                null,
+                null
+            )
+
+            cursor?.use { petCursor ->
+                if (petCursor.moveToNext()) {
+                    val name = petCursor.getString(petCursor.getColumnIndexOrThrow("name"))
+                    val species = petCursor.getString(petCursor.getColumnIndexOrThrow("species"))
+                    val speciesDescription = petConverter.codeToDescription("species", species)
+                    val breed = petCursor.getString(petCursor.getColumnIndexOrThrow("breed"))
+                    val breedDescription = petConverter.codeToDescription("breed", breed)
+                    val furType = petCursor.getString(petCursor.getColumnIndexOrThrow("furType"))
+                    val furTypeDescription = petConverter.codeToDescription("furType", furType)
+                    val age = petCursor.getInt(petCursor.getColumnIndexOrThrow("age"))
+                    val sex = petCursor.getString(petCursor.getColumnIndexOrThrow("sex"))
+                    val sexDescription = petConverter.codeToDescription("sex", sex)
+
+                    pet = Pet(
+                        id,
+                        name,
+                        speciesDescription,
+                        breedDescription,
+                        furTypeDescription,
+                        age,
+                        sexDescription
+                    )
+                }
+            }
+        }
+
+        return pet
+    }
 
     fun readAllPets(): List<Pet> {
         val petList = mutableListOf<Pet>()
