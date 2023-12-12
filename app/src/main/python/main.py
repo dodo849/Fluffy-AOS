@@ -1,6 +1,7 @@
 import json
 
 import pandas as pd
+import tensorflow as tf
 from tensorflow.keras.models import load_model
 import numpy as np
 from os.path import dirname, join
@@ -65,10 +66,12 @@ def execute_model(survey_result):
     model_df = pd.DataFrame(data=[input_data[0: 61]])
 
     DL_path = join(dirname(__file__), "result.h5")
-    DL_model = load_model(DL_path)
+    print("여기까진 된겨?" + tf.__version__)
+    DL_model = load_model(DL_path, custom_objects={'Functional':tf.keras.models.Model})
+
     y_pred = DL_model.predict(model_df)
     print("dl :", y_pred)
-    result = y_pred  # 인덱스 0부터 bcs 2~9단계임
+    result = y_pred  # 인덱스 0부터 bcs 1~9단계임
     bcs_result = np.argmax(result)
 
     print("all result : ", result)
