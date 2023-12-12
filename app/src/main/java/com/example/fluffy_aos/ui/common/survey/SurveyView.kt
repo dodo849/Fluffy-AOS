@@ -1,5 +1,6 @@
 package com.example.fluffy_aos.ui.common.survey
 
+import android.net.Uri
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -7,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import com.example.fluffy_aos.ui.common.funnel.Funnel
 import com.example.fluffy_aos.ui.common.funnel.Step
@@ -27,7 +29,7 @@ fun SurveyView(
     var text by remember { mutableStateOf("") } // FIXME: temp
 
     // NOTE: Selection의 경우 order로 저장 나중에 데이터 처리할때 code로 바꿔야함
-    var surveyResult by remember {
+    var surveyResult by rememberSaveable {
         mutableStateOf(mutableMapOf<String, Any>().apply {
             questions.forEach { question ->
                 this[question.fieldName] = ""
@@ -129,6 +131,7 @@ private fun getStepContent(
             PhotoQuestionCard(
                 question = QUESTION_DESCRIPTION,
                 order = orderType,
+                initialUri = Uri.parse(value.toString()),
                 onClickPreviousButton = onClickPreviousButton,
                 onClickNextButton = onClickNextButton,
             )
