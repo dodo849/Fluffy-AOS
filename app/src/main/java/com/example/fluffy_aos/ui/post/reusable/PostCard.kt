@@ -51,7 +51,7 @@ fun PostCard(post: Post) {
                 overflow = TextOverflow.Ellipsis,
             )
             Text(
-                post.content,
+                post.subTitle,
                 fontSize = 14.sp,
                 color = gray_text_light,
                 maxLines = 1,

@@ -53,7 +53,7 @@ fun PostView(viewModel: PostViewModel) {
             }
         }
 
-        PostCards(state.posts, viewModel)
+        PostCards(state.posts)
 
         Spacer(modifier = Modifier.height(50.dp))
 

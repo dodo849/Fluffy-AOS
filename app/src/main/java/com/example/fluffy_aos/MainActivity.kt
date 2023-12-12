@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -151,8 +152,8 @@ class MainActivity : ComponentActivity() {
             composable("my_pets") {
                 MyPetsView(MyPetsViewModel(PetRepository()))
             }
-            composable("post_detail") {
-                PostDetailView(PostViewModel())
+            composable("post_detail/{sectionId}/{postId}") {
+                PostDetailView(it)
             }
         }
     }
