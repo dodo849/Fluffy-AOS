@@ -10,7 +10,7 @@ fun SkinDiagnosisCard() {
     DiagnosisCard(
         title = "AI 피부 진단",
         detail = "준비중 입니다. 조금만 기다려 주세요 ☺️",
-        imageRes = R.drawable.dog_face,
+        imageRes = R.drawable.pawprint,
         ready = false,
         onClick = { /*TODO*/ }
     )
