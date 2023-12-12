@@ -72,12 +72,12 @@ private fun WeightCardHeader(weight: String) {
                 color = gray_text_light,
                 fontSize = 18.sp
             )
-            Text(
-                "전체보기 >",
-                fontWeight = FontWeight.Bold,
-                color = gray_text_light,
-                fontSize = 14.sp
-            )
+//            Text(
+//                "전체보기 >",
+//                fontWeight = FontWeight.Bold,
+//                color = gray_text_light,
+//                fontSize = 14.sp
+//            )
         }
         Text(
             "${weight}kg",
@@ -111,8 +111,8 @@ private fun WeightGraph(x: List<String>, y: List<Double>) {
                 lineSpec(lineColor = main_orange)
             ),
             axisValuesOverrider = AxisValuesOverrider.fixed(
-                minY = 6f,
-                maxY = 8.5f,
+                minY = y.minOf { it.toFloat() } - 1f,
+                maxY = y.maxOf { it.toFloat() } + 1f,
             ),
             persistentMarkers = markerMap,
         ),
