@@ -29,7 +29,7 @@ enum class BcsLevel {
     }
 
 
-    fun bcsLevel(): Int {
+    fun levelToNum(): Int {
         return when (this) {
             LEVEL_1 -> 1
             LEVEL_2 -> 2

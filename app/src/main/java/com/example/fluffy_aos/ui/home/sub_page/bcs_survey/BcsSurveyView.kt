@@ -14,7 +14,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.fluffy_aos.global.LocalNavController
-import com.example.fluffy_aos.model.bcs.BcsLevel
 import com.example.fluffy_aos.ui.home.sub_page.bcs_survey.view_model.BcsSurveyViewModel
 import com.example.fluffy_aos.ui.common.funnel.Funnel
 import com.example.fluffy_aos.ui.common.funnel.Step
@@ -30,7 +29,7 @@ fun BcsSurveyView(
     val navController = LocalNavController.current
 
     val questions by viewModel.questions.collectAsState()
-    val predictedBcsLevel by viewModel.predictedBcsLevel.collectAsState()
+    val predictedBcsLevel by viewModel.bcsLevel.collectAsState()
 
     var text by remember { mutableStateOf("") }
 

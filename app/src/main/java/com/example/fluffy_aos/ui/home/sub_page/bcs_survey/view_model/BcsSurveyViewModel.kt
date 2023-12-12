@@ -26,16 +26,13 @@ class BcsSurveyViewModel(
     private val _questions = MutableStateFlow<List<QuestionModel>>(emptyList())
     val questions: StateFlow<List<QuestionModel>> = _questions.asStateFlow()
 
-    private val _predictedBcsLevel = MutableStateFlow<BcsLevel>(BcsLevel.LEVEL_1)
-    val predictedBcsLevel: StateFlow<BcsLevel> = _predictedBcsLevel.asStateFlow()
+    private val _bcsLevel = MutableStateFlow<BcsLevel>(BcsLevel.LEVEL_1)
+    val bcsLevel: StateFlow<BcsLevel> = _bcsLevel.asStateFlow()
 
     val surveyResult = mutableMapOf<String, Any>()
 
     init {
         getBcsQuestion()
-
-//        val temp = bcsRepository.readAllBcs()
-//        println("_questions = ${temp}")
     }
 
     private fun getBcsQuestion() {
@@ -54,9 +51,10 @@ class BcsSurveyViewModel(
         val predictDto = pridectRequestPreprocess(surveyResult, petId)
         CoroutineScope(Dispatchers.IO).async {
             val result = PredictRepository().sendHttpPostRequest(predictDto)
-            _predictedBcsLevel.update {
+            _bcsLevel.update {
                 BcsLevel.numToBcsLevel(result?.bcs ?: 1)
             }
+            preferencesManager.saveValue("bcs_level", result?.bcs.toString())
             println("bcs result = $result")
         }
     }
@@ -74,6 +72,7 @@ class BcsSurveyViewModel(
         mutableSurvey["class"] = petConverter.descriptionToOrder("furType", pet?.furType ?: "")
         mutableSurvey["age"] = pet?.age ?: ""
         mutableSurvey["sex"] = petConverter.descriptionToOrder("sex", pet?.sex ?: "")
+        mutableSurvey["group"] = 1
 
         val predictItem = mutableSurvey.map {
             PredictItem(

@@ -25,6 +25,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.fluffy_aos.data.repository.BcsRepository
 import com.example.fluffy_aos.data.repository.PetRepository
 import com.example.fluffy_aos.global.LocalNavController
+import com.example.fluffy_aos.model.bcs.BcsLevel
 import com.example.fluffy_aos.ui.common.header.Header
 import com.example.fluffy_aos.ui.common.reusable.Card
 import com.example.fluffy_aos.ui.record.component.WeightCard
@@ -32,6 +33,7 @@ import com.example.fluffy_aos.ui.record.view_model.RecordViewModel
 import com.example.fluffy_aos.ui.theme.FluffyAOSTheme
 import com.example.fluffy_aos.ui.theme.gray_background
 import com.example.fluffy_aos.ui.theme.gray_background_deep
+import com.example.fluffy_aos.ui.theme.gray_text_light
 import com.example.fluffy_aos.ui.theme.main_orange
 
 @Composable
@@ -42,6 +44,7 @@ fun RecordView(
     val navController = LocalNavController.current
 
     val weightList by viewModel.weightList.collectAsState()
+    val bcsLevel by viewModel.bcsLevel.collectAsState()
 
     Column(
         verticalArrangement = Arrangement.spacedBy(15.dp),
@@ -58,13 +61,13 @@ fun RecordView(
         WeightCard(weightList = weightList)
         Spacer(modifier = Modifier.padding(5.dp))
 
-        BcsRecordCard()
+        BcsRecordCard(bcsLevel = bcsLevel)
         Spacer(modifier = Modifier.padding(30.dp))
     }
 }
 
 @Composable
-fun BcsRecordCard() {
+fun BcsRecordCard(bcsLevel: BcsLevel) {
     Column(
         verticalArrangement = Arrangement.spacedBy(15.dp),
         modifier = Modifier
@@ -83,12 +86,16 @@ fun BcsRecordCard() {
                         fontSize = 20.sp
                     )
                     Text(
-                        "7단계", fontWeight = FontWeight.Bold, fontSize = 20.sp,
+                        "${bcsLevel.levelToNum()}단계", fontWeight = FontWeight.Bold, fontSize = 20.sp,
                         color = main_orange
+                    )
+                    Text(
+                        ": ${bcsLevel.getKr()}", fontWeight = FontWeight.Bold, fontSize = 20.sp,
+                        color = gray_text_light
                     )
                 }
                 Spacer(modifier = Modifier.padding(3.dp))
-                Text("과체중으로 약간의 체중 조절이 필요한 단계입니다. 비만이 되지 않도록 적절한 식이요법 및 운동이 필요합니다.")
+                Text(bcsLevel.getDescription())
             }
         }
     }

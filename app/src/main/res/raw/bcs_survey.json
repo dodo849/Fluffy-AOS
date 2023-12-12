@@ -107,7 +107,7 @@
       "fieldName": "food-count",
       "order": 9,
       "description": "1일 식이 횟수는 몇번인가요?",
-      "responseType": "Integer",
+      "responseType": "Selection",
       "responseSuffix": "",
       "selections" : [
         {
