@@ -5,6 +5,7 @@ import com.example.fluffy_aos.data.db.PreferencesManager
 import com.example.fluffy_aos.data.repository.BcsRepository
 import com.example.fluffy_aos.data.repository.PetRepository
 import com.example.fluffy_aos.data.repository.PredictRepository
+import com.example.fluffy_aos.model.bcs.BcsLevel
 import com.example.fluffy_aos.model.pet.PetConverter
 import com.example.fluffy_aos.model.predict.PredictItem
 import com.example.fluffy_aos.model.predict.PredictRequestDto
@@ -24,6 +25,9 @@ class BcsSurveyViewModel(
 
     private val _questions = MutableStateFlow<List<QuestionModel>>(emptyList())
     val questions: StateFlow<List<QuestionModel>> = _questions.asStateFlow()
+
+    private val _predictedBcsLevel = MutableStateFlow<BcsLevel>(BcsLevel.LEVEL_1)
+    val predictedBcsLevel: StateFlow<BcsLevel> = _predictedBcsLevel.asStateFlow()
 
     val surveyResult = mutableMapOf<String, Any>()
 
@@ -50,7 +54,10 @@ class BcsSurveyViewModel(
         val predictDto = pridectRequestPreprocess(surveyResult, petId)
         CoroutineScope(Dispatchers.IO).async {
             val result = PredictRepository().sendHttpPostRequest(predictDto)
-            println("result = $result")
+            _predictedBcsLevel.update {
+                BcsLevel.numToBcsLevel(result?.bcs ?: 1)
+            }
+            println("bcs result = $result")
         }
     }
 
@@ -59,13 +66,6 @@ class BcsSurveyViewModel(
         val mutableSurvey = survey.toMutableMap()
 
         val pet = PetRepository().readPetById(petId)
-
-//        val name: String,
-//        val species: String,
-//        val breed: String,
-//        val furType: String,
-//        val age: Int,
-//        val sex: String
 
         val petConverter = PetConverter()
 
@@ -81,6 +81,7 @@ class BcsSurveyViewModel(
                 value = it.value.toString().toInt()
             )
         }
+
         return PredictRequestDto(predictItem)
     }
 

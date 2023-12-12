@@ -6,7 +6,6 @@ import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.coroutines.awaitStringResponseResult
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import kotlinx.coroutines.runBlocking
 
 
 class PredictRepository {
@@ -34,7 +33,7 @@ class PredictRepository {
             },
             failure = { error ->
                 println("An error of type ${error.exception} happened: ${error.message}")
-                null // 오류가 발생하면 null 반환
+                null
             }
         )
     }

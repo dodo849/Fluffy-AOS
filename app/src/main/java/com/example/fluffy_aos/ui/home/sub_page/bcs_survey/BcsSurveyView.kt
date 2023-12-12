@@ -22,9 +22,6 @@ import com.example.fluffy_aos.ui.common.survey.SurveyView
 import com.example.fluffy_aos.ui.common.reusable.BackButton
 import com.example.fluffy_aos.ui.home.sub_page.bcs_survey.component.BcsLoadingPage
 import com.example.fluffy_aos.ui.home.sub_page.bcs_survey.component.BcsResultPage
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 
 @Composable
 fun BcsSurveyView(
@@ -33,6 +30,7 @@ fun BcsSurveyView(
     val navController = LocalNavController.current
 
     val questions by viewModel.questions.collectAsState()
+    val predictedBcsLevel by viewModel.predictedBcsLevel.collectAsState()
 
     var text by remember { mutableStateOf("") }
 
@@ -68,7 +66,7 @@ fun BcsSurveyView(
                 Step(
                     name = "result"
                 ) { onChangeStep ->
-                    BcsResultPage(bcsLevel = BcsLevel.LEVEL_3)
+                    BcsResultPage(bcsLevel = predictedBcsLevel)
                 }
             )
         )
