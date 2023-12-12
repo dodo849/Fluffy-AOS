@@ -65,10 +65,10 @@ fun SurveyView(
                 }
             }
         )
-        Button(onClick = { text = surveyResult.toString() }) {
-            Text("show result")
-        }
-        Text("${text}")
+//        Button(onClick = { text = surveyResult.toString() }) {
+//            Text("show result")
+//        }
+//        Text("${text}")
     }
 }
 
