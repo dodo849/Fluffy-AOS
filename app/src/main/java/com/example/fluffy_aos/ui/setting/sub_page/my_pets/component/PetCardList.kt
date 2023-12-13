@@ -16,6 +16,8 @@ fun PetCardList(pets: List<Pet>, onClickDelete: (Long) -> Unit = {}) {
 
     var showDialog by remember() { mutableStateOf(false) }
 
+    var deletePet by remember() { mutableStateOf<Pet?>(null) }
+
     pets.forEachIndexed { index, pet ->
         PetCard(
             name= pet.name,
@@ -23,7 +25,10 @@ fun PetCardList(pets: List<Pet>, onClickDelete: (Long) -> Unit = {}) {
             age = "${pet.age}",
             sex = pet.sex,
             furType = pet.furType,
-            onClickDelete = { showDialog = true }
+            onClickDelete = {
+                deletePet = pet
+                showDialog = true
+            }
         )
 
         if (showDialog) {
@@ -36,14 +41,16 @@ fun PetCardList(pets: List<Pet>, onClickDelete: (Long) -> Unit = {}) {
                     Text(text = "반려동물 삭제")
                 },
                 text = {
-                    Text(text = "정말로 이 반려동물을 삭제하시겠습니까?")
+                    Text(text = "정말로 이 반려동물(${deletePet?.name})을 삭제하시겠습니까?")
                 },
                 confirmButton = {
                     TextButton(
                         onClick = {
                             showDialog = false
-                            onClickDelete(pet.id)
-                            println("pet.id = ${pet.id}")
+                            if (deletePet != null) {
+                                onClickDelete(deletePet!!.id)
+                                println("pet.id = ${deletePet!!.id}")
+                            }
                         }
                     ) {
                         Text("삭제")
