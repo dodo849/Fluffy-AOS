@@ -34,8 +34,8 @@ import com.example.fluffy_aos.ui.home.sub_page.bcs_survey.view_model.BcsSurveyVi
 import com.example.fluffy_aos.ui.bottom_navigation.BottomNavigationBar
 import com.example.fluffy_aos.ui.home.HomeView
 import com.example.fluffy_aos.ui.home.view_model.HomeViewModel
-import com.example.fluffy_aos.ui.onboarding_survey.OnboardingSurveyView
-import com.example.fluffy_aos.ui.onboarding_survey.view_model.OnboardingSurveyViewModel
+import com.example.fluffy_aos.ui.setting.sub_page.onboarding_survey.OnboardingSurveyView
+import com.example.fluffy_aos.ui.setting.sub_page.onboarding_survey.view_model.OnboardingSurveyViewModel
 import com.example.fluffy_aos.ui.post.PostView
 import com.example.fluffy_aos.ui.post.sub_page.post_detail.PostDetailView
 import com.example.fluffy_aos.ui.post.view_model.PostViewModel

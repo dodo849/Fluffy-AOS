@@ -5,6 +5,7 @@ import com.example.fluffy_aos.data.db.DbManager
 import com.example.fluffy_aos.model.pet.Pet
 import com.example.fluffy_aos.model.pet.PetConverter
 
+// Warn: Selection Type save/read 할 때는 Code로
 class PetRepository(
     private val dbManager: DbManager = DbManager,
     private val petConverter: PetConverter = PetConverter(),
@@ -27,25 +28,22 @@ class PetRepository(
 
             cursor?.use { petCursor ->
                 if (petCursor.moveToNext()) {
-                    val name = petCursor.getString(petCursor.getColumnIndexOrThrow("name"))
-                    val species = petCursor.getString(petCursor.getColumnIndexOrThrow("species"))
-                    val speciesDescription = petConverter.codeToDescription("species", species)
-                    val breed = petCursor.getString(petCursor.getColumnIndexOrThrow("breed"))
-                    val breedDescription = petConverter.codeToDescription("breed", breed)
-                    val furType = petCursor.getString(petCursor.getColumnIndexOrThrow("furType"))
-                    val furTypeDescription = petConverter.codeToDescription("furType", furType)
-                    val age = petCursor.getInt(petCursor.getColumnIndexOrThrow("age"))
-                    val sex = petCursor.getString(petCursor.getColumnIndexOrThrow("sex"))
-                    val sexDescription = petConverter.codeToDescription("sex", sex)
+                    val id = cursor.getLong(cursor.getColumnIndexOrThrow("_id"))
+                    val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
+                    val species = cursor.getString(cursor.getColumnIndexOrThrow("species"))
+                    val breed = cursor.getString(cursor.getColumnIndexOrThrow("breed"))
+                    val furType = cursor.getString(cursor.getColumnIndexOrThrow("furType"))
+                    val age = cursor.getInt(cursor.getColumnIndexOrThrow("age"))
+                    val sex = cursor.getString(cursor.getColumnIndexOrThrow("sex"))
 
                     pet = Pet(
                         id,
                         name,
-                        speciesDescription,
-                        breedDescription,
-                        furTypeDescription,
+                        species,
+                        breed,
+                        furType,
                         age,
-                        sexDescription
+                        sex
                     )
                 }
             }
@@ -74,23 +72,19 @@ class PetRepository(
                     val id = cursor.getLong(cursor.getColumnIndexOrThrow("_id"))
                     val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
                     val species = cursor.getString(cursor.getColumnIndexOrThrow("species"))
-                    val speciesDescription = petConverter.codeToDescription("species", species)
                     val breed = cursor.getString(cursor.getColumnIndexOrThrow("breed"))
-                    val breedDescription = petConverter.codeToDescription("breed", breed)
                     val furType = cursor.getString(cursor.getColumnIndexOrThrow("furType"))
-                    val furTypeDescription = petConverter.codeToDescription("furType", furType)
                     val age = cursor.getInt(cursor.getColumnIndexOrThrow("age"))
                     val sex = cursor.getString(cursor.getColumnIndexOrThrow("sex"))
-                    val sexDescription = petConverter.codeToDescription("sex", sex)
 
                     val pet = Pet(
                         id,
                         name,
-                        speciesDescription,
-                        breedDescription,
-                        furTypeDescription,
+                        species,
+                        breed,
+                        furType,
                         age,
-                        sexDescription
+                        sex
                     )
                     petList.add(pet)
                 }

@@ -3,6 +3,7 @@ package com.example.fluffy_aos.ui.common.header
 import com.example.fluffy_aos.data.db.PreferencesManager
 import com.example.fluffy_aos.data.repository.PetRepository
 import com.example.fluffy_aos.model.pet.Pet
+import com.example.fluffy_aos.model.pet.PetConverter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -30,20 +31,22 @@ class HeaderViewModel(
 
 
     private fun getPets() {
-        val pets: List<Pet> = petRepository.readAllPets()
+        val foundedPets: List<Pet> = petRepository.readAllPets()
+
+        val convertedPets: List<Pet> = foundedPets.map {
+            PetConverter().codeToDescriptionByPet(it)
+        }
 
         _pets.update { currentState ->
-            pets
+            convertedPets
         }
 
         val currentPetId = preferenceManager.getValue("petId", "0").toLong()
+        val foundedCurrentPet = convertedPets.find { it.id == currentPetId }
 
-        _currentPet.update { currentState ->
-            if (currentPetId != 0L) {
-                pets.find { it.id == currentPetId } ?: currentState
-            } else {
-                currentState
-            }
+        foundedCurrentPet?.let {
+            _currentPet.update { foundedCurrentPet }
         }
+
     }
 }

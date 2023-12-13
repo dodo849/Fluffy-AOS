@@ -9,7 +9,22 @@ class PetConverter(
     private val jsonParser: JsonParser<SurveyModel> = JsonParser()
 ) {
 
-    fun orderToCode(fieldName: String, order: Int): String {
+    companion object {
+        val selectionFields = listOf("species", "breed", "furType", "sex")
+    }
+
+    fun codeToDescriptionByPet(pet: Pet): Pet {
+        return Pet(
+            name = pet.name,
+            species = codeToDescriptionByField("species", pet.species),
+            breed = codeToDescriptionByField("breed", pet.breed),
+            furType = codeToDescriptionByField("furType", pet.furType),
+            age = pet.age,
+            sex = codeToDescriptionByField("sex", pet.sex),
+        )
+    }
+
+    fun orderToCodeByField(fieldName: String, order: Int): String {
         val jsonString = jsonReader.readJsonFile("onboarding_survey")
         val surveyModel = jsonParser.parse(
             jsonString,
@@ -25,9 +40,9 @@ class PetConverter(
         return selectedCode ?: return "알 수 없음"
     }
 
-    fun codeToOrder(fieldName: String, code: String): Int? {
+    fun codeToOrderByField(fieldName: String, code: String): Int {
         val jsonString = jsonReader.readJsonFile("onboarding_survey")
-        val surveyModel = jsonParser.parse(jsonString, SurveyModel::class.java) ?: return null
+        val surveyModel = jsonParser.parse(jsonString, SurveyModel::class.java) ?: return -1
 
         val selectedOrder = surveyModel.questions
             .filter { it.fieldName == fieldName }
@@ -35,10 +50,10 @@ class PetConverter(
             .firstOrNull { it.code == code }
             ?.order
 
-        return selectedOrder
+        return selectedOrder ?: -1
     }
 
-    fun codeToDescription(fieldName: String, code: String): String {
+    fun codeToDescriptionByField(fieldName: String, code: String): String {
         val jsonString = jsonReader.readJsonFile("onboarding_survey")
         val surveyModel = jsonParser.parse(
             jsonString,
@@ -54,7 +69,7 @@ class PetConverter(
         return selectedDescription ?: return "알 수 없음"
     }
 
-    fun descriptionToOrder(fieldName: String, description: String): Int {
+    fun descriptionToOrderByField(fieldName: String, description: String): Int {
         val jsonString = jsonReader.readJsonFile("onboarding_survey")
         val surveyModel = jsonParser.parse(
             jsonString,

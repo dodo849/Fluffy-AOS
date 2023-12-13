@@ -65,12 +65,14 @@ class BcsSurveyViewModel(
 
         val petConverter = PetConverter()
 
-//        mutableSurvey["species"] =  petConverter.descriptionToOrder("species", pet?.species ?: "") // 현재 반려견만 지원
-        mutableSurvey["breed"] = petConverter.descriptionToOrder("breed", pet?.breed ?: "")
-        mutableSurvey["class"] = petConverter.descriptionToOrder("furType", pet?.furType ?: "")
-        mutableSurvey["age"] = pet?.age ?: ""
-        mutableSurvey["sex"] = petConverter.descriptionToOrder("sex", pet?.sex ?: "")
-        mutableSurvey["group"] = 1
+        pet?.let {
+            //        mutableSurvey["species"] =  petConverter.descriptionToOrder("species", pet?.species ?: "") // 현재 반려견만 지원
+            mutableSurvey["breed"] = petConverter.codeToOrderByField("breed", it.breed)
+            mutableSurvey["class"] = petConverter.codeToOrderByField("furType", it.furType)
+            mutableSurvey["age"] = pet.age
+            mutableSurvey["sex"] = petConverter.codeToOrderByField("sex", it.sex)
+            mutableSurvey["group"] = 1
+        }
 
         mutableSurvey.remove("photo-1")
         mutableSurvey.remove("photo-2")

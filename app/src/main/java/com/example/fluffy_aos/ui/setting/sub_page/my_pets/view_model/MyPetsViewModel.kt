@@ -2,6 +2,7 @@ package com.example.fluffy_aos.ui.setting.sub_page.my_pets.view_model
 
 import com.example.fluffy_aos.data.repository.PetRepository
 import com.example.fluffy_aos.model.pet.Pet
+import com.example.fluffy_aos.model.pet.PetConverter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -24,10 +25,14 @@ class MyPetsViewModel(
     }
 
     private fun getPets() {
-        val newPets: List<Pet> = petRepository.readAllPets()
+        val foundedPets: List<Pet> = petRepository.readAllPets()
+
+        val convertedPets: List<Pet> = foundedPets.map {
+            PetConverter().codeToDescriptionByPet(it)
+        }
 
         _pets.update {
-            newPets
+            convertedPets
         }
     }
 }

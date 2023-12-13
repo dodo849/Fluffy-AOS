@@ -1,4 +1,4 @@
-package com.example.fluffy_aos.ui.onboarding_survey
+package com.example.fluffy_aos.ui.setting.sub_page.onboarding_survey
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,8 +15,8 @@ import com.example.fluffy_aos.ui.common.funnel.Funnel
 import com.example.fluffy_aos.ui.common.funnel.Step
 import com.example.fluffy_aos.ui.common.reusable.BackButton
 import com.example.fluffy_aos.ui.common.survey.SurveyView
-import com.example.fluffy_aos.ui.onboarding_survey.view_model.OnboardingSurveyViewModel
-import com.example.fluffy_aos.ui.onboarding_survey.component.OnboardingResultPage
+import com.example.fluffy_aos.ui.setting.sub_page.onboarding_survey.view_model.OnboardingSurveyViewModel
+import com.example.fluffy_aos.ui.setting.sub_page.onboarding_survey.component.OnboardingResultPage
 import com.example.fluffy_aos.ui.theme.page_padding
 
 @Composable
