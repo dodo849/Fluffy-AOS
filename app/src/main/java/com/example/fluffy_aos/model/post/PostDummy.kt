@@ -39,7 +39,33 @@ val postDummy = listOf(
                 1L,
                 "운동? 식단? 강아지 성향에 따라 정해요",
                 "건강한 강아지를 위한 운동 및 식단 정보를 공유합니다",
-                "https://www.shutterstock.com/image-photo/woman-running-dog-workout-during-600nw-2225043417.jpg"
+                "https://www.shutterstock.com/image-photo/woman-running-dog-workout-during-600nw-2225043417.jpg",
+                listOf(
+                    PostContent(
+                        "",
+                        "강아지의 건강을 유지하기 위해 운동과 식단은 매우 중요합니다. 그러나 강아지의 성향에 따라 적절한 방식을 선택하는 것이 필요합니다."
+                    ),
+                    PostContent(
+                        "활발한 강아지",
+                        "운동: 매일 충분한 산책과 뛰어놀 수 있는 환경을 제공하세요. \n" +
+                                "식단: 높은 단백질 함유량의 사료를 선택하고, 활동량에 맞게 식사 양을 조절하세요."
+                    ),
+                    PostContent(
+                        "내성적인 강아지",
+                        "운동: 부드럽고 짧은 산책으로 스트레스 없이 운동을 할 수 있도록 도와주세요. \n" +
+                                "식단: 가벼운 간식과 균형 잡힌 식사로 영양을 유지하되, 식사 시간을 정해 불안함을 줄여주세요."
+                    ),
+                    PostContent(
+                        "지능적인 강아지",
+                        "운동: 정신적인 자극이 중요하므로 지능적인 놀이와 퍼즐 장난감을 활용하세요. \n" +
+                                "식단: 영양가 높은 간식과 지능 개발에 도움이 되는 식사를 고려하세요."
+                    ),
+                    PostContent(
+                        "고령 강아지",
+                        "운동: 가볍고 꾸준한 산책으로 관절 건강을 유지하며 적절한 운동을 제공하세요. \n" +
+                                "식단: 고령에 맞는 식사로 관절 건강과 소화에 신경을 쓰세요."
+                    )
+                )
             ),
             Post(
                 2L,
@@ -57,7 +83,7 @@ val postDummy = listOf(
             Post(
                 0L,
                 "식이 섭취 조절법",
-                "반려동물의 건강을 위해 올바른 식이 섭취와 조절 방법을 알아봅니다.",
+                "반려묘 건강을 위해 올바른 식이 섭취와 조절 방법을 알아봅니다.",
                 "https://st3.depositphotos.com/1177973/14607/i/450/depositphotos_146078475-stock-photo-cute-funny-cat.jpg"
             ),
             Post(
