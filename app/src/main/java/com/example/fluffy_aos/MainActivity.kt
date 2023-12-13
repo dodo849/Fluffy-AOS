@@ -124,7 +124,7 @@ class MainActivity : ComponentActivity() {
         }
 
         // TODO: 모델 로드
-//        ModelManager().execute()
+        ModelManager().execute()
     }
 
     @Composable
