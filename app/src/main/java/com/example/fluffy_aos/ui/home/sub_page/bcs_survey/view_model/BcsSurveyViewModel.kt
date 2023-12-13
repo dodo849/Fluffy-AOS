@@ -37,7 +37,7 @@ class BcsSurveyViewModel(
 
         val bcsSurvey = bcsRepository.getBcsSurvey()
 
-        _questions.update { currentState ->
+        _questions.update {
             bcsSurvey?.questions ?: emptyList()
         }
     }

@@ -5,6 +5,16 @@ data class Post(
     val title: String,
     val subTitle: String,
     val imageUrl: String,
-    val content: String = "포스팅 준비중 입니다 :)\n조금만 기다려주세요!"
+    val content: List<PostContent> = listOf(
+        PostContent(
+            title = "",
+            body = "포스팅 준비중 입니다 :)\n조금만 기다려주세요!"
+        )
+    )
+)
+
+data class PostContent(
+    val title: String,
+    val body: String
 )
 

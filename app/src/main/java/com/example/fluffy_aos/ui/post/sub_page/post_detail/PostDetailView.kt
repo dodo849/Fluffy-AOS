@@ -5,13 +5,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -21,9 +21,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavBackStackEntry
 import coil.compose.rememberAsyncImagePainter
 import com.example.fluffy_aos.model.post.Post
+import com.example.fluffy_aos.model.post.PostContent
 import com.example.fluffy_aos.model.post.postDummy
 import com.example.fluffy_aos.ui.common.reusable.BackButton
-import com.example.fluffy_aos.ui.theme.gray_text_light
 import com.example.fluffy_aos.ui.theme.main_orange
 import com.example.fluffy_aos.ui.theme.page_padding
 
@@ -39,7 +39,7 @@ fun PostDetailView(navBackStackEntry: NavBackStackEntry) {
     postDummy.forEach {
         if (it.id == sectionId.toLong()) {
             sectionTitle = it.title
-            it.posts.forEach {post ->
+            it.posts.forEach { post ->
                 if (post.id == postId.toLong()) {
                     currentPost = post
                     imageUrl = post.imageUrl
@@ -53,6 +53,7 @@ fun PostDetailView(navBackStackEntry: NavBackStackEntry) {
     Column(
         verticalArrangement = Arrangement.spacedBy(5.dp),
         modifier = Modifier
+            .verticalScroll(rememberScrollState())
             .fillMaxWidth()
     ) {
         Column(
@@ -87,20 +88,38 @@ fun PostDetailView(navBackStackEntry: NavBackStackEntry) {
                 .size(200.dp)
                 .background(Color.LightGray)
         )
-        Column(
-            verticalArrangement = Arrangement.spacedBy(3.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .padding(page_padding)
-                .fillMaxHeight()
-                .fillMaxWidth()
-        ) {
-            Text(
-                currentPost?.content ?: "",
-                fontSize = 18.sp,
-                color = gray_text_light
-            )
+
+        currentPost?.content?.forEach {
+            PostContent(it)
         }
+
+        Spacer(modifier = Modifier.size(90.dp))
+
+    }
+
+}
+
+@Composable
+fun PostContent(content: PostContent) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = page_padding)
+    ) {
+        Spacer(modifier = Modifier.size(20.dp))
+        if (content.title != "")  {
+            Text(
+                content.title,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+            )
+            Spacer(modifier = Modifier.size(10.dp))
+        }
+
+        Text(
+            content.body,
+            fontSize = 16.sp,
+        )
     }
 
 }
