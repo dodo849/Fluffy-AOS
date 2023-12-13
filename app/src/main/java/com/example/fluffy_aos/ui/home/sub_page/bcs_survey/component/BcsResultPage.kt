@@ -31,13 +31,6 @@ fun BcsResultPage(bcsLevel: BcsLevel) {
             verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()
         ) {
             Spacer(modifier = Modifier.height(10.dp))
-//            Image(
-//                painter = painterResource(id = R.drawable.warning),
-//                contentDescription = "warning",
-//                modifier = Modifier
-//                    .size(50.dp)
-//                    .align(Alignment.CenterHorizontally)
-//            )
             Text(
                 text = "${bcsLevel.getImoji()}",
                 color = main_orange,
@@ -57,11 +50,6 @@ fun BcsResultPage(bcsLevel: BcsLevel) {
             )
             Text(
                 bcsLevel.getDescription(),
-//                "척추나 꼬리 부근에 눈에 띄게" +
-//                        "지방이 축척 돼있고," +
-//                        "갈비뼈가 잘 만져지지 않고" +
-//                        "압력을 가했을 때 갈비뼈가 느껴지는 정도이며," +
-//                        "위에서 보았을 때 허리 굴곡이 거의 보이지 않는 체형입니다.",
                 fontSize = 16.sp,
                 textAlign = TextAlign.Center
             )

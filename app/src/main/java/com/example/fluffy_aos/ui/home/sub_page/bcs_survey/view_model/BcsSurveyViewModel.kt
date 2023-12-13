@@ -26,10 +26,8 @@ class BcsSurveyViewModel(
     private val _questions = MutableStateFlow<List<QuestionModel>>(emptyList())
     val questions: StateFlow<List<QuestionModel>> = _questions.asStateFlow()
 
-    private val _bcsLevel = MutableStateFlow<BcsLevel>(BcsLevel.LEVEL_1)
+    private val _bcsLevel = MutableStateFlow<BcsLevel>(BcsLevel.UNKNOWN)
     val bcsLevel: StateFlow<BcsLevel> = _bcsLevel.asStateFlow()
-
-    val surveyResult = mutableMapOf<String, Any>()
 
     init {
         getBcsQuestion()

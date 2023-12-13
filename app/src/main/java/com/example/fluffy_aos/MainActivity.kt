@@ -103,15 +103,15 @@ class MainActivity : ComponentActivity() {
     private fun setPreferences() {
         PreferencesManager.init(this)
 
-        // 선택된 반려동물이 없으면 마지막 반려동물을 선택
-//        val petId = PreferencesManager.getValue("pet_id", "0").toLong()
-//        if (petId == 0L) {
-//            val pets = PetRepository().readAllPets()
-//            if (pets.isNotEmpty()) {
-//                val lastPet = pets.last()
-//                PreferencesManager.saveValue("pet_id", lastPet.id.toString())
-//            }
-//        }
+        // 선택된 반려동물이 없으면서 등록된 반려동물이 있다면 마지막 반려동물을 선택
+        val petId = PreferencesManager.getValue("pet_id", "0").toLong()
+        if (petId == 0L) {
+            val pets = PetRepository().readAllPets()
+            if (pets.isNotEmpty()) {
+                val lastPet = pets.last()
+                PreferencesManager.saveValue("pet_id", lastPet.id.toString())
+            }
+        }
     }
 
     private fun setJsonManager() {

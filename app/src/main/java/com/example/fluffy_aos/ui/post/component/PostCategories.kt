@@ -19,7 +19,7 @@ fun PostCategories(
 ) {
     var selectedCategory by remember { mutableStateOf(initialSelectedCategory) }
 
-    val categories = listOf("전체", "반려견", "반려묘", "소형동물", "파충류", "기타")
+    val categories = listOf("전체", "반려견", "반려묘", "소형동물", "기타")
 
     Row(
         horizontalArrangement = Arrangement.spacedBy(10.dp),
