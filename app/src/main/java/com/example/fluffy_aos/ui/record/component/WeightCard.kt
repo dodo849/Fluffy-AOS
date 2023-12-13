@@ -111,8 +111,8 @@ private fun WeightGraph(x: List<String>, y: List<Double>) {
                 lineSpec(lineColor = main_orange)
             ),
             axisValuesOverrider = AxisValuesOverrider.fixed(
-                minY = y.minOf { it.toFloat() } - 1f,
-                maxY = y.maxOf { it.toFloat() } + 1f,
+                minY = y.minOf { it.toFloat() } - 0.3f,
+                maxY = y.maxOf { it.toFloat() } + 0.3f,
             ),
             persistentMarkers = markerMap,
         ),

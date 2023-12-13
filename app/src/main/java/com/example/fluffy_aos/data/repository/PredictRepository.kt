@@ -9,7 +9,6 @@ import com.github.kittinunf.fuel.coroutines.awaitStringResponseResult
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
-
 class PredictRepository(
 ) {
     suspend fun sendHttpPostRequest(requestBody: PredictRequestDto): PredictResponseDto? {
